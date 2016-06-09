@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 export class AppComponent {
 
     constructor(
-        private router: Router,
+        private router: Router
     ) {
     }
 

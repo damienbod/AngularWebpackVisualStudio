@@ -3,3 +3,8 @@ Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/Angular2WebpackVisua
 Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/bin
 Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/obj
 Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/project.lock.json
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/node_modules
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/angular2App/app/*.js
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/angular2App/app/*.js.map
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/angular2App/app/home/home.component.js
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/angular2App/app/home/home.component.js.map
