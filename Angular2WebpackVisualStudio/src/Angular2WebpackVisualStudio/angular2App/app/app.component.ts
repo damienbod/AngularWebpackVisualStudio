@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 @Component({
     selector: 'my-app',
     template: require( './app.component.html'),
-    styles: [require('./app.component.css')],
+    styles: [require('./app.component.scss')],
     directives: [ROUTER_DIRECTIVES]
 })
 

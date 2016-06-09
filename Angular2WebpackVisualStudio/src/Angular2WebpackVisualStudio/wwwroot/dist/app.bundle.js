@@ -11,7 +11,7 @@ webpackJsonp([0],{
 	var http_1 = __webpack_require__(/*! @angular/http */ 280);
 	var router_1 = __webpack_require__(/*! @angular/router */ 301);
 	var app_component_1 = __webpack_require__(/*! ./app.component */ 323);
-	var app_constants_1 = __webpack_require__(/*! ./app.constants */ 329);
+	var app_constants_1 = __webpack_require__(/*! ./app.constants */ 332);
 	platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
 	    router_1.ROUTER_PROVIDERS,
 	    http_1.HTTP_PROVIDERS,
@@ -51,7 +51,7 @@ webpackJsonp([0],{
 	        core_1.Component({
 	            selector: 'my-app',
 	            template: __webpack_require__(/*! ./app.component.html */ 326),
-	            styles: [__webpack_require__(/*! ./app.component.css */ 328)],
+	            styles: [__webpack_require__(/*! ./app.component.scss */ 328)],
 	            directives: [router_1.ROUTER_DIRECTIVES]
 	        }),
 	        router_1.Routes([
@@ -137,16 +137,16 @@ webpackJsonp([0],{
 /***/ },
 
 /***/ 328:
-/*!*******************************************!*\
-  !*** ./angular2App/app/app.component.css ***!
-  \*******************************************/
+/*!********************************************!*\
+  !*** ./angular2App/app/app.component.scss ***!
+  \********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "body {\r\npadding-top: 50px;\r\n}\r\n\r\n.starter-template {\r\npadding: 40px 15px;\r\ntext-align: center;\r\n}\r\n\r\n.navigationLinkButton:hover {\r\ncursor: pointer;\r\n}"
+	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 329:
+/***/ 332:
 /*!******************************************!*\
   !*** ./angular2App/app/app.constants.ts ***!
   \******************************************/
