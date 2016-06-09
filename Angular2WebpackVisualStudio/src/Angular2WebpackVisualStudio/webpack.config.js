@@ -1,4 +1,5 @@
-﻿var webpack = require("webpack");
+﻿var path = require('path');
+var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -28,10 +29,8 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract(
-                    'style', // backup loader when not building .css file
-                    'css!sass' // loaders to preprocess CSS
-                )
+                exclude: /node_modules/,
+                loader: 'raw-loader!sass-loader'
             },
             {
                 test: /\.(png|jpg)$/,

@@ -11,7 +11,7 @@ webpackJsonp([0],{
 	var http_1 = __webpack_require__(/*! @angular/http */ 280);
 	var router_1 = __webpack_require__(/*! @angular/router */ 301);
 	var app_component_1 = __webpack_require__(/*! ./app.component */ 323);
-	var app_constants_1 = __webpack_require__(/*! ./app.constants */ 332);
+	var app_constants_1 = __webpack_require__(/*! ./app.constants */ 329);
 	platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
 	    router_1.ROUTER_PROVIDERS,
 	    http_1.HTTP_PROVIDERS,
@@ -142,11 +142,11 @@ webpackJsonp([0],{
   \********************************************/
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
+	module.exports = "body {\n  padding-top: 50px; }\n\n.starter-template {\n  padding: 40px 15px;\n  text-align: center; }\n\n.navigationLinkButton:hover {\n  cursor: pointer; }\n"
 
 /***/ },
 
-/***/ 332:
+/***/ 329:
 /*!******************************************!*\
   !*** ./angular2App/app/app.constants.ts ***!
   \******************************************/
