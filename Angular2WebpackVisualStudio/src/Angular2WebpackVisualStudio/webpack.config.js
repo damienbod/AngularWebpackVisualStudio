@@ -30,7 +30,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: 'raw-loader!sass-loader'
+                loaders: ['raw-loader', 'sass-loader'] 
             },
             {
                 test: /\.(png|jpg)$/,
