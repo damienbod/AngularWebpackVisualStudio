@@ -2,9 +2,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
-// Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var autoprefixer = require('autoprefixer');
+var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -34,7 +33,7 @@ module.exports = function makeWebpackConfig() {
 
     config.output = {
         path: root('./wwwroot'),
-        publicPath: isProd ? '' : 'http://localhost:5000/',
+        publicPath: isProd ? '/' : 'http://localhost:5000/',
         filename: outputfilename,
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
@@ -63,7 +62,7 @@ module.exports = function makeWebpackConfig() {
                     2502  // 2502 -> Referenced directly or indirectly
                   ]
               },
-              exclude: [ /node_modules\/(?!(ng2-.+))/]
+              exclude: [/node_modules\/(?!(ng2-.+))/]
           },
 
           // copy those assets to output
@@ -91,27 +90,23 @@ module.exports = function makeWebpackConfig() {
 
 
     config.plugins = [
-      new webpack.DefinePlugin({
-          'process.env': {
-              NODE_ENV: JSON.stringify("production")
-          }
-      })
-    ];
-
-  
-    config.plugins.push(
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
         new HtmlWebpackPlugin({
             template: './angular2App/public/index.html',
             inject: 'body',
-            
+
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
         new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-    );
-    
+    ];
+
 
     // Add build specific plugins
     if (isProd) {
@@ -126,7 +121,7 @@ module.exports = function makeWebpackConfig() {
     }
 
     config.postcss = [
-      autoprefixer({
+      Autoprefixer({
           browsers: ['last 2 version']
       })
     ];
