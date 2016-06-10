@@ -5,8 +5,8 @@
   "author": "",
   "license": "ISC",
     "scripts": {
-        "watch": "webpack --watch --progress --profile",
-        "build": "rimraf dist && webpack --progress --profile --bail",
+        "build": "SET NODE_ENV=development && webpack -d --color",
+        "buildProduction": "SET NODE_ENV=production && webpack -d --color",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
         "typings": "typings",
