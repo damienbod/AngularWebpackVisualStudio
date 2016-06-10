@@ -9,7 +9,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var ENV = process.env.npm_lifecycle_event;
-var isProd = ENV === 'build';
+var isProd = ENV === 'production';
 
 module.exports = function makeWebpackConfig() {
 
@@ -40,7 +40,6 @@ module.exports = function makeWebpackConfig() {
     config.resolve = {
         cache: true,
         root: root(),
-        // only discover files that have those extensions
         extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
         alias: {
             'app': 'angular2App/app',
@@ -48,12 +47,6 @@ module.exports = function makeWebpackConfig() {
         }
     };
 
-    /**
-     * Loaders
-     * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
-     * List: http://webpack.github.io/docs/list-of-loaders.html
-     * This handles most of the magic responsible for converting modules
-     */
     config.module = {
         loaders: [
           {
@@ -123,12 +116,7 @@ module.exports = function makeWebpackConfig() {
         config.plugins.push(
           new webpack.NoErrorsPlugin(),
           new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.UglifyJsPlugin({
-              // Angular 2 is broken again, disabling mangle until beta 6 that should fix the thing
-              // Todo: remove this with beta 6
-              mangle: false
-          }),
-
+          new webpack.optimize.UglifyJsPlugin(),
           new CopyWebpackPlugin([{
               from: root('angular2App/public')
           }])
