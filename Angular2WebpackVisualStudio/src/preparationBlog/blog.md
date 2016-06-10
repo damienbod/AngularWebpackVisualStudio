@@ -296,7 +296,7 @@ function packageSort(packages) {
 The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
 Source index.html in the angular2App/public folder
-[code language="html"]
+```javascript
 <!doctype html>
 <html>
 <head>
@@ -320,7 +320,7 @@ Source index.html in the angular2App/public folder
 ```
 
 Build file in the wwwroot folder. The scripts for the app, vender and boot have been added using webpack. Hashes are used in a production build for cache busting.
-[code language="html"]
+```javascript
 <!doctype html>
 <html>
 <head>
