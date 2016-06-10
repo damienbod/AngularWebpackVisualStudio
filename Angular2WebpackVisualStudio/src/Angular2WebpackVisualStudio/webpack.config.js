@@ -1,4 +1,5 @@
-﻿var path = require('path');
+/// <binding ProjectOpened='Run - Development' />
+var path = require('path');
 var webpack = require('webpack');
 
 // Webpack Plugins
