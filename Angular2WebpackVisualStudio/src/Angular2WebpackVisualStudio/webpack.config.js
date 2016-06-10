@@ -14,9 +14,10 @@ var isProd = ENV === 'production';
 module.exports = function makeWebpackConfig() {
 
     var config = {};
-
+    var outputfilename = 'dist/[name].js';
     if (isProd) {
         config.devtool = 'source-map';
+        outputfilename = 'dist/[name].[hash].js'
     } else {
         config.devtool = 'eval-source-map';
     }
@@ -30,10 +31,11 @@ module.exports = function makeWebpackConfig() {
         'app': './angular2App/boot.ts' // our angular app
     };
 
+
     config.output = {
         path: root('./wwwroot'),
         publicPath: isProd ? '/' : 'http://localhost:5000/',
-        filename: isProd ? 'dist/[name].[hash].js' : 'dist/[name].js',
+        filename: outputfilename,
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
 
