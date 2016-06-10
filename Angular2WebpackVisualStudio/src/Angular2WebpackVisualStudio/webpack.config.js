@@ -50,39 +50,61 @@ module.exports = function makeWebpackConfig() {
 
     config.module = {
         loaders: [
-          {
-              test: /\.ts$/,
-              loader: 'ts',
-              query: {
-                  'ignoreDiagnostics': [
-                    2403, // 2403 -> Subsequent variable declarations
-                    2300, // 2300 -> Duplicate identifier
-                    2374, // 2374 -> Duplicate number index signature
-                    2375, // 2375 -> Duplicate string index signature
-                    2502  // 2502 -> Referenced directly or indirectly
-                  ]
-              },
-              exclude: [/node_modules\/(?!(ng2-.+))/]
-          },
+            {
+                test: /\.ts$/,
+                loader: 'ts',
+                query: {
+                    'ignoreDiagnostics': [
+                        2403, // 2403 -> Subsequent variable declarations
+                        2300, // 2300 -> Duplicate identifier
+                        2374, // 2374 -> Duplicate number index signature
+                        2375, // 2375 -> Duplicate string index signature
+                        2502 // 2502 -> Referenced directly or indirectly
+                    ]
+                },
+                exclude: [/node_modules\/(?!(ng2-.+))/]
+            },
 
-          // copy those assets to output
-          { test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?' },
+            // copy those assets to output
+            {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                loader: 'file?name=fonts/[name].[hash].[ext]?'
+            },
 
-          // Support for *.json files.
-          { test: /\.json$/, loader: 'json' },
-          {
-              test: /\.css$/,
-              exclude: root('angular2App', 'app'),
-              loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
-          },
-          { test: /\.css$/, include: root('angular2App', 'app'), loader: 'raw!postcss' },
-          {
-              test: /\.scss$/,
-              exclude: root('angular2App', 'app'),
-              loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
-          },
-          { test: /\.scss$/, exclude: root('angular2App', 'style'), loader: 'raw!postcss!sass' },
-          { test: /\.html$/, loader: 'raw' }
+            // Support for *.json files.
+            {
+                test: /\.json$/,
+                loader: 'json'
+            },
+            {
+                test: /\.css$/,
+                exclude: root('angular2App', 'app'),
+                loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+            },
+            {
+                test: /\.css$/,
+                include: root('angular2App', 'app'),
+                loader: 'raw!postcss'
+            },
+            {
+                test: /\.css$/,
+                include: root('angular2App', 'public', 'css'),
+                loader: ExtractTextPlugin.extract("style","css!sass")
+            },
+            {
+                test: /\.scss$/,
+                exclude: root('angular2App', 'app'),
+                loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+            },
+            {
+                test: /\.scss$/,
+                exclude: root('angular2App', 'style'),
+                loader: 'raw!postcss!sass'
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw'
+            }
         ],
         postLoaders: [],
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -104,7 +126,8 @@ module.exports = function makeWebpackConfig() {
 
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
-        new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
+        //new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
+        new ExtractTextPlugin('css/hallelujah.css')
     ];
 
 

@@ -6,24 +6,17 @@ import { HomeComponent } from './home/home.component';
 
 @Component({
     selector: 'my-app',
-    template: require( './app.component.html'),
+    template: require('./app.component.html'),
     styles: [require('./app.component.scss')],
     directives: [ROUTER_DIRECTIVES]
 })
 
 @Routes([
-    { path: '/home', component: HomeComponent }
+    { path: '/', component: HomeComponent  }
 ])
 
 export class AppComponent {
 
-    constructor(
-        private router: Router
-    ) {
-    }
-
-    ngOnInit() {
-
-        this.router.navigate(['/home']);
+    constructor(private router: Router) {
     }
 }
