@@ -15,7 +15,7 @@ module.exports = function makeWebpackConfig() {
     var config = {};
     var outputfilename = 'dist/[name].js';
     if (isProd) {
-        config.devtool = 'source-map';
+        //config.devtool = 'source-map';
         outputfilename = 'dist/[name].[hash].js'
     } else {
         config.devtool = 'eval-source-map';
