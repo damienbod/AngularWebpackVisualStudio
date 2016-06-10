@@ -14,7 +14,7 @@ The ASP.NET Core application contains both the server side API services and also
 <strong>npm configuration</strong>
 
 npm is configuration to load all the required packages for Angular 2 and also for Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also added so that the client application can be built using webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as well Webpack task runner.
-[code language="javascript"]
+```javascript
 {
   "version": "1.0.0",
   "description": "",
@@ -70,25 +70,25 @@ npm is configuration to load all the required packages for Angular 2 and also fo
     }
 }
 
-[/code]
+```
 
 <strong>typings configuration</strong>
 
 The typings are configured for webpack builds.
-[code language="javascript"]
+```javascript
 
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160317120654", 
     "node": "registry:dt/node#4.0.0+20160501135006"
   }
 }
-[/code]
+```
 
 <strong>tsconfig configuration</strong>
 
 The tsconfig is configured to use commonjs as the module.
 
-[code language="javascript"]
+```javascript
 {
     "compilerOptions": {
         "target": "es5",
@@ -106,7 +106,7 @@ The tsconfig is configured to use commonjs as the module.
     "compileOnSave": false,
     "buildOnSave": false
 }
-[/code]
+```
 
 <strong>Webpack development build</strong>
 
@@ -115,7 +115,7 @@ The webpack development build <em>&gt;webpack -d</em> just uses the source files
 The webpack config file was built using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and this project uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
 Full webpack.config file
-[code language="javascript"]
+```javascript
 /// <binding ProjectOpened='Run - Development' />
 var path = require('path');
 var webpack = require('webpack');
@@ -289,7 +289,7 @@ function packageSort(packages) {
     }
 }
 
-[/code]
+```
 
 <strong>Angular 2 index.html</strong>
 
@@ -317,7 +317,7 @@ Source index.html in the angular2App/public folder
 </body>
 </html>
 
-[/code]
+```
 
 Build file in the wwwroot folder. The scripts for the app, vender and boot have been added using webpack. Hashes are used in a production build for cache busting.
 [code language="html"]
@@ -341,14 +341,14 @@ Build file in the wwwroot folder. The scripts for the app, vender and boot have 
 <script type="text/javascript" src="http://localhost:5000/dist/polyfills.js"></script><script type="text/javascript" src="http://localhost:5000/dist/vendor.js"></script><script type="text/javascript" src="http://localhost:5000/dist/app.js"></script></body>
 </html>
 
-[/code]
+```
 
 
 <strong>Angular 2 component files</strong>
 
 The angualr 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
 
-[code language="javascript"]
+```javascript
 import {Component, OnInit} from '@angular/core';
 import {Routes, Router, ROUTER_DIRECTIVES} from '@angular/router';
 
@@ -378,7 +378,7 @@ export class AppComponent {
         this.router.navigate(['/home']);
     }
 }
-[/code]
+```
 
 
 <strong>Visual Studio tools</strong>
@@ -390,13 +390,13 @@ export class AppComponent {
 
 SASS is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.
 
-[code language="javascript"]
+```javascript
 {
   test: /\.scss$/,
   exclude: root('angular2App', 'app'),
   loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
 },
-[/code]
+```
 
 <strong>Notes:</strong>
 
