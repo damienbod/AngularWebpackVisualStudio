@@ -89,7 +89,7 @@ module.exports = function makeWebpackConfig() {
             {
                 test: /\.css$/,
                 include: root('angular2App', 'public', 'css'),
-                loader: ExtractTextPlugin.extract("style","css!sass")
+                loader: ExtractTextPlugin.extract("style", "css!sass")
             },
             {
                 test: /\.scss$/,
@@ -134,19 +134,19 @@ module.exports = function makeWebpackConfig() {
     // Add build specific plugins
     if (isProd) {
         config.plugins.push(
-          new webpack.NoErrorsPlugin(),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.UglifyJsPlugin(),
-          new CopyWebpackPlugin([{
-              from: root('angular2App/public')
-          }])
+            new webpack.NoErrorsPlugin(),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin(),
+            new CopyWebpackPlugin([{
+                from: root('angular2App/public')
+            }])
         );
     }
 
     config.postcss = [
-      Autoprefixer({
-          browsers: ['last 2 version']
-      })
+        Autoprefixer({
+            browsers: ['last 2 version']
+        })
     ];
 
     config.sassLoader = {
@@ -154,7 +154,7 @@ module.exports = function makeWebpackConfig() {
     };
 
     return config;
-}();
+} ();
 
 // Helper functions
 function root(args) {

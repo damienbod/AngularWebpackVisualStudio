@@ -344,43 +344,6 @@ Build file in the wwwroot folder. The scripts for the app, vender and boot have 
 ```
 
 
-<strong>Angular 2 component files</strong>
-
-The angualr 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
-
-```javascript
-import {Component, OnInit} from '@angular/core';
-import {Routes, Router, ROUTER_DIRECTIVES} from '@angular/router';
-
-// Components.
-import { HomeComponent } from './home/home.component';
-
-@Component({
-    selector: 'my-app',
-    template: require( './app.component.html'),
-    styles: [require('./app.component.scss')],
-    directives: [ROUTER_DIRECTIVES]
-})
-
-@Routes([
-    { path: '/home', component: HomeComponent }
-])
-
-export class AppComponent {
-
-    constructor(
-        private router: Router
-    ) {
-    }
-
-    ngOnInit() {
-
-        this.router.navigate(['/home']);
-    }
-}
-```
-
-
 <strong>Visual Studio tools</strong>
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
@@ -399,6 +362,143 @@ SASS is used to style the SPA application. The SASS files can be built using the
   loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
 },
 ```
+
+
+
+<strong>Angular 2 component files</strong>
+
+The angualr 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
+
+```javascript
+import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { CORE_DIRECTIVES } from '@angular/common';
+import { Http } from '@angular/http';
+import { DataService } from '../services/DataService';
+
+
+@Component({
+    selector: 'homecomponent',
+    template: require('./home.component.html'),
+    directives: [CORE_DIRECTIVES],
+    providers: [DataService]
+})
+
+export class HomeComponent implements OnInit {
+
+    public message: string;
+    public values: any[];
+
+    constructor(private _dataService: DataService) {
+        this.message = "Hello from HomeComponent constructor";
+    }
+
+    ngOnInit() {
+        this._dataService
+            .GetAll()
+            .subscribe(data => this.values = data,
+            error => console.log(error),
+            () => console.log('Get all complete'));
+    }
+}
+```
+<strong>The ASP.NET Core API</strong>
+
+We left the ASP.NET Core API quite small and tiny. It's just providing a bunch of values:
+
+```
+ [Route("api/[controller]")]
+    public class ValuesController : Microsoft.AspNetCore.Mvc.Controller
+    {
+        // GET: api/values
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return new JsonResult(new string[] { "value1", "value2" });
+        }
+
+        // GET api/values/5
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return new JsonResult("value");
+        }
+
+        // POST api/values
+        [HttpPost]
+        public IActionResult Post([FromBody]string value)
+        {
+            return new CreatedAtRouteResult("anyroute", null);
+        }
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody]string value)
+        {
+            return new OkResult();
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            return new NoContentResult();
+        }
+    }
+```
+
+<strong>The Angular2 Http-Service</strong>
+
+Note that in a normal environment you should always return the typed classes and never the plain http response like we did here. But we only have strings to return so this should do it for the demo.
+
+```
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs/Observable';
+import { Configuration } from '../app.constants';
+
+@Injectable()
+export class DataService {
+
+    private actionUrl: string;
+    private headers: Headers;
+
+    constructor(private _http: Http, private _configuration: Configuration) {
+
+        this.actionUrl = _configuration.Server + 'api/values/';
+
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
+    }
+
+    public GetAll = (): Observable<any> => {
+        return this._http.get(this.actionUrl).map((response: Response) => <any>response.json());
+    }
+
+    public GetSingle = (id: number): Observable<Response> => {
+        return this._http.get(this.actionUrl + id).map(res => res.json());
+    }
+
+    public Add = (itemName: string): Observable<Response> => {
+        var toAdd = JSON.stringify({ ItemName: itemName });
+
+        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
+    }
+
+    public Update = (id: number, itemToUpdate: any): Observable<Response> => {
+        return this._http
+            .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
+            .map(res => res.json());
+    }
+
+    public Delete = (id: number): Observable<Response> => {
+        return this._http.delete(this.actionUrl + id);
+    }
+}
+```
+
 
 <strong>Notes:</strong>
 
