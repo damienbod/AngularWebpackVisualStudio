@@ -8,8 +8,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var ENV = process.env.npm_lifecycle_event;
-var isProd = ENV === 'production';
+var isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = function makeWebpackConfig() {
 
@@ -92,9 +91,8 @@ module.exports = function makeWebpackConfig() {
 
     config.plugins = [
       new webpack.DefinePlugin({
-          // Environment helpers
           'process.env': {
-              ENV: JSON.stringify(ENV)
+              NODE_ENV: JSON.stringify("production")
           }
       })
     ];

@@ -106,7 +106,7 @@
 	__webpack_require__(/*! reflect-metadata */ 329);
 	__webpack_require__(/*! zone.js/dist/zone */ 353);
 	__webpack_require__(/*! ts-helpers */ 354);
-	if ((undefined) === 'build') {
+	if (({"NODE_ENV":"production"}).ENV === 'build') {
 	}
 	else {
 	    Error['stackTraceLimit'] = Infinity;
@@ -3404,7 +3404,7 @@
 	var debugEnviron;
 	exports.debuglog = function(set) {
 	  if (isUndefined(debugEnviron))
-	    debugEnviron = ({"ENV":undefined}).NODE_DEBUG || '';
+	    debugEnviron = ({"NODE_ENV":"production"}).NODE_DEBUG || '';
 	  set = set.toUpperCase();
 	  if (!debugs[set]) {
 	    if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {
