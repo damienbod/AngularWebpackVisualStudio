@@ -386,6 +386,8 @@ export class AppComponent {
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
+<br/>
+<br/>
 <strong>Webpack SASS</strong>
 
 SASS is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.

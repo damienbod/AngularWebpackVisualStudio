@@ -17,7 +17,7 @@ module.exports = function makeWebpackConfig() {
     var outputfilename = 'dist/[name].js';
     if (isProd) {
         //config.devtool = 'source-map';
-        outputfilename = 'dist/[name].[hash].js'
+        outputfilename = 'dist/[name].[hash].js';
     } else {
         config.devtool = 'eval-source-map';
     }
@@ -34,7 +34,7 @@ module.exports = function makeWebpackConfig() {
 
     config.output = {
         path: root('./wwwroot'),
-        publicPath: isProd ? '/' : 'http://localhost:5000/',
+        publicPath: isProd ? '' : 'http://localhost:5000/',
         filename: outputfilename,
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
@@ -106,6 +106,7 @@ module.exports = function makeWebpackConfig() {
         new HtmlWebpackPlugin({
             template: './angular2App/public/index.html',
             inject: 'body',
+            
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
         new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
