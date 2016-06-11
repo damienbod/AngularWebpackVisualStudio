@@ -133,10 +133,10 @@ module.exports = function makeWebpackConfig() {
             // copy all images to [rootFolder]/images
             { from: root('angular2App/images'), to: 'images' },
 
-            // copy all images to [rootFolder]/css
+            // copy all css to [rootFolder]/css
             { from: root('angular2App/css'), to: 'css' },
 
-            // copy all images to [rootFolder]/fonts
+            // copy all fonts to [rootFolder]/fonts
             { from: root('angular2App/fonts'), to: 'fonts' }
         ])
     ];
