@@ -127,33 +127,41 @@ module.exports = function makeWebpackConfig() {
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
         //new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-        new ExtractTextPlugin('css/hallelujah.css')
+        new ExtractTextPlugin('css/hallelujah.css'),
+        new CopyWebpackPlugin([
+
+            // copy all images to [rootFolder]/images
+            { from: root('angular2App/images'), to: 'images' },
+
+            // copy all images to [rootFolder]/css
+            { from: root('angular2App/css'), to: 'css' },
+
+            // copy all images to [rootFolder]/fonts
+            { from: root('angular2App/fonts'), to: 'fonts' }
+        ])
     ];
 
 
-    // Add build specific plugins
-    if (isProd) {
-        config.plugins.push(
-            new webpack.NoErrorsPlugin(),
-            new webpack.optimize.DedupePlugin(),
-            new webpack.optimize.UglifyJsPlugin(),
-            new CopyWebpackPlugin([{
-                from: root('angular2App/public')
-            }])
-        );
-    }
+// Add build specific plugins
+if (isProd) {
+    config.plugins.push(
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin()
+    );
+}
 
-    config.postcss = [
-        Autoprefixer({
-            browsers: ['last 2 version']
-        })
-    ];
+config.postcss = [
+    Autoprefixer({
+        browsers: ['last 2 version']
+    })
+];
 
-    config.sassLoader = {
-        //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-    };
+config.sassLoader = {
+    //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
+};
 
-    return config;
+return config;
 } ();
 
 // Helper functions
