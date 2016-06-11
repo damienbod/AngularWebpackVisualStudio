@@ -132,7 +132,7 @@ module.exports = function makeWebpackConfig() {
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
         //new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-        new ExtractTextPlugin('css/hallelujah.css'),
+
         new CopyWebpackPlugin([
 
             // copy all images to [rootFolder]/images
