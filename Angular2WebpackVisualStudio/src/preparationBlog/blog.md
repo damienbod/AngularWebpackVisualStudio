@@ -9,11 +9,12 @@ This post is hosted on both http://damienbod.com and http://offering.solutions/
 
 <strong>Setting up the application</strong>
 
-The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio.
+The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio.
 
 <strong>npm configuration</strong>
 
-npm is configuration to load all the required packages for Angular 2 and also for Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also added so that the client application can be built using webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as well Webpack task runner.
+npm is configuration to load all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as the Webpack task runner.
+
 ```javascript
 {
   "version": "1.0.0",
@@ -75,6 +76,7 @@ npm is configuration to load all the required packages for Angular 2 and also fo
 <strong>typings configuration</strong>
 
 The typings are configured for webpack builds.
+
 ```javascript
 
   "globalDependencies": {
@@ -110,11 +112,12 @@ The tsconfig is configured to use commonjs as the module.
 
 <strong>Webpack development build</strong>
 
-The webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development.  The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The webpack -d --watch can be used to automatically build the dist files if a source file is changed.
+The webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
 
-The webpack config file was built using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and this project uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
+The webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and this project uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
 Full webpack.config file
+
 ```javascript
 /// <binding ProjectOpened='Run - Development' />
 var path = require('path');
@@ -295,7 +298,7 @@ function packageSort(packages) {
 
 The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
-Source index.html in the angular2App/public folder
+Source index.html file in the angular2App/public folder:
 ```javascript
 <!doctype html>
 <html>
@@ -319,7 +322,8 @@ Source index.html in the angular2App/public folder
 
 ```
 
-Build file in the wwwroot folder. The scripts for the app, vender and boot have been added using webpack. Hashes are used in a production build for cache busting.
+The produced build file in the wwwroot folder. The scripts for the app, vender and boot have been added using webpack. Hashes are used in a production build for cache busting.
+
 ```javascript
 <!doctype html>
 <html>
@@ -350,19 +354,16 @@ Build file in the wwwroot folder. The scripts for the app, vender and boot have 
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
 
-This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding.
-This adds a binding tag to the webpack.config file.
+The webpack task runner can also be used by double clicking the task. The execution results are then displayed in the task runner console.
+
+<img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
+
+This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config file.
 
 ```
 /// <binding ProjectOpened='Run - Development' />
 ```
 
-The webpack task runner can also be used, by double clicking the task. The execution results are then displayed in the task runner console.
-
-
-<img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
-<br/>
-<br/>
 <strong>Webpack SASS</strong>
 
 <a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.
@@ -374,7 +375,6 @@ The webpack task runner can also be used, by double clicking the task. The execu
   loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
 },
 ```
-
 
 
 <strong>Angular 2 component files</strong>
@@ -414,9 +414,11 @@ export class HomeComponent implements OnInit {
     }
 }
 ```
+
 <strong>The ASP.NET Core API</strong>
 
-We left the ASP.NET Core API quite small and tiny. It's just providing a bunch of values:
+The ASP.NET Core API is quite small and tiny. It just provides a bunch of values:
+
 
 ```
  [Route("api/[controller]")]
@@ -461,7 +463,8 @@ We left the ASP.NET Core API quite small and tiny. It's just providing a bunch o
 
 <strong>The Angular2 Http-Service</strong>
 
-Note that in a normal environment you should always return the typed classes and never the plain http response like we did here. But we only have strings to return so this should do it for the demo.
+Note that in a normal environment you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
+
 
 ```
 import { Injectable } from '@angular/core';
@@ -515,6 +518,7 @@ export class DataService {
 <strong>Notes:</strong>
 
 Debugging the Angular 2 in Visual Studio is not possible with this setup. The SPA app can be debugged in chrome. 
+
 
 <strong>Links:</strong>
 
