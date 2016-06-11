@@ -49,8 +49,7 @@ module.exports = function makeWebpackConfig() {
         root: root(),
         extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
         alias: {
-            'app': 'angular2App/app',
-            'common': 'angular2App/common'
+            'app': 'angular2App/app'
         }
     };
 
@@ -82,31 +81,28 @@ module.exports = function makeWebpackConfig() {
                 test: /\.json$/,
                 loader: 'json'
             },
+
+            // Load css files which are merged with the js
             {
                 test: /\.css$/,
-                exclude: root('angular2App', 'app'),
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+                //exclude: root('angular2App', 'app'),
+                loader: "style!css"
             },
-            {
-                test: /\.css$/,
-                include: root('angular2App', 'app'),
-                loader: 'raw!postcss'
-            },
-            {
-                test: /\.css$/,
-                include: root('angular2App', 'css'),
-                loader: ExtractTextPlugin.extract("style", "css!sass")
-            },
+
+            // Extract all files without the files for specific app components
             {
                 test: /\.scss$/,
                 exclude: root('angular2App', 'app'),
                 loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
             },
+
+            // Extract all files for specific app components
             {
                 test: /\.scss$/,
                 exclude: root('angular2App', 'style'),
                 loader: 'raw!postcss!sass'
             },
+
             {
                 test: /\.html$/,
                 loader: 'raw'
@@ -119,27 +115,27 @@ module.exports = function makeWebpackConfig() {
 
     config.plugins = [
         new CleanWebpackPlugin(['./wwwroot/dist']),
+
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify("production")
             }
         }),
+
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
+
         new HtmlWebpackPlugin({
             template: './angular2App/index.html',
             inject: 'body',
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
-        //new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
+
         new CopyWebpackPlugin([
 
             // copy all images to [rootFolder]/images
             { from: root('angular2App/images'), to: 'images' },
-
-            // copy all css to [rootFolder]/css
-            { from: root('angular2App/css'), to: 'css' },
 
             // copy all fonts to [rootFolder]/fonts
             { from: root('angular2App/fonts'), to: 'fonts' }
