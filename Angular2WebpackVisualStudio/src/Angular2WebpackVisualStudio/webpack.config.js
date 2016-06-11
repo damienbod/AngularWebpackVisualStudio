@@ -13,16 +13,21 @@ var isProd = (process.env.NODE_ENV === 'production');
 module.exports = function makeWebpackConfig() {
 
     var config = {};
+
+    // add debug messages
+    config.debug = !isProd;
+
+    // clarify output filenames
     var outputfilename = 'dist/[name].js';
     if (isProd) {
         //config.devtool = 'source-map';
         outputfilename = 'dist/[name].[hash].js';
-    } else {
+    } 
+
+    if (!isProd) {
         config.devtool = 'eval-source-map';
     }
 
-    // add debug messages
-    config.debug = !isProd;
 
     config.entry = {
         'polyfills': './angular2App/polyfills.ts',
