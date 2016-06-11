@@ -4,7 +4,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <strong>Code:</strong> https://github.com/damienbod/Angular2WebpackVisualStudio
 
-<strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>
+<strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/
 
 <strong>Setting up the application</strong>
@@ -346,7 +346,19 @@ Build file in the wwwroot folder. The scripts for the app, vender and boot have 
 
 <strong>Visual Studio tools</strong>
 
+<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner </a> from Mads Kristensen can be downloaded and used for this webpack config. You need to use the npm NODE_ENV for development, production switches in the webpack config file, if you want to use this tool. 
+
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
+
+This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding.
+This adds a binding tag to the webpack.config file.
+
+```
+/// <binding ProjectOpened='Run - Development' />
+```
+
+The webpack task runner can also be used, by double clicking the task. The execution results are then displayed in the task runner console.
+
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
 <br/>
@@ -511,3 +523,5 @@ https://github.com/preboot/angular2-webpack
 https://webpack.github.io/docs/
 
 https://github.com/jtangelder/sass-loader
+
+https://github.com/petehunt/webpack-howto/blob/master/README.md
