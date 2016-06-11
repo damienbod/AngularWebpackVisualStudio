@@ -88,7 +88,7 @@ module.exports = function makeWebpackConfig() {
             },
             {
                 test: /\.css$/,
-                include: root('angular2App', 'public', 'css'),
+                include: root('angular2App', 'css'),
                 loader: ExtractTextPlugin.extract("style", "css!sass")
             },
             {
