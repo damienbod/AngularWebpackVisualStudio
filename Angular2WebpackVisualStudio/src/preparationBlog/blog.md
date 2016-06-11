@@ -365,7 +365,7 @@ The webpack task runner can also be used, by double clicking the task. The execu
 <br/>
 <strong>Webpack SASS</strong>
 
-SASS is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.
+<a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.
 
 ```javascript
 {
@@ -379,7 +379,7 @@ SASS is used to style the SPA application. The SASS files can be built using the
 
 <strong>Angular 2 component files</strong>
 
-The angualr 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
+The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
 
 ```javascript
 import { Observable } from 'rxjs/Observable';
@@ -525,3 +525,11 @@ https://webpack.github.io/docs/
 https://github.com/jtangelder/sass-loader
 
 https://github.com/petehunt/webpack-howto/blob/master/README.md
+
+http://www.sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/
+
+http://sass-lang.com/
+
+<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner </a> from Mads Kristensen
+
+http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html
