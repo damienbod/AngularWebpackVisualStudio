@@ -82,10 +82,10 @@ module.exports = function makeWebpackConfig() {
                 loader: 'json'
             },
 
-            // Load css files which are merged with the js
+            // Load css files which are required in vendor.ts
             {
                 test: /\.css$/,
-                //exclude: root('angular2App', 'app'),
+                exclude: root('angular2App', 'app'),
                 loader: "style!css"
             },
 
@@ -93,7 +93,7 @@ module.exports = function makeWebpackConfig() {
             {
                 test: /\.scss$/,
                 exclude: root('angular2App', 'app'),
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+                loader: 'raw!postcss!sass'
             },
 
             // Extract all files for specific app components
@@ -115,7 +115,7 @@ module.exports = function makeWebpackConfig() {
 
     config.plugins = [
         new CleanWebpackPlugin(['./wwwroot/dist']),
-
+       
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify("production")
