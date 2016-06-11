@@ -45,29 +45,30 @@ npm is configuration to load all the required packages for Angular 2 and Webpack
     "rxjs": "5.0.0-beta.6",
     "zone.js": "^0.6.12"
   },
-    "devDependencies": {
-        "autoprefixer": "^6.3.2",
-        "jquery": "^2.2.0",
-        "ts-loader": "0.8.2",
-        "typescript": "1.8.10",
-        "typings": "1.0.4",
-        "webpack": "1.13.0",
-        "copy-webpack-plugin": "^2.1.3",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "url-loader": "^0.5.6",
-        "json-loader": "^0.5.3",
-        "node-sass": "^3.4.2",
-        "null-loader": "0.1.1",
-        "css-loader": "^0.23.0",
-        "postcss-loader": "^0.9.1",
-        "rimraf": "^2.5.1",
-        "file-loader": "^0.8.4",
-        "html-loader": "^0.4.0",
-        "html-webpack-plugin": "^2.8.1",
-        "raw-loader": "0.5.1",
-        "sass-loader": "^3.1.2",
-        "style-loader": "^0.13.0",
-        "ts-helpers": "^1.1.1"
+  "devDependencies": {
+    "autoprefixer": "^6.3.2",
+    "clean-webpack-plugin": "^0.1.9",
+    "copy-webpack-plugin": "^2.1.3",
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.4",
+    "html-loader": "^0.4.0",
+    "html-webpack-plugin": "^2.8.1",
+    "jquery": "^2.2.0",
+    "json-loader": "^0.5.3",
+    "node-sass": "^3.4.2",
+    "null-loader": "0.1.1",
+    "postcss-loader": "^0.9.1",
+    "raw-loader": "0.5.1",
+    "rimraf": "^2.5.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "ts-helpers": "^1.1.1",
+    "ts-loader": "0.8.2",
+    "typescript": "1.8.10",
+    "typings": "1.0.4",
+    "url-loader": "^0.5.6",
+    "webpack": "1.13.0"
     }
 }
 
@@ -123,28 +124,33 @@ Full webpack.config file
 var path = require('path');
 var webpack = require('webpack');
 
-// Webpack Plugins
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var autoprefixer = require('autoprefixer');
+var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = function makeWebpackConfig() {
 
     var config = {};
-    var outputfilename = 'dist/[name].js';
-    if (isProd) {
-        //config.devtool = 'source-map';
-        outputfilename = 'dist/[name].[hash].js'
-    } else {
-        config.devtool = 'eval-source-map';
-    }
 
     // add debug messages
     config.debug = !isProd;
+
+    // clarify output filenames
+    var outputfilename = 'dist/[name].js';
+    if (isProd) {
+        //config.devtool = 'source-map';
+        outputfilename = 'dist/[name].[hash].js';
+    }
+
+    if (!isProd) {
+        config.devtool = 'eval-source-map';
+    }
+
 
     config.entry = {
         'polyfills': './angular2App/polyfills.ts',
@@ -155,7 +161,7 @@ module.exports = function makeWebpackConfig() {
 
     config.output = {
         path: root('./wwwroot'),
-        publicPath: isProd ? '/' : 'http://localhost:5000/',
+        publicPath: isProd ? '' : 'http://localhost:5000/',
         filename: outputfilename,
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
@@ -165,46 +171,64 @@ module.exports = function makeWebpackConfig() {
         root: root(),
         extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
         alias: {
-            'app': 'angular2App/app',
-            'common': 'angular2App/common'
+            'app': 'angular2App/app'
         }
     };
 
     config.module = {
         loaders: [
-          {
-              test: /\.ts$/,
-              loader: 'ts',
-              query: {
-                  'ignoreDiagnostics': [
-                    2403, // 2403 -> Subsequent variable declarations
-                    2300, // 2300 -> Duplicate identifier
-                    2374, // 2374 -> Duplicate number index signature
-                    2375, // 2375 -> Duplicate string index signature
-                    2502  // 2502 -> Referenced directly or indirectly
-                  ]
-              },
-              exclude: [ /node_modules\/(?!(ng2-.+))/]
-          },
+            {
+                test: /\.ts$/,
+                loader: 'ts',
+                query: {
+                    'ignoreDiagnostics': [
+                        2403, // 2403 -> Subsequent variable declarations
+                        2300, // 2300 -> Duplicate identifier
+                        2374, // 2374 -> Duplicate number index signature
+                        2375, // 2375 -> Duplicate string index signature
+                        2502 // 2502 -> Referenced directly or indirectly
+                    ]
+                },
+                exclude: [/node_modules\/(?!(ng2-.+))/]
+            },
 
-          // copy those assets to output
-          { test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?' },
+            // copy those assets to output
+            {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                loader: 'file?name=fonts/[name].[hash].[ext]?'
+            },
 
-          // Support for *.json files.
-          { test: /\.json$/, loader: 'json' },
-          {
-              test: /\.css$/,
-              exclude: root('angular2App', 'app'),
-              loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
-          },
-          { test: /\.css$/, include: root('angular2App', 'app'), loader: 'raw!postcss' },
-          {
-              test: /\.scss$/,
-              exclude: root('angular2App', 'app'),
-              loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
-          },
-          { test: /\.scss$/, exclude: root('angular2App', 'style'), loader: 'raw!postcss!sass' },
-          { test: /\.html$/, loader: 'raw' }
+            // Support for *.json files.
+            {
+                test: /\.json$/,
+                loader: 'json'
+            },
+
+            // Load css files which are required in vendor.ts
+            {
+                test: /\.css$/,
+                exclude: root('angular2App', 'app'),
+                loader: "style!css"
+            },
+
+            // Extract all files without the files for specific app components
+            {
+                test: /\.scss$/,
+                exclude: root('angular2App', 'app'),
+                loader: 'raw!postcss!sass'
+            },
+
+            // Extract all files for specific app components
+            {
+                test: /\.scss$/,
+                exclude: root('angular2App', 'style'),
+                loader: 'raw!postcss!sass'
+            },
+
+            {
+                test: /\.html$/,
+                loader: 'raw'
+            }
         ],
         postLoaders: [],
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -212,43 +236,48 @@ module.exports = function makeWebpackConfig() {
 
 
     config.plugins = [
-      new webpack.DefinePlugin({
-          'process.env': {
-              NODE_ENV: JSON.stringify("production")
-          }
-      })
-    ];
+        new CleanWebpackPlugin(['./wwwroot/dist']),
+       
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
 
-  
-    config.plugins.push(
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
+
         new HtmlWebpackPlugin({
-            template: './angular2App/public/index.html',
+            template: './angular2App/index.html',
             inject: 'body',
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
-        new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-    );
-    
+
+        new CopyWebpackPlugin([
+
+            // copy all images to [rootFolder]/images
+            { from: root('angular2App/images'), to: 'images' },
+
+            // copy all fonts to [rootFolder]/fonts
+            { from: root('angular2App/fonts'), to: 'fonts' }
+        ])
+    ];
+
 
     // Add build specific plugins
     if (isProd) {
         config.plugins.push(
-          new webpack.NoErrorsPlugin(),
-          new webpack.optimize.DedupePlugin(),
-          new webpack.optimize.UglifyJsPlugin(),
-          new CopyWebpackPlugin([{
-              from: root('angular2App/public')
-          }])
+            new webpack.NoErrorsPlugin(),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin()
         );
     }
 
     config.postcss = [
-      autoprefixer({
-          browsers: ['last 2 version']
-      })
+        Autoprefixer({
+            browsers: ['last 2 version']
+        })
     ];
 
     config.sassLoader = {
@@ -291,6 +320,7 @@ function packageSort(packages) {
         }
     }
 }
+
 
 ```
 
@@ -376,6 +406,23 @@ This runner provides a number of useful commands which can be activated automati
 },
 ```
 
+<strong>Webpack Clean</strong>
+
+<a href="https://github.com/johnagan/clean-webpack-plugin/">clean-webpack-plugin</a> is used to clean up the deployment folder inside the wwwroot. This ensures that the application uses the latest files.
+
+
+The clean task can be configured as follows:
+
+```javascript
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+
+```
+
+And used in webpack.
+
+```javascript
+  new CleanWebpackPlugin(['./wwwroot/dist']),
+```
 
 <strong>Angular 2 component files</strong>
 
