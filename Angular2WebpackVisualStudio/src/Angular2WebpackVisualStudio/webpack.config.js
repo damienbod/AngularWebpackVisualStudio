@@ -7,6 +7,7 @@ var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var isProd = (process.env.NODE_ENV === 'production');
 
@@ -22,7 +23,7 @@ module.exports = function makeWebpackConfig() {
     if (isProd) {
         //config.devtool = 'source-map';
         outputfilename = 'dist/[name].[hash].js';
-    } 
+    }
 
     if (!isProd) {
         config.devtool = 'eval-source-map';
@@ -117,6 +118,7 @@ module.exports = function makeWebpackConfig() {
 
 
     config.plugins = [
+        new CleanWebpackPlugin(['./wwwroot/dist']),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify("production")
@@ -128,11 +130,9 @@ module.exports = function makeWebpackConfig() {
         new HtmlWebpackPlugin({
             template: './angular2App/index.html',
             inject: 'body',
-
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
         }),
         //new ExtractTextPlugin('css/[name].[hash].css', { disable: !isProd })
-
         new CopyWebpackPlugin([
 
             // copy all images to [rootFolder]/images
@@ -147,27 +147,27 @@ module.exports = function makeWebpackConfig() {
     ];
 
 
-// Add build specific plugins
-if (isProd) {
-    config.plugins.push(
-        new webpack.NoErrorsPlugin(),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin()
-    );
-}
+    // Add build specific plugins
+    if (isProd) {
+        config.plugins.push(
+            new webpack.NoErrorsPlugin(),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin()
+        );
+    }
 
-config.postcss = [
-    Autoprefixer({
-        browsers: ['last 2 version']
-    })
-];
+    config.postcss = [
+        Autoprefixer({
+            browsers: ['last 2 version']
+        })
+    ];
 
-config.sassLoader = {
-    //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-};
+    config.sassLoader = {
+        //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
+    };
 
-return config;
-} ();
+    return config;
+}();
 
 // Helper functions
 function root(args) {
