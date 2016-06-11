@@ -111,7 +111,7 @@ The tsconfig is configured to use commonjs as the module.
 }
 ```
 
-<strong>Webpack development build</strong>
+<strong>Webpack build</strong>
 
 The webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
 
