@@ -33,7 +33,7 @@ module.exports = function makeWebpackConfig() {
 
     config.output = {
         path: root('./wwwroot'),
-        publicPath: isProd ? '/' : 'http://localhost:5000/',
+        publicPath: isProd ? '' : 'http://localhost:5000/',
         filename: outputfilename,
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
@@ -121,7 +121,7 @@ module.exports = function makeWebpackConfig() {
             name: ['vendor', 'polyfills']
         }),
         new HtmlWebpackPlugin({
-            template: './angular2App/public/index.html',
+            template: './angular2App/index.html',
             inject: 'body',
 
             chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
