@@ -384,11 +384,11 @@ import './css/bootstrap.css';
 import './css/bootstrap-theme.css';
 ```
 
-Here Webpack knows which paths to run and include which files and packages.
+Webpack knows which paths to run and includes the corresponding files and packages.
 
-The "loaders" section and the "modules" section in the config tell the webpack first: which files to get and how to read them and the modules tell webpack what to do with them exactly. Like minifying or whatever.
+The "loaders" section and the "modules" section in the configuration provides Webpack with the followinginformation: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.
 
-In our case: If production is set we push another plugins into the section because files should be treated different.
+In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.
 
 <strong>Angular 2 index.html</strong>
 
@@ -418,7 +418,7 @@ Source index.html file in the angular2App/public folder:
 
 ```
 
-The produced build file in the wwwroot folder. The scripts for the app, vender and boot have been added using webpack. Hashes are used in a production build for cache busting.
+The produced build file in the wwwroot folder. The scripts for the app, vendor and boot have been added using webpack. Hashes are used in a production build for cache busting.
 
 ```javascript
 <!doctype html>
