@@ -564,7 +564,12 @@ export class DataService {
 
 <strong>Notes:</strong>
 
-Debugging the Angular 2 in Visual Studio is not possible with this setup. The SPA app can be debugged in chrome. 
+The webpack configuration could also build all of the scss and css files to a separate app.css or app."hash".css which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the head using the index.html file and not included in the webpack build.
+
+If you’re building both the client application and the server application in separate projects, you could also consider angular-cli of angular2-webpack for the client application.
+
+Debugging the Angular 2 in Visual Studio with breakpoints is not possible with this setup. The SPA app can be debugged in chrome. 
+
 
 
 <strong>Links:</strong>
