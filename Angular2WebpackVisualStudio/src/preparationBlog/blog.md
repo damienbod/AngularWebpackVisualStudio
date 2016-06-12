@@ -327,6 +327,7 @@ Lets dive into this a bit:
 
 Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
 
+
 ```javascript
 var path = require('path');
 var webpack = require('webpack');
@@ -341,7 +342,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var isProd = (process.env.NODE_ENV === 'production');
 ```
 
-After some clarification if we have a debug environment or not (passed via parameter on the cmd call) we configure our entries:
+The npm environment variable NODE_ENV is used to define the type of build, either a developmnet build or a production build. The entries are configured depending on this parameter.
 
 ```javascript
     config.entry = {
@@ -351,7 +352,8 @@ After some clarification if we have a debug environment or not (passed via param
     };
 ```
 
-The entries tell webpack where to start or where to hook in. We defined three entrypoints. These strings point to files we must have in our solution. In these files is one the one hand the app itself (boot.ts as a starting-point) but also all vendor scripts we need summarized in one file: the vendor.ts. 
+The entries provide Webpack with the required information, where to start from, or where to hook in to. Three entry points are defined in this configuration. These strings point to the files required in the solution. The starting point for the app itself is provided in one of these files, boot.ts as a starting-point and also all vendor scripts minified in one file, the vendor.ts. 
+
 
 ```typescript
 // Polyfill(s) for older browsers.
@@ -382,7 +384,7 @@ import './css/bootstrap.css';
 import './css/bootstrap-theme.css';
 ```
 
-Here webpack knows which paths to run and include which files and packages.
+Here Webpack knows which paths to run and include which files and packages.
 
 The "loaders" section and the "modules" section in the config tell the webpack first: which files to get and how to read them and the modules tell webpack what to do with them exactly. Like minifying or whatever.
 
