@@ -113,9 +113,9 @@ The tsconfig is configured to use commonjs as the module.
 
 <strong>Webpack build</strong>
 
-The webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
+The Webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
 
-The webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and this project uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
+The Webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
 Full webpack.config file
 
@@ -325,7 +325,7 @@ function packageSort(packages) {
 
 Lets dive into this a bit:
 
-First, we load all our Plugins we want to use processing all the js/ts/... files we have in our project.
+Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
 
 ```javascript
 var path = require('path');
