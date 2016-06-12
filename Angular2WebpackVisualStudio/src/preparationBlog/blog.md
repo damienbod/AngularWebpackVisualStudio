@@ -446,15 +446,15 @@ The produced build file in the wwwroot folder. The scripts for the app, vendor a
 
 <strong>Visual Studio tools</strong>
 
-<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner </a> from Mads Kristensen can be downloaded and used for this webpack config. You need to use the npm NODE_ENV for development, production switches in the webpack config file, if you want to use this tool. 
+<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">Webpack task runner </a> from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production". 
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
 
-The webpack task runner can also be used by double clicking the task. The execution results are then displayed in the task runner console.
+The Webpack task runner can also be used by double clicking the task. The execution results are then displayed in the task runner console.
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
 
-This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config file.
+This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config.js file.
 
 ```
 /// <binding ProjectOpened='Run - Development' />
@@ -484,7 +484,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 ```
 
-And used in webpack.
+And used in Webpack.
 
 ```javascript
   new CleanWebpackPlugin(['./wwwroot/dist']),
@@ -492,7 +492,7 @@ And used in webpack.
 
 <strong>Angular 2 component files</strong>
 
-The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which added the html or the css, scss to the file directly using webpack, or as an external link depending on the webpack config.
+The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which adds the html or the css, scss to the file directly using Webpack, or as an external link depending on the Webpack config.
 
 ```javascript
 import { Observable } from 'rxjs/Observable';
@@ -530,7 +530,7 @@ export class HomeComponent implements OnInit {
 
 <strong>The ASP.NET Core API</strong>
 
-The ASP.NET Core API is quite small and tiny. It just provides a bunch of values:
+The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD service.
 
 
 ```
@@ -576,7 +576,7 @@ The ASP.NET Core API is quite small and tiny. It just provides a bunch of values
 
 <strong>The Angular2 Http-Service</strong>
 
-Note that in a normal environment you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
+Note that in a normal environment, you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
 
 
 ```
@@ -630,7 +630,7 @@ export class DataService {
 
 <strong>Notes:</strong>
 
-The webpack configuration could also build all of the scss and css files to a separate app.css or app."hash".css which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the head using the index.html file and not included in the webpack build.
+The Webpack configuration could also build all of the scss and css files to a separate app.css or app."hash".css which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the html header using the index.html file and not included in the Webpack build.
 
 If you are building both the client application and the server application in separate projects, you could also consider angular-cli of angular2-webpack for the client application.
 
