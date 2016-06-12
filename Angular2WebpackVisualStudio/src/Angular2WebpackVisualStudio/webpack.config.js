@@ -137,8 +137,6 @@ module.exports = function makeWebpackConfig() {
             // copy all images to [rootFolder]/images
             { from: root('angular2App/images'), to: 'images' },
 
-            // copy all fonts to [rootFolder]/fonts
-            { from: root('angular2App/fonts'), to: 'fonts' }
         ])
     ];
 
@@ -157,10 +155,6 @@ module.exports = function makeWebpackConfig() {
             browsers: ['last 2 version']
         })
     ];
-
-    config.sassLoader = {
-        //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-    };
 
     return config;
 }();

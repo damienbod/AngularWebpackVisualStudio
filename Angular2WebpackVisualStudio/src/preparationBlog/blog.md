@@ -5,7 +5,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <strong>Code:</strong> https://github.com/damienbod/Angular2WebpackVisualStudio
 
 <strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
-This post is hosted on both http://damienbod.com and http://offering.solutions/
+This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
 <strong>Setting up the application</strong>
 
@@ -13,7 +13,7 @@ The ASP.NET Core application contains both the server side API services and also
 
 <strong>npm configuration</strong>
 
-npm is configuration to load all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as the Webpack task runner.
+npm presents the configuration to load all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as the Webpack task runner.
 
 ```javascript
 {
@@ -321,8 +321,72 @@ function packageSort(packages) {
     }
 }
 
-
 ```
+
+Lets dive into this a bit:
+
+First, we load all our Plugins we want to use processing all the js/ts/... files we have in our project.
+
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var Autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+
+var isProd = (process.env.NODE_ENV === 'production');
+```
+
+After some clarification if we have a debug environment or not (passed via parameter on the cmd call) we configure our entries:
+
+```javascript
+    config.entry = {
+        'polyfills': './angular2App/polyfills.ts',
+        'vendor': './angular2App/vendor.ts',
+        'app': './angular2App/boot.ts' // our angular app
+    };
+```
+
+The entries tell webpack where to start or where to hook in. We defined three entrypoints. These strings point to files we must have in our solution. In these files is one the one hand the app itself (boot.ts as a starting-point) but also all vendor scripts we need summarized in one file: the vendor.ts. 
+
+```typescript
+// Polyfill(s) for older browsers.
+import 'core-js/client/core';
+
+// Reflect Metadata.
+import 'reflect-metadata';
+// RxJS.
+import 'rxjs';
+// Zone.
+import 'zone.js/dist/zone';
+
+// Angular 2.
+import '@angular/common';
+import '@angular/compiler';
+import '@angular/core';
+import '@angular/http';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/router';
+
+// Other libraries.
+import 'jquery/src/jquery';
+import 'bootstrap/dist/js/bootstrap';
+
+
+import './css/bootstrap.css';
+import './css/bootstrap-theme.css';
+```
+
+Here webpack knows which paths to run and include which files and packages.
+
+The "loaders" section and the "modules" section in the config tell the webpack first: which files to get and how to read them and the modules tell webpack what to do with them exactly. Like minifying or whatever.
+
+In our case: If production is set we push another plugins into the section because files should be treated different.
 
 <strong>Angular 2 index.html</strong>
 
@@ -343,12 +407,12 @@ Source index.html file in the angular2App/public folder:
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
     <my-app>Loading...</my-app>
 </body>
 </html>
+
 
 ```
 
@@ -589,3 +653,5 @@ http://sass-lang.com/
 <a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner </a> from Mads Kristensen
 
 http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html
+
+https://angular.io/docs/ts/latest/guide/webpack.html
