@@ -342,7 +342,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var isProd = (process.env.NODE_ENV === 'production');
 ```
 
-The npm environment variable NODE_ENV is used to define the type of build, either a developmnet build or a production build. The entries are configured depending on this parameter.
+The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.
 
 ```javascript
     config.entry = {
@@ -386,7 +386,7 @@ import './css/bootstrap-theme.css';
 
 Webpack knows which paths to run and includes the corresponding files and packages.
 
-The "loaders" section and the "modules" section in the configuration provides Webpack with the followinginformation: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.
+The "loaders" section and the "modules" section in the configuration provides Webpack with the following information: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.
 
 In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.
 
@@ -418,7 +418,7 @@ Source index.html file in the angular2App/public folder:
 
 ```
 
-The produced build file in the wwwroot folder. The scripts for the app, vendor and boot have been added using webpack. Hashes are used in a production build for cache busting.
+And the produced build file in the wwwroot folder. The scripts for the app, vendor and boot have been added using Webpack. Hashes are used in a production build for cache busting.
 
 ```javascript
 <!doctype html>
@@ -462,7 +462,7 @@ This runner provides a number of useful commands which can be activated automati
 
 <strong>Webpack SASS</strong>
 
-<a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as a external file, depending on your Webpack config.
+<a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
 ```javascript
 {
