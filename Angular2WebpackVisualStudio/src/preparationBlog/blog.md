@@ -13,7 +13,7 @@ The ASP.NET Core application contains both the server side API services and also
 
 <strong>npm configuration</strong>
 
-npm presents the configuration to load all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A npm build script and also a npm buildProduction are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scipts just call the same cmd as the Webpack task runner.
+The npm package.json configuration loads all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A "npm build" script and also a "npm buildProduction" are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scripts just call the same cmd as the Webpack task runner.
 
 ```javascript
 {
