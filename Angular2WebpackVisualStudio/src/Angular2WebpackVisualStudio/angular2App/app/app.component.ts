@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 })
 
 @Routes([
-    { path: '/', component: HomeComponent  }
+    { path: 'home', component: HomeComponent  }
 ])
 
 export class AppComponent {
