@@ -7,6 +7,8 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
+<strong>2016.06.17:</strong> Updated to Angular 2 rc2
+
 <strong>Setting up the application</strong>
 
 The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
