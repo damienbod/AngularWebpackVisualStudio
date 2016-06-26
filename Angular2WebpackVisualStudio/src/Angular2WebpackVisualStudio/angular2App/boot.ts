@@ -1,11 +1,11 @@
 ﻿import { bootstrap } from '@angular/platform-browser-dynamic';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { ROUTER_PROVIDERS } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { Configuration } from './app/app.constants';
+import { APP_ROUTER_PROVIDERS } from './app/app.routes';
 
 bootstrap(AppComponent, [
-    ROUTER_PROVIDERS,
+    APP_ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     Configuration,
 ]);
