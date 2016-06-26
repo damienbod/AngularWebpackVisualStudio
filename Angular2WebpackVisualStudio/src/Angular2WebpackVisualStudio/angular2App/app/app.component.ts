@@ -1,8 +1,5 @@
-﻿import {Component, OnInit} from '@angular/core';
-import {Routes, Router, ROUTER_DIRECTIVES} from '@angular/router';
-
-// Components.
-import { HomeComponent } from './home/home.component';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'my-app',
@@ -11,9 +8,6 @@ import { HomeComponent } from './home/home.component';
     directives: [ROUTER_DIRECTIVES]
 })
 
-@Routes([
-    { path: 'home', component: HomeComponent  }
-])
 
 export class AppComponent {
 
