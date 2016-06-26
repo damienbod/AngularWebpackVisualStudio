@@ -7,6 +7,8 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
+<strong>2016.06.17:</strong> Updated to Angular 2 rc2
+
 <strong>Setting up the application</strong>
 
 The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
@@ -22,28 +24,30 @@ The npm package.json configuration loads all the required packages for Angular 2
   "main": "wwwroot/index.html",
   "author": "",
   "license": "ISC",
-    "scripts": {
-        "build": "SET NODE_ENV=development && webpack -d --color",
-        "buildProduction": "SET NODE_ENV=production && webpack -d --color",
-        "tsc": "tsc",
-        "tsc:w": "tsc -w",
-        "typings": "typings",
-        "postinstall": "typings install"
-    },
+  "scripts": {
+    "build": "SET NODE_ENV=development && webpack -d --color",
+    "buildProduction": "SET NODE_ENV=production && webpack -d --color",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings",
+    "postinstall": "typings install"
+  },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/http": "2.0.0-rc.1",
-    "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
-    "@angular/router": "2.0.0-rc.1",
-    "bootstrap": "^3.3.6",
+    "@angular/common": "2.0.0-rc.2",
+    "@angular/compiler": "2.0.0-rc.2",
+    "@angular/core": "2.0.0-rc.2",
+    "@angular/http": "2.0.0-rc.2",
+    "@angular/platform-browser": "2.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.2",
+    "@angular/router": "2.0.0-rc.2",
+    "@angular/router-deprecated": "2.0.0-rc.2",
+    "@angular/upgrade": "2.0.0-rc.2",
     "core-js": "^2.4.0",
-    "extract-text-webpack-plugin": "^1.0.1",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.12",
+    "bootstrap": "^3.3.6",
+    "extract-text-webpack-plugin": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.2",
