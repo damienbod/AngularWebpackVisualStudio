@@ -7,6 +7,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
+<strong>2016.06.26:</strong> Updated to Angular 2 rc3 and new routing
 <strong>2016.06.17:</strong> Updated to Angular 2 rc2
 
 <strong>Setting up the application</strong>
@@ -19,60 +20,62 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```javascript
 {
-  "version": "1.0.0",
-  "description": "",
-  "main": "wwwroot/index.html",
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "build": "SET NODE_ENV=development && webpack -d --color",
-    "buildProduction": "SET NODE_ENV=production && webpack -d --color",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "postinstall": "typings install"
-  },
-  "dependencies": {
-    "@angular/common": "2.0.0-rc.2",
-    "@angular/compiler": "2.0.0-rc.2",
-    "@angular/core": "2.0.0-rc.2",
-    "@angular/http": "2.0.0-rc.2",
-    "@angular/platform-browser": "2.0.0-rc.2",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.2",
-    "@angular/router": "2.0.0-rc.2",
-    "@angular/router-deprecated": "2.0.0-rc.2",
-    "@angular/upgrade": "2.0.0-rc.2",
-    "core-js": "^2.4.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
-    "bootstrap": "^3.3.6",
-    "extract-text-webpack-plugin": "^1.0.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.3.2",
-    "clean-webpack-plugin": "^0.1.9",
-    "copy-webpack-plugin": "^2.1.3",
-    "css-loader": "^0.23.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.4",
-    "html-loader": "^0.4.0",
-    "html-webpack-plugin": "^2.8.1",
-    "jquery": "^2.2.0",
-    "json-loader": "^0.5.3",
-    "node-sass": "^3.4.2",
-    "null-loader": "0.1.1",
-    "postcss-loader": "^0.9.1",
-    "raw-loader": "0.5.1",
-    "rimraf": "^2.5.1",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0",
-    "ts-helpers": "^1.1.1",
-    "ts-loader": "0.8.2",
-    "typescript": "1.8.10",
-    "typings": "1.0.4",
-    "url-loader": "^0.5.6",
-    "webpack": "1.13.0"
+    "version": "1.0.0",
+    "description": "",
+    "main": "wwwroot/index.html",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "build": "SET NODE_ENV=development && webpack -d --color",
+        "buildProduction": "SET NODE_ENV=production && webpack -d --color",
+        "tsc": "tsc",
+        "tsc:w": "tsc -w",
+        "typings": "typings",
+        "postinstall": "typings install"
+    },
+    "dependencies": {
+
+        "@angular/common": "2.0.0-rc.3",
+        "@angular/compiler": "2.0.0-rc.3",
+        "@angular/core": "2.0.0-rc.3",
+        "@angular/forms": "0.1.1",
+        "@angular/http": "2.0.0-rc.3",
+        "@angular/platform-browser": "2.0.0-rc.3",
+        "@angular/platform-browser-dynamic": "2.0.0-rc.3",
+        "@angular/router": "3.0.0-alpha.8",
+        "@angular/upgrade": "2.0.0-rc.3",
+        "core-js": "^2.4.0",
+        "reflect-metadata": "^0.1.3",
+        "rxjs": "5.0.0-beta.6",
+        "zone.js": "^0.6.12",
+
+        "bootstrap": "^3.3.6",
+        "extract-text-webpack-plugin": "^1.0.1"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.3.2",
+        "clean-webpack-plugin": "^0.1.9",
+        "copy-webpack-plugin": "^2.1.3",
+        "css-loader": "^0.23.0",
+        "extract-text-webpack-plugin": "^1.0.1",
+        "file-loader": "^0.8.4",
+        "html-loader": "^0.4.0",
+        "html-webpack-plugin": "^2.8.1",
+        "jquery": "^2.2.0",
+        "json-loader": "^0.5.3",
+        "node-sass": "^3.4.2",
+        "null-loader": "0.1.1",
+        "postcss-loader": "^0.9.1",
+        "raw-loader": "0.5.1",
+        "rimraf": "^2.5.1",
+        "sass-loader": "^3.1.2",
+        "style-loader": "^0.13.0",
+        "ts-helpers": "^1.1.1",
+        "ts-loader": "0.8.2",
+        "typescript": "1.8.10",
+        "typings": "1.0.4",
+        "url-loader": "^0.5.6",
+        "webpack": "1.13.0"
     }
 }
 
@@ -83,12 +86,13 @@ The npm package.json configuration loads all the required packages for Angular 2
 The typings are configured for webpack builds.
 
 ```javascript
-
-  "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160317120654", 
-    "node": "registry:dt/node#4.0.0+20160501135006"
-  }
+{
+    "globalDependencies": {
+        "core-js": "registry:dt/core-js#0.0.0+20160602141332",
+        "node": "registry:dt/node#6.0.0+20160621231320"
+    }
 }
+
 ```
 
 <strong>tsconfig configuration</strong>
