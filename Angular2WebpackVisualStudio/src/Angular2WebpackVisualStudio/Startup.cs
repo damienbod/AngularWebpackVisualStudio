@@ -36,20 +36,20 @@ namespace Angular2WebpackVisualStudio
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            // var angularRoutes = new[] {
-            //     "/home"
-            // };
+            var angularRoutes = new[] {
+                 "/home"
+             };
 
-            // app.Use(async (context, next) =>
-            // {
-            //     if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
-            //         (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
-            //     {
-            //         context.Request.Path = new PathString("/");
-            //     }
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
+                    (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
+                {
+                    context.Request.Path = new PathString("/");
+                }
 
-            //     await next();
-            // });
+                await next();
+            });
 
             app.UseDefaultFiles();
 
