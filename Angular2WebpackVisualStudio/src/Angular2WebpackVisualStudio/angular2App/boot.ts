@@ -8,6 +8,6 @@ bootstrap(AppComponent, [
     APP_ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     Configuration,
-]);
+]).catch(err => console.error(err));
 
 
