@@ -8,5 +8,5 @@ platform_browser_dynamic_1.bootstrap(app_component_1.AppComponent, [
     app_routes_1.APP_ROUTER_PROVIDERS,
     http_1.HTTP_PROVIDERS,
     app_constants_1.Configuration,
-]);
+]).catch(function (err) { return console.error(err); });
 //# sourceMappingURL=boot.js.map
