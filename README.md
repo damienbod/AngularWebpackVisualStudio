@@ -4,7 +4,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <strong>Code:</strong> https://github.com/damienbod/Angular2WebpackVisualStudio
 
-<strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
+<strong>Authors</strong> <em>[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
 <strong>2016.06.29:</strong> Updated to ASP.NET Core RTM
