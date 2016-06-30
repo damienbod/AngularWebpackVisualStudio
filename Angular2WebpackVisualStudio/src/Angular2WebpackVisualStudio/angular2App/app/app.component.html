@@ -3,14 +3,29 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a [routerLink]="['/home']" class="navbar-brand"><img src="images/damienbod.jpg" height="40" style="margin-top:-10px;" /></a>
+                <a class="navbar-brand" href="#">ASP.NET Core // Angular2 // Webpack</a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a [routerLink]="['/home']">Home</a></li>
                 <li><a [routerLink]="['/about']">About</a></li>
             </ul>
-        
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://twitter.com/damien_bod"><img src="images/damienbod.jpg" height="40" style="margin-top: -10px;" /></a></li>
+                <li><a href="https://twitter.com/FabianGosebrink"><img src="images/fabianGosebrink.jpg" height="40" style="margin-top: -10px;" /></a></li>
+            </ul>
         </div>
     </nav>
+
+
+
     <router-outlet></router-outlet>
+
+
+    <footer>
+        <p>
+            <a href="https://twitter.com/FabianGosebrink">Fabian Gosebrink</a>&nbsp;Blog: <a href="http://offering.solutions">Offering.Solutions</a> &amp;
+            <a href="https://twitter.com/damien_bod">DamienBod</a>&nbsp;Blog: <a href="https://damienbod.com/">Software Engineering</a>
+            &copy; 2016
+        </p>
+    </footer>
 </div>
