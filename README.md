@@ -7,6 +7,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <strong>Authors</strong> <em>[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)</em>.
 This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
 
+<strong>2016.07.02:</strong> Updated to Angular2 rc4
 <strong>2016.06.29:</strong> Updated to ASP.NET Core RTM
 <strong>2016.06.26:</strong> Updated to Angular 2 rc3 and new routing
 <strong>2016.06.17:</strong> Updated to Angular 2 rc2
@@ -36,15 +37,15 @@ The npm package.json configuration loads all the required packages for Angular 2
     },
     "dependencies": {
 
-        "@angular/common": "2.0.0-rc.3",
-        "@angular/compiler": "2.0.0-rc.3",
-        "@angular/core": "2.0.0-rc.3",
-        "@angular/forms": "0.1.1",
-        "@angular/http": "2.0.0-rc.3",
-        "@angular/platform-browser": "2.0.0-rc.3",
-        "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-        "@angular/router": "3.0.0-alpha.8",
-        "@angular/upgrade": "2.0.0-rc.3",
+        "@angular/common": "2.0.0-rc.4",
+        "@angular/compiler": "2.0.0-rc.4",
+        "@angular/core": "2.0.0-rc.4",
+        "@angular/forms": "0.2.0",
+        "@angular/http": "2.0.0-rc.4",
+        "@angular/platform-browser": "2.0.0-rc.4",
+        "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+        "@angular/router": "3.0.0-beta.1",
+        "@angular/upgrade": "2.0.0-rc.4",
         "core-js": "^2.4.0",
         "reflect-metadata": "^0.1.3",
         "rxjs": "5.0.0-beta.6",
