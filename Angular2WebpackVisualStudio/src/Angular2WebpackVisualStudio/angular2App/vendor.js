@@ -1,5 +1,7 @@
 "use strict";
 require('rxjs');
+require('core-js/client/core');
+require('zone.js/dist/zone');
 require('@angular/common');
 require('@angular/compiler');
 require('@angular/core');
