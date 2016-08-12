@@ -12,6 +12,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
+* **2016.08.12** Updated to Angular2 rc5 and split webpack file.
 * **2016.07.02**  Updated to Angular2 rc4
 * **2016.06.29** Updated to ASP.NET Core RTM
 * **2016.06.26** Updated to Angular 2 rc3 and new routing
@@ -27,64 +28,66 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```javascript
 {
-    "version": "1.0.0",
-    "description": "",
-    "main": "wwwroot/index.html",
-    "author": "",
-    "license": "ISC",
-    "scripts": {
-        "build": "SET NODE_ENV=development && webpack -d --color",
-        "buildProduction": "SET NODE_ENV=production && webpack -d --color",
-        "tsc": "tsc",
-        "tsc:w": "tsc -w",
-        "typings": "typings",
-        "postinstall": "typings install"
-    },
-    "dependencies": {
+  "version": "1.0.0",
+  "description": "",
+  "main": "wwwroot/index.html",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "webpack-dev-server --inline --progress --port 8080",
+    "build": "webpack -d --color",
+    "buildProduction": "webpack -d --color --config webpack.prod.js",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings",
+    "postinstall": "typings install"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.5",
+    "@angular/compiler": "2.0.0-rc.5",
+    "@angular/core": "2.0.0-rc.5",
+    "@angular/forms": "0.3.0",
+    "@angular/http": "2.0.0-rc.5",
+    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
+    "@angular/router": "3.0.0-rc.1",
+    "@angular/upgrade": "2.0.0-rc.5",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12",
 
-        "@angular/common": "2.0.0-rc.4",
-        "@angular/compiler": "2.0.0-rc.4",
-        "@angular/core": "2.0.0-rc.4",
-        "@angular/forms": "0.2.0",
-        "@angular/http": "2.0.0-rc.4",
-        "@angular/platform-browser": "2.0.0-rc.4",
-        "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-        "@angular/router": "3.0.0-beta.1",
-        "@angular/upgrade": "2.0.0-rc.4",
-        "core-js": "^2.4.0",
-        "reflect-metadata": "^0.1.3",
-        "rxjs": "5.0.0-beta.6",
-        "zone.js": "^0.6.12",
-
-        "bootstrap": "^3.3.6",
+    "bootstrap": "^3.3.6",
         "extract-text-webpack-plugin": "^1.0.1"
-    },
-    "devDependencies": {
-        "autoprefixer": "^6.3.2",
-        "clean-webpack-plugin": "^0.1.9",
-        "copy-webpack-plugin": "^2.1.3",
-        "css-loader": "^0.23.0",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^0.8.4",
-        "html-loader": "^0.4.0",
-        "html-webpack-plugin": "^2.8.1",
-        "jquery": "^2.2.0",
-        "json-loader": "^0.5.3",
-        "node-sass": "^3.4.2",
-        "null-loader": "0.1.1",
-        "postcss-loader": "^0.9.1",
-        "raw-loader": "0.5.1",
-        "rimraf": "^2.5.1",
-        "sass-loader": "^3.1.2",
-        "style-loader": "^0.13.0",
-        "ts-helpers": "^1.1.1",
-        "ts-loader": "0.8.2",
-        "typescript": "1.8.10",
-        "typings": "1.0.4",
-        "url-loader": "^0.5.6",
-        "webpack": "1.13.0"
-    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.2",
+    "clean-webpack-plugin": "^0.1.9",
+    "copy-webpack-plugin": "^2.1.3",
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.4",
+    "html-loader": "^0.4.0",
+    "html-webpack-plugin": "^2.8.1",
+    "jquery": "^2.2.0",
+    "json-loader": "^0.5.3",
+    "node-sass": "^3.4.2",
+    "null-loader": "0.1.1",
+    "postcss-loader": "^0.9.1",
+    "raw-loader": "0.5.1",
+    "rimraf": "^2.5.1",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "ts-helpers": "^1.1.1",
+    "ts-loader": "0.8.2",
+    "typescript": "1.8.10",
+    "typings": "1.0.4",
+    "url-loader": "^0.5.6",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
 }
+
 
 ```
 
@@ -132,10 +135,27 @@ The Webpack development build <em>&gt;webpack -d</em> just uses the source files
 
 The Webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
-### Full webpack.config file
+### webpack.config.js
+
 
 ```javascript
 /// <binding ProjectOpened='Run - Development' />
+
+var isProd = (process.env.NODE_ENV === 'production');
+
+if (!isProd) {
+    module.exports = require('./webpack.dev.js');
+} else
+{
+    module.exports = require('./webpack.prod.js');
+}
+
+```
+
+### webpack.dev.js
+
+
+```javascript
 var path = require('path');
 var webpack = require('webpack');
 
@@ -145,52 +165,37 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var helpers = require('./webpack.helpers');
 
-var isProd = (process.env.NODE_ENV === 'production');
+module.exports = {
 
-module.exports = function makeWebpackConfig() {
+    debug: true,
+    //watch: true,
+    devtool: 'eval-source-map',
 
-    var config = {};
-
-    // add debug messages
-    config.debug = !isProd;
-
-    // clarify output filenames
-    var outputfilename = 'dist/[name].js';
-    if (isProd) {
-        //config.devtool = 'source-map';
-        outputfilename = 'dist/[name].[hash].js';
-    }
-
-    if (!isProd) {
-        config.devtool = 'eval-source-map';
-    }
-
-
-    config.entry = {
+    entry: {
         'polyfills': './angular2App/polyfills.ts',
         'vendor': './angular2App/vendor.ts',
         'app': './angular2App/boot.ts' // our angular app
-    };
+    },
 
+    output: {
+        path: "./wwwroot/",
+        filename: 'dist/[name].bundle.js',
+        publicPath: "/"
+    },
 
-    config.output = {
-        path: root('./wwwroot'),
-        publicPath: isProd ? '' : 'http://localhost:5000/',
-        filename: outputfilename,
-        chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
-    };
+    resolve: {
+        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
+    },
 
-    config.resolve = {
-        cache: true,
-        root: root(),
-        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html'],
-        alias: {
-            'app': 'angular2App/app'
-        }
-    };
+    devServer: {
+        historyApiFallback: true,
+        stats: 'minimal',
+        outputPath: path.join(__dirname, 'wwwroot/')
+    },
 
-    config.module = {
+    module: {
         loaders: [
             {
                 test: /\.ts$/,
@@ -209,35 +214,22 @@ module.exports = function makeWebpackConfig() {
 
             // copy those assets to output
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file?name=fonts/[name].[hash].[ext]?'
-            },
-
-            // Support for *.json files.
-            {
-                test: /\.json$/,
-                loader: 'json'
+                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
+                exclude: /node_modules/,
+                loader: "file?name=assets/[name]-[hash:6].[ext]",
             },
 
             // Load css files which are required in vendor.ts
             {
                 test: /\.css$/,
-                exclude: root('angular2App', 'app'),
-                loader: "style!css"
+                exclude: /node_modules/,
+                loader: "style-loader!css-loader"
             },
 
-            // Extract all files without the files for specific app components
             {
                 test: /\.scss$/,
-                exclude: root('angular2App', 'app'),
-                loader: 'raw!postcss!sass'
-            },
-
-            // Extract all files for specific app components
-            {
-                test: /\.scss$/,
-                exclude: root('angular2App', 'style'),
-                loader: 'raw!postcss!sass'
+                exclude: /node_modules/,
+                loader: 'raw-loader!style-loader!css-loader!sass-loader'
             },
 
             {
@@ -245,96 +237,191 @@ module.exports = function makeWebpackConfig() {
                 loader: 'raw'
             }
         ],
-        postLoaders: [],
         noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
-    };
+    },
 
-
-    config.plugins = [
-        new CleanWebpackPlugin(['./wwwroot/dist']),
-       
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify("production")
-            }
-        }),
+    plugins: [
+        new CleanWebpackPlugin(
+            [
+                './wwwroot/dist',
+                './wwwroot/fonts',
+                './wwwroot/assets'
+            ]
+        ),
 
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
 
         new HtmlWebpackPlugin({
-            template: './angular2App/index.html',
+            filename: 'index.html',
             inject: 'body',
-            chunksSortMode: packageSort(['polyfills', 'vendor', 'app'])
+            chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'app']),
+            template: 'angular2App/index.html'
         }),
 
         new CopyWebpackPlugin([
-
-            // copy all images to [rootFolder]/images
-            { from: root('angular2App/images'), to: 'images' },
-
-            // copy all fonts to [rootFolder]/fonts
-            { from: root('angular2App/fonts'), to: 'fonts' }
+            { from: './angular2App/images/*.*', to: "assets/", flatten: true }
         ])
-    ];
+    ]
+};
 
 
-    // Add build specific plugins
-    if (isProd) {
-        config.plugins.push(
-            new webpack.NoErrorsPlugin(),
-            new webpack.optimize.DedupePlugin(),
-            new webpack.optimize.UglifyJsPlugin()
-        );
+
+```
+
+### webpack.prod.js
+
+
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var Autoprefixer = require('autoprefixer');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var helpers = require('./webpack.helpers');
+
+module.exports = {
+
+    entry: {
+        'polyfills': './angular2App/polyfills.ts',
+        'vendor': './angular2App/vendor.ts',
+        'app': './angular2App/boot.ts' // our angular app
+    },
+
+    output: {
+        path: "./wwwroot/",
+        filename: 'dist/[name].[hash].bundle.js',
+        publicPath: "/"
+    },
+
+    resolve: {
+        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
+    },
+
+    devServer: {
+        historyApiFallback: true,
+        stats: 'minimal',
+        outputPath: path.join(__dirname, 'wwwroot/')
+    },
+
+    module: {
+        loaders: [
+            {
+                test: /\.ts$/,
+                loader: 'ts',
+                query: {
+                    'ignoreDiagnostics': [
+                        2403, // 2403 -> Subsequent variable declarations
+                        2300, // 2300 -> Duplicate identifier
+                        2374, // 2374 -> Duplicate number index signature
+                        2375, // 2375 -> Duplicate string index signature
+                        2502 // 2502 -> Referenced directly or indirectly
+                    ]
+                },
+                exclude: [/node_modules\/(?!(ng2-.+))/]
+            },
+
+            // copy those assets to output
+            {
+                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
+                exclude: /node_modules/,
+                loader: "file?name=assets/[name]-[hash:6].[ext]",
+            },
+
+            // Load css files which are required in vendor.ts
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                loader: "style-loader!css-loader"
+            },
+
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                loader: 'raw-loader!style-loader!css-loader!sass-loader'
+            },
+
+            {
+                test: /\.html$/,
+                loader: 'raw'
+            }
+        ],
+        noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+    },
+
+    plugins: [
+        new CleanWebpackPlugin(
+            [
+                './wwwroot/dist',
+                './wwwroot/fonts',
+                './wwwroot/assets'
+            ]
+        ),
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new CommonsChunkPlugin({
+            name: ['vendor', 'polyfills']
+        }),
+
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            inject: 'body',
+            chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'app']),
+            template: 'angular2App/index.html'
+        }),
+
+        new CopyWebpackPlugin([
+            { from: './angular2App/images/*.*', to: "assets/", flatten: true }
+        ])
+    ]
+};
+
+
+
+```
+
+### webpack.helpers.js
+
+
+```javascript
+var path = require('path');
+
+module.exports = {
+    // Helper functions
+    root: function (args) {
+        args = Array.prototype.slice.call(arguments, 0);
+        return path.join.apply(path, [__dirname].concat(args));
+    },
+
+    packageSort: function (packages) {
+        // packages = ['polyfills', 'vendor', 'app']
+        var len = packages.length - 1;
+        var first = packages[0];
+        var last = packages[len];
+        return function sort(a, b) {
+            // polyfills always first
+            if (a.names[0] === first) {
+                return -1;
+            }
+            // main always last
+            if (a.names[0] === last) {
+                return 1;
+            }
+            // vendor before app
+            if (a.names[0] !== first && b.names[0] === last) {
+                return -1;
+            } else {
+                return 1;
+            }
+        };
     }
-
-    config.postcss = [
-        Autoprefixer({
-            browsers: ['last 2 version']
-        })
-    ];
-
-    config.sassLoader = {
-        //includePaths: [path.resolve(__dirname, "node_modules/foundation-sites/scss")]
-    };
-
-    return config;
-}();
-
-// Helper functions
-function root(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return root.apply(path, ['node_modules'].concat(args));
-}
-
-function packageSort(packages) {
-    // packages = ['polyfills', 'vendor', 'app']
-    var len = packages.length - 1;
-    var first = packages[0];
-    var last = packages[len];
-    return function sort(a, b) {
-        // polyfills always first
-        if (a.names[0] === first) {
-            return -1;
-        }
-        // main always last
-        if (a.names[0] === last) {
-            return 1;
-        }
-        // vendor before app
-        if (a.names[0] !== first && b.names[0] === last) {
-            return -1;
-        } else {
-            return 1;
-        }
-    }
-}
+};
 
 ```
 
