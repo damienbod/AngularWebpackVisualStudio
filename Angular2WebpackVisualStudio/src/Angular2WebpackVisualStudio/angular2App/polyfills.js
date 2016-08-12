@@ -1,4 +1,5 @@
 "use strict";
+require('core-js/client/core');
 require('reflect-metadata');
 require('zone.js/dist/zone');
 require('ts-helpers');
