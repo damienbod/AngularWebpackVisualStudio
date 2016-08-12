@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 
 @Injectable()
-export class DataService {
+export class TestDataService {
 
     private actionUrl: string;
     private headers: Headers;

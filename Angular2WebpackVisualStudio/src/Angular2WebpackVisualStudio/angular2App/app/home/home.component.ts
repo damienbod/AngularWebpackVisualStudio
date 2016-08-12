@@ -2,14 +2,14 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { Http } from '@angular/http';
-import { DataService } from '../services/DataService';
+import { TestDataService } from '../services/testDataService';
 
 
 @Component({
     selector: 'homecomponent',
     template: require('./home.component.html'),
     directives: [CORE_DIRECTIVES],
-    providers: [DataService]
+    providers: [TestDataService]
 })
 
 export class HomeComponent implements OnInit {
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     public message: string;
     public values: any[];
 
-    constructor(private _dataService: DataService) {
+    constructor(private _dataService: TestDataService) {
         this.message = "Hello from HomeComponent constructor";
     }
 
