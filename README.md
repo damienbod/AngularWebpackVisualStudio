@@ -2,21 +2,26 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
-<strong>Code:</strong> https://github.com/damienbod/Angular2WebpackVisualStudio
+## Code
+[https://github.com/damienbod/Angular2WebpackVisualStudio](https://github.com/damienbod/Angular2WebpackVisualStudio)
 
-<strong>Authors</strong> <em>[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)</em>.
-This post is hosted on both http://damienbod.com and http://offering.solutions/ and will be hosted on http://blog.noser.com afterwards.
+## Authors
+<img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
+<img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70">
 
-<strong>2016.07.02:</strong> Updated to Angular2 rc4 
-<strong>2016.06.29:</strong> Updated to ASP.NET Core RTM
-<strong>2016.06.26:</strong> Updated to Angular 2 rc3 and new routing
-<strong>2016.06.17:</strong> Updated to Angular 2 rc2
+_[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
+This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
-<strong>Setting up the application</strong>
+* **2016.07.02**  Updated to Angular2 rc4
+* **2016.06.29** Updated to ASP.NET Core RTM
+* **2016.06.26** Updated to Angular 2 rc3 and new routing
+* **2016.06.17** Updated to Angular 2 rc2
+
+## Setting up the application
 
 The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
 
-<strong>npm configuration</strong>
+## npm configuration
 
 The npm package.json configuration loads all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A "npm build" script and also a "npm buildProduction" are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scripts just call the same cmd as the Webpack task runner.
 
@@ -83,7 +88,7 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```
 
-<strong>typings configuration</strong>
+## typings configuration
 
 The typings are configured for webpack builds.
 
@@ -97,7 +102,7 @@ The typings are configured for webpack builds.
 
 ```
 
-<strong>tsconfig configuration</strong>
+## tsconfig configuration
 
 The tsconfig is configured to use commonjs as the module.
 
@@ -121,13 +126,13 @@ The tsconfig is configured to use commonjs as the module.
 }
 ```
 
-<strong>Webpack build</strong>
+## Webpack build
 
 The Webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
 
 The Webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
-Full webpack.config file
+### Full webpack.config file
 
 ```javascript
 /// <binding ProjectOpened='Run - Development' />
@@ -395,7 +400,7 @@ The "loaders" section and the "modules" section in the configuration provides We
 
 In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.
 
-<strong>Angular 2 index.html</strong>
+## Angular 2 index.html
 
 The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
@@ -449,7 +454,7 @@ And the produced build file in the wwwroot folder. The scripts for the app, vend
 ```
 
 
-<strong>Visual Studio tools</strong>
+## Visual Studio tools
 
 <a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">Webpack task runner </a> from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production". 
 
@@ -465,7 +470,7 @@ This runner provides a number of useful commands which can be activated automati
 /// <binding ProjectOpened='Run - Development' />
 ```
 
-<strong>Webpack SASS</strong>
+### Webpack SASS
 
 <a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
@@ -477,7 +482,7 @@ This runner provides a number of useful commands which can be activated automati
 },
 ```
 
-<strong>Webpack Clean</strong>
+### Webpack Clean
 
 <a href="https://github.com/johnagan/clean-webpack-plugin/">clean-webpack-plugin</a> is used to clean up the deployment folder inside the wwwroot. This ensures that the application uses the latest files.
 
@@ -495,7 +500,7 @@ And used in Webpack.
   new CleanWebpackPlugin(['./wwwroot/dist']),
 ```
 
-<strong>Angular 2 component files</strong>
+## Angular 2 component files
 
 The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which adds the html or the css, scss to the file directly using Webpack, or as an external link depending on the Webpack config.
 
@@ -533,7 +538,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-<strong>The ASP.NET Core API</strong>
+## The ASP.NET Core API
 
 The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD service.
 
@@ -579,7 +584,7 @@ The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD servi
     }
 ```
 
-<strong>The Angular2 Http-Service</strong>
+### The Angular2 Http-Service
 
 Note that in a normal environment, you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
 
@@ -633,7 +638,7 @@ export class DataService {
 ```
 
 
-<strong>Notes:</strong>
+## Notes
 
 The Webpack configuration could also build all of the scss and css files to a separate app.css or app."hash".css which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the html header using the index.html file and not included in the Webpack build.
 
@@ -643,7 +648,7 @@ Debugging the Angular 2 in Visual Studio with breakpoints is not possible with t
 
 
 
-<strong>Links:</strong>
+## Links
 
 https://github.com/preboot/angular2-webpack
 
