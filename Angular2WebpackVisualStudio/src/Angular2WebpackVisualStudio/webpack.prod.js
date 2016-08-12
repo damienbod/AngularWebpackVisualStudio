@@ -19,7 +19,7 @@ module.exports = {
 
     output: {
         path: "./wwwroot/",
-        filename: 'dist/[name].bundle.js',
+        filename: 'dist/[name].[hash].bundle.js',
         publicPath: "/"
     },
 
