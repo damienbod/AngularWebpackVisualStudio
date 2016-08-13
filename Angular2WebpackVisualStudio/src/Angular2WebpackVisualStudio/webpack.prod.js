@@ -9,6 +9,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var helpers = require('./webpack.helpers');
 
+console.log("@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@");
+
 module.exports = {
 
     entry: {
@@ -88,7 +90,11 @@ module.exports = {
         ),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),

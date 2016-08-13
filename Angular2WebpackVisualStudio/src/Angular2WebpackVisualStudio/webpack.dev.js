@@ -9,6 +9,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var helpers = require('./webpack.helpers');
 
+console.log("@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@");
+
 module.exports = {
 
     debug: true,
