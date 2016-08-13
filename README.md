@@ -489,7 +489,7 @@ The "loaders" section and the "modules" section in the configuration provides We
 
 In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.
 
-The output
+### The output
 ```javascript
 output: {
         path: "./wwwroot/",
@@ -499,7 +499,7 @@ output: {
 ```
 tells webpack where to put the files in the end. You can use like wildcards to use the "name" or an "hash" or something like that.
 
-The module loaders
+### The module loaders
 
 ```javascript
 module: {
