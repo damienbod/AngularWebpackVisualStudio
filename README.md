@@ -141,12 +141,11 @@ The Webpack config file was created using the excellent gihub repository https:/
 ```javascript
 /// <binding ProjectOpened='Run - Development' />
 
-var isProd = (process.env.NODE_ENV === 'production');
+var environment = (process.env.NODE_ENV || "development").trim();
 
-if (!isProd) {
+if (environment === "development") {
     module.exports = require('./webpack.dev.js');
-} else
-{
+} else {
     module.exports = require('./webpack.prod.js');
 }
 
