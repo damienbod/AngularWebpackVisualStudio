@@ -34,9 +34,9 @@ The npm package.json configuration loads all the required packages for Angular 2
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 8080",
-    "build": "webpack -d --color",
-    "buildProduction": "webpack -d --color --config webpack.prod.js",
+     "start": "webpack-dev-server --inline --progress --port 8080",
+    "build": "SET NODE_ENV=development && webpack -d --color",
+    "buildProduction": "SET NODE_ENV=production && webpack -d --color",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings",
@@ -364,7 +364,11 @@ module.exports = {
         ),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new CommonsChunkPlugin({
             name: ['vendor', 'polyfills']
         }),
@@ -425,7 +429,7 @@ module.exports = {
 
 ```
 
-Lets dive into this a bit:
+Lets dive into the webpack.dev.js a bit:
 
 Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
 
@@ -440,18 +444,17 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-
-var isProd = (process.env.NODE_ENV === 'production');
+var helpers = require('./webpack.helpers');
 ```
 
 The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.
 
 ```javascript
-    config.entry = {
+    entry: {
         'polyfills': './angular2App/polyfills.ts',
         'vendor': './angular2App/vendor.ts',
         'app': './angular2App/boot.ts' // our angular app
-    };
+    },
 ```
 
 The entries provide Webpack with the required information, where to start from, or where to hook in to. Three entry points are defined in this configuration. These strings point to the files required in the solution. The starting point for the app itself is provided in one of these files, boot.ts as a starting-point and also all vendor scripts minified in one file, the vendor.ts. 
@@ -462,16 +465,16 @@ The entries provide Webpack with the required information, where to start from, 
 import 'rxjs';
 
 // Angular 2.
+import '@angular/core';
 import '@angular/common';
 import '@angular/compiler';
-import '@angular/core';
+import '@angular/forms';
 import '@angular/http';
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
 import '@angular/router';
+import '@angular/upgrade';
 
-// Reflect Metadata.
-import 'reflect-metadata';
 
 // Other libraries.
 import 'jquery/src/jquery';
@@ -486,6 +489,38 @@ Webpack knows which paths to run and includes the corresponding files and packag
 The "loaders" section and the "modules" section in the configuration provides Webpack with the following information: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.
 
 In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.
+
+The output
+```javascript
+output: {
+        path: "./wwwroot/",
+        filename: 'dist/[name].bundle.js',
+        publicPath: "/"
+    },
+```
+tells webpack where to put the files in the end. You can use like wildcards to use the "name" or an "hash" or something like that.
+
+The module loaders
+
+```javascript
+module: {
+        loaders: [
+           //...loaders here
+        ]
+    },
+```
+
+tell webpack how to react when a certain file extension comes into play. It will then use loaders to handle that file.
+
+The plugins you are providing in the end are necessary to configure how the files should be processed.
+
+```javascript
+
+    plugins: [
+        //...loaders here
+    ]
+
+```
 
 ## Angular 2 index.html
 
