@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 
 @Component({
     selector: 'about',
-    template: require('./about.component.html'),
-    directives: [CORE_DIRECTIVES]
+    template: require('./about.component.html')
 })
 
 export class AboutComponent implements OnInit {

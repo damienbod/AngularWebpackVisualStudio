@@ -1,11 +1,10 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'my-app',
     template: require('./app.component.html'),
-    styles: [require('./app.component.scss'), require('../style/app.scss')],
-    directives: [ROUTER_DIRECTIVES]
+    styles: [require('./app.component.scss'), require('../style/app.scss')]
 })
 
 

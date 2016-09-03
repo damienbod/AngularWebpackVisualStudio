@@ -12,11 +12,12 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
-* **2016.08.12** Updated to Angular2 rc5 and split webpack file.
-* **2016.07.02**  Updated to Angular2 rc4
+* **2016.09.03** Updated to Angular2 rc.6
+* **2016.08.12** Updated to Angular2 rc.5 and split webpack file.
+* **2016.07.02**  Updated to Angular2 rc.4
 * **2016.06.29** Updated to ASP.NET Core RTM
-* **2016.06.26** Updated to Angular 2 rc3 and new routing
-* **2016.06.17** Updated to Angular 2 rc2
+* **2016.06.26** Updated to Angular 2 rc.3 and new routing
+* **2016.06.17** Updated to Angular 2 rc.2
 
 ## Setting up the application
 
@@ -28,64 +29,69 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```javascript
 {
-  "version": "1.0.0",
-  "description": "",
-  "main": "wwwroot/index.html",
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-     "start": "webpack-dev-server --inline --progress --port 8080",
-    "build": "SET NODE_ENV=development && webpack -d --color",
-    "buildProduction": "SET NODE_ENV=production && webpack -d --color",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "postinstall": "typings install"
-  },
-  "dependencies": {
-    "@angular/common": "2.0.0-rc.5",
-    "@angular/compiler": "2.0.0-rc.5",
-    "@angular/core": "2.0.0-rc.5",
-    "@angular/forms": "0.3.0",
-    "@angular/http": "2.0.0-rc.5",
-    "@angular/platform-browser": "2.0.0-rc.5",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
-    "@angular/router": "3.0.0-rc.1",
-    "@angular/upgrade": "2.0.0-rc.5",
-    "core-js": "^2.4.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
+    "version": "1.0.0",
+    "description": "",
+    "main": "wwwroot/index.html",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "start": "webpack-dev-server --inline --progress --port 8080",
+        "build": "SET NODE_ENV=development && webpack -d --color",
+        "buildProduction": "SET NODE_ENV=production && webpack -d --color",
+        "tsc": "tsc",
+        "tsc:w": "tsc -w",
+        "typings": "typings",
+        "postinstall": "typings install"
+    },
+    "dependencies": {
+        "@angular/common": "2.0.0-rc.6",
+        "@angular/compiler": "2.0.0-rc.6",
+        "@angular/core": "2.0.0-rc.6",
+        "@angular/forms": "2.0.0-rc.6",
+        "@angular/http": "2.0.0-rc.6",
+        "@angular/platform-browser": "2.0.0-rc.6",
+        "@angular/platform-browser-dynamic": "2.0.0-rc.6",
+        "@angular/platform-server": "2.0.0-rc.6",
+        "@angular/router": "3.0.0-rc.2",
+        "core-js": "^2.4.0",
+        "ie-shim": "^0.1.0",
+        "rxjs": "5.0.0-beta.11",
+        "zone.js": "~0.6.17",
 
-    "bootstrap": "^3.3.6",
+        "reflect-metadata": "^0.1.3",
+
+        "bootstrap": "^3.3.6",
         "extract-text-webpack-plugin": "^1.0.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.3.2",
-    "clean-webpack-plugin": "^0.1.9",
-    "copy-webpack-plugin": "^2.1.3",
-    "css-loader": "^0.23.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.8.4",
-    "html-loader": "^0.4.0",
-    "html-webpack-plugin": "^2.8.1",
-    "jquery": "^2.2.0",
-    "json-loader": "^0.5.3",
-    "node-sass": "^3.4.2",
-    "null-loader": "0.1.1",
-    "postcss-loader": "^0.9.1",
-    "raw-loader": "0.5.1",
-    "rimraf": "^2.5.1",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0",
-    "ts-helpers": "^1.1.1",
-    "ts-loader": "0.8.2",
-    "typescript": "1.8.10",
-    "typings": "1.0.4",
-    "url-loader": "^0.5.6",
-    "webpack": "1.13.1",
-    "webpack-dev-server": "^1.14.1"
-  }
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.3.2",
+        "clean-webpack-plugin": "^0.1.9",
+        "copy-webpack-plugin": "^2.1.3",
+        "css-loader": "^0.23.0",
+        "extract-text-webpack-plugin": "^1.0.1",
+        "file-loader": "^0.8.4",
+        "html-loader": "^0.4.0",
+        "html-webpack-plugin": "^2.8.1",
+        "jquery": "^2.2.0",
+        "json-loader": "^0.5.3",
+        "node-sass": "^3.4.2",
+        "null-loader": "0.1.1",
+        "postcss-loader": "^0.9.1",
+        "raw-loader": "0.5.1",
+        "rimraf": "^2.5.2",
+        "sass-loader": "^3.1.2",
+        "style-loader": "^0.13.0",
+        "ts-helpers": "^1.1.1",
+        "ts-loader": "0.8.2",
+        "typescript": "2.0.0",
+        "typings": "1.3.3",
+        "url-loader": "^0.5.6",
+        "webpack": "1.13.2",
+        "webpack-dev-server": "1.15.1",
+        "protractor": "^3.3.0",
+        "lodash": "^4.11.1",
+        "concurrently": "^2.2.0"
+    }
 }
 
 
@@ -98,8 +104,9 @@ The typings are configured for webpack builds.
 ```javascript
 {
     "globalDependencies": {
-        "core-js": "registry:dt/core-js#0.0.0+20160602141332",
-        "node": "registry:dt/node#6.0.0+20160621231320"
+        "core-js": "registry:dt/core-js#0.0.0+20160725163759",
+        "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+        "node": "registry:dt/node#6.0.0+20160831021119"
     }
 }
 
@@ -460,27 +467,19 @@ The entries provide Webpack with the required information, where to start from, 
 
 
 ```typescript
-// RxJS.
-import 'rxjs';
-
-// Angular 2.
-import '@angular/core';
-import '@angular/common';
-import '@angular/compiler';
-import '@angular/forms';
-import '@angular/http';
-import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
+import '@angular/platform-browser';
+import '@angular/core';
+import '@angular/http';
 import '@angular/router';
-import '@angular/upgrade';
 
 
-// Other libraries.
 import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap';
 
 import './css/bootstrap.css';
 import './css/bootstrap-theme.css';
+
 ```
 
 Webpack knows which paths to run and includes the corresponding files and packages.
@@ -628,15 +627,13 @@ The Angular 2 components are slightly different to the standard example componen
 ```javascript
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { Http } from '@angular/http';
 import { DataService } from '../services/DataService';
 
 
 @Component({
     selector: 'homecomponent',
-    template: require('./home.component.html'),
-    directives: [CORE_DIRECTIVES],
+    template: require('./home.component.html')
     providers: [DataService]
 })
 
