@@ -6,8 +6,6 @@ import { AppComponent }  from './app.component';
 import { Configuration } from './app.constants';
 import { routing } from './app.routes';
 import { HttpModule, JsonpModule } from '@angular/http';
-
-import { provideRouter, RouterConfig } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 

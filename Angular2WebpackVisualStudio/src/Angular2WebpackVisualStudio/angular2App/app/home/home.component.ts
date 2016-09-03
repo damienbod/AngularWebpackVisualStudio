@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { Http } from '@angular/http';
 import { TestDataService } from '../services/testDataService';
 
@@ -8,7 +7,6 @@ import { TestDataService } from '../services/testDataService';
 @Component({
     selector: 'homecomponent',
     template: require('./home.component.html'),
-    directives: [CORE_DIRECTIVES],
     providers: [TestDataService]
 })
 
