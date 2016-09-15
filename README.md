@@ -12,9 +12,10 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
+* **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
 * **2016.09.03** Updated to Angular2 rc.6
 * **2016.08.12** Updated to Angular2 rc.5 and split webpack file.
-* **2016.07.02**  Updated to Angular2 rc.4
+* **2016.07.02** Updated to Angular2 rc.4
 * **2016.06.29** Updated to ASP.NET Core RTM
 * **2016.06.26** Updated to Angular 2 rc.3 and new routing
 * **2016.06.17** Updated to Angular 2 rc.2
@@ -44,21 +45,20 @@ The npm package.json configuration loads all the required packages for Angular 2
         "postinstall": "typings install"
     },
     "dependencies": {
-        "@angular/common": "2.0.0-rc.6",
-        "@angular/compiler": "2.0.0-rc.6",
-        "@angular/core": "2.0.0-rc.6",
-        "@angular/forms": "2.0.0-rc.6",
-        "@angular/http": "2.0.0-rc.6",
-        "@angular/platform-browser": "2.0.0-rc.6",
-        "@angular/platform-browser-dynamic": "2.0.0-rc.6",
-        "@angular/platform-server": "2.0.0-rc.6",
-        "@angular/router": "3.0.0-rc.2",
-        "core-js": "^2.4.0",
-        "ie-shim": "^0.1.0",
-        "rxjs": "5.0.0-beta.11",
-        "zone.js": "~0.6.17",
-
+        "@angular/common": "2.0.0",
+        "@angular/compiler": "2.0.0",
+        "@angular/core": "2.0.0",
+        "@angular/forms": "2.0.0",
+        "@angular/http": "2.0.0",
+        "@angular/platform-browser": "2.0.0",
+        "@angular/platform-browser-dynamic": "2.0.0",
+        "@angular/router": "3.0.0",
+        "core-js": "^2.4.1",
         "reflect-metadata": "^0.1.3",
+        "rxjs": "5.0.0-beta.12",
+        "zone.js": "^0.6.21",
+
+        "ie-shim": "^0.1.0",
 
         "bootstrap": "^3.3.6",
         "extract-text-webpack-plugin": "^1.0.1"
