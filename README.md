@@ -12,6 +12,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
+* **2016.10.01** Updated to Angular 2.0.1, typings
 * **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
 * **2016.09.03** Updated to Angular2 rc.6
 * **2016.08.12** Updated to Angular2 rc.5 and split webpack file.
