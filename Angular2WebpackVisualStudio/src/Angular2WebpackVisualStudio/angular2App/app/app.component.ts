@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'my-app',
     template: require('./app.component.html'),
-    styles: [require('./app.component.scss'), require('../style/app.scss')]
+    styles: [String(require('./app.component.scss')), String(require('../style/app.scss'))]
 })
 
 
