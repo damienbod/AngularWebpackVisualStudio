@@ -12,6 +12,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/) and will be hosted on http://blog.noser.com afterwards.
 
+* **2016.10.01** Updated to Angular 2.0.1, typings
 * **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
 * **2016.09.03** Updated to Angular2 rc.6
 * **2016.08.12** Updated to Angular2 rc.5 and split webpack file.
@@ -45,22 +46,25 @@ The npm package.json configuration loads all the required packages for Angular 2
         "postinstall": "typings install"
     },
     "dependencies": {
-        "@angular/common": "2.0.0",
-        "@angular/compiler": "2.0.0",
-        "@angular/core": "2.0.0",
-        "@angular/forms": "2.0.0",
-        "@angular/http": "2.0.0",
-        "@angular/platform-browser": "2.0.0",
-        "@angular/platform-browser-dynamic": "2.0.0",
-        "@angular/router": "3.0.0",
+        "@angular/common": "~2.0.1",
+        "@angular/compiler": "~2.0.1",
+        "@angular/core": "~2.0.1",
+        "@angular/forms": "~2.0.1",
+        "@angular/http": "~2.0.1",
+        "@angular/platform-browser": "~2.0.1",
+        "@angular/platform-browser-dynamic": "~2.0.1",
+        "@angular/router": "~3.0.1",
+        "@angular/upgrade": "~2.0.1",
+        "angular-in-memory-web-api": "~0.1.1",
+        "bootstrap": "^3.3.7",
         "core-js": "^2.4.1",
-        "reflect-metadata": "^0.1.3",
+        "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.0-beta.12",
-        "zone.js": "^0.6.21",
+        "systemjs": "0.19.39",
+        "zone.js": "^0.6.25",
 
         "ie-shim": "^0.1.0",
 
-        "bootstrap": "^3.3.6",
         "extract-text-webpack-plugin": "^1.0.1"
     },
     "devDependencies": {
@@ -104,9 +108,9 @@ The typings are configured for webpack builds.
 ```javascript
 {
     "globalDependencies": {
-        "core-js": "registry:dt/core-js#0.0.0+20160725163759",
+        "core-js": "registry:dt/core-js#0.0.0+20160914114559",
         "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-        "node": "registry:dt/node#6.0.0+20160831021119"
+        "node": "registry:dt/node#6.0.0+20160928143418"
     }
 }
 
