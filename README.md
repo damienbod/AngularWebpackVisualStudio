@@ -46,26 +46,24 @@ The npm package.json configuration loads all the required packages for Angular 2
         "postinstall": "typings install"
     },
     "dependencies": {
-        "@angular/common": "~2.0.1",
-        "@angular/compiler": "~2.0.1",
-        "@angular/core": "~2.0.1",
-        "@angular/forms": "~2.0.1",
-        "@angular/http": "~2.0.1",
-        "@angular/platform-browser": "~2.0.1",
-        "@angular/platform-browser-dynamic": "~2.0.1",
-        "@angular/router": "~3.0.1",
-        "@angular/upgrade": "~2.0.1",
-        "angular-in-memory-web-api": "~0.1.1",
+        "@angular/common": "~2.1.0",
+        "@angular/compiler": "~2.1.0",
+        "@angular/core": "~2.1.0",
+        "@angular/forms": "~2.1.0",
+        "@angular/http": "~2.1.0",
+        "@angular/platform-browser": "~2.1.0",
+        "@angular/platform-browser-dynamic": "~2.1.0",
+        "@angular/router": "~3.1.0",
+        "@angular/upgrade": "~2.1.0",
+        "angular-in-memory-web-api": "~0.1.5",
         "bootstrap": "^3.3.7",
         "core-js": "^2.4.1",
         "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.0-beta.12",
-        "systemjs": "0.19.39",
         "zone.js": "^0.6.25",
 
-        "ie-shim": "^0.1.0",
-
-        "extract-text-webpack-plugin": "^1.0.1"
+        "extract-text-webpack-plugin": "^1.0.1",
+        "ie-shim": "^0.1.0"
     },
     "devDependencies": {
         "autoprefixer": "^6.3.2",
@@ -78,7 +76,7 @@ The npm package.json configuration loads all the required packages for Angular 2
         "html-webpack-plugin": "^2.8.1",
         "jquery": "^2.2.0",
         "json-loader": "^0.5.3",
-        "node-sass": "^3.4.2",
+        "node-sass": "3.10.1",
         "null-loader": "0.1.1",
         "postcss-loader": "^0.9.1",
         "raw-loader": "0.5.1",
@@ -238,10 +236,13 @@ module.exports = {
 
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loader: 'raw-loader!style-loader!css-loader!sass-loader'
+                loaders: ["style", "css", "sass"]
             },
-
+            //{
+            //    test: /\.scss$/,
+            //    exclude: /node_modules/,
+            //    loader: 'raw-loader!style-loader!css-loader!sass-loader'
+            //},
             {
                 test: /\.html$/,
                 loader: 'raw'
@@ -599,12 +600,18 @@ This runner provides a number of useful commands which can be activated automati
 <a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
 ```javascript
-{
-  test: /\.scss$/,
-  exclude: root('angular2App', 'app'),
-  loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
-},
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+            },
+            //{
+            //    test: /\.scss$/,
+            //    exclude: /node_modules/,
+            //    loader: 'raw-loader!style-loader!css-loader!sass-loader'
+//},
 ```
+
+See: https://damienbod.com/2016/10/14/using-sass-with-webpack-angular2-and-visual-studio/
 
 ### Webpack Clean
 
