@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'about',
-    template: require('./about.component.html')
+    template: 'about.component.html'
 })
 
 export class AboutComponent implements OnInit {
@@ -14,6 +14,6 @@ export class AboutComponent implements OnInit {
     }
 
     ngOnInit() {
-       
+
     }
 }

@@ -1,29 +1,21 @@
-"use strict";
-require('ie-shim');
-require('core-js/es6/symbol');
-require('core-js/es6/object');
-require('core-js/es6/function');
-require('core-js/es6/parse-int');
-require('core-js/es6/parse-float');
-require('core-js/es6/number');
-require('core-js/es6/math');
-require('core-js/es6/string');
-require('core-js/es6/date');
-require('core-js/es6/array');
-require('core-js/es6/regexp');
-require('core-js/es6/map');
-require('core-js/es6/set');
-require('core-js/es6/weak-map');
-require('core-js/es6/weak-set');
-require('core-js/es6/typed');
-require('core-js/es6/reflect');
-require('core-js/es7/reflect');
-require('zone.js/dist/zone');
-require('ts-helpers');
-if (process.env.NODE_ENV === 'production') {
-}
-else {
-    Error['stackTraceLimit'] = Infinity;
-    require('zone.js/dist/long-stack-trace-zone');
-}
-//# sourceMappingURL=polyfills.js.map
+import 'ie-shim';
+import 'core-js/es6/symbol';
+import 'core-js/es6/object';
+import 'core-js/es6/function';
+import 'core-js/es6/parse-int';
+import 'core-js/es6/parse-float';
+import 'core-js/es6/number';
+import 'core-js/es6/math';
+import 'core-js/es6/string';
+import 'core-js/es6/date';
+import 'core-js/es6/array';
+import 'core-js/es6/regexp';
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+import 'core-js/es6/weak-map';
+import 'core-js/es6/weak-set';
+import 'core-js/es6/typed';
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
+import 'ts-helpers';
