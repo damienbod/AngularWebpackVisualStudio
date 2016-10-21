@@ -313,3 +313,5 @@ aot/
 **/angular2App/app/**/*.map
 **/angular2App/app/*.js
 **/angular2App/app/*.map
+**/angular2App/*.js
+**/angular2App/*.map
