@@ -309,7 +309,8 @@ $RECYCLE.BIN/
 aot/
 
 # TypeScript compilation files
-
+**/angular2App/app/**/*.js
+**/angular2App/app/**/*.map
 **/angular2App/app/*.js
 **/angular2App/app/*.map
 **/angular2App/*.js
