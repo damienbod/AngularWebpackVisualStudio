@@ -14,7 +14,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
 
-* **2016.10.24:** using AoT, treeshaking, updated  to webpack 2
+* **2016.10.24:** using AoT, treeshaking, updated  to webpack 2, Switched to @types: removed tsd & typings
 * **2016.10.16:** Updated to Angular 2.1.0, typings, Webpack SASS build
 * **2016.10.01** Updated to Angular 2.0.1, typings
 * **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
@@ -95,42 +95,42 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```
 
-## typings configuration
-
-The typings are configured for webpack builds.
-
-```javascript
-{
-    "globalDependencies": {
-        "core-js": "registry:dt/core-js#0.0.0+20160914114559",
-        "jasmine": "registry:dt/jasmine#2.5.0+20161003201800",
-        "node": "registry:dt/node#6.0.0+20161010101523"
-    }
-}
-```
 
 ## tsconfig configuration
 
-The tsconfig is configured to use commonjs as the module.
+The tsconfig is configured to use commonjs as the module. The types are configured in this file, so typings are no longer required.
 
 ```javascript
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "moduleResolution":  "node",
-        "removeComments": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "noEmitHelpers": false,
-        "sourceMap": true
-    },
-    "exclude": [
-        "node_modules"
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
     ],
-    "compileOnSave": false,
-    "buildOnSave": false
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "angular2App/app/app.module.ts",
+    "angular2App/main.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
 }
+
 ```
 
 ## Webpack build
@@ -160,26 +160,21 @@ if (environment === "development") {
 
 ```javascript
 var path = require('path');
+
 var webpack = require('webpack');
 
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
+
+console.log("@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@");
 
 module.exports = {
 
-    debug: true,
-    //watch: true,
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     entry: {
-        'polyfills': './angular2App/polyfills.ts',
-        'vendor': './angular2App/vendor.ts',
-        'app': './angular2App/boot.ts' // our angular app
+        'app': './angular2App/main.ts' // JiT compilation
     },
 
     output: {
@@ -189,7 +184,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
 
     devServer: {
@@ -199,51 +194,36 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts',
-                query: {
-                    'ignoreDiagnostics': [
-                        2403, // 2403 -> Subsequent variable declarations
-                        2300, // 2300 -> Duplicate identifier
-                        2374, // 2374 -> Duplicate number index signature
-                        2375, // 2375 -> Duplicate string index signature
-                        2502 // 2502 -> Referenced directly or indirectly
-                    ]
-                },
-                exclude: [/node_modules\/(?!(ng2-.+))/]
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader',
+                    'source-map-loader'
+                ]
             },
-
-            // copy those assets to output
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
                 exclude: /node_modules/,
                 loader: "file?name=assets/[name]-[hash:6].[ext]",
             },
-
-            // Load css files which are required in vendor.ts
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 loader: "style-loader!css-loader"
             },
-
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                exclude: /node_modules/,
+                loaders: ['raw-loader', 'sass-loader']
             },
-            //{
-            //    test: /\.scss$/,
-            //    exclude: /node_modules/,
-            //    loader: 'raw-loader!style-loader!css-loader!sass-loader'
-            //},
             {
                 test: /\.html$/,
                 loader: 'raw'
             }
         ],
-        noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+        exprContextCritical: false
     },
 
     plugins: [
@@ -255,14 +235,9 @@ module.exports = {
             ]
         ),
 
-        new CommonsChunkPlugin({
-            name: ['vendor', 'polyfills']
-        }),
-
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'app']),
             template: 'angular2App/index.html'
         }),
 
@@ -270,8 +245,8 @@ module.exports = {
             { from: './angular2App/images/*.*', to: "assets/", flatten: true }
         ])
     ]
-};
 
+};
 
 
 ```
@@ -281,22 +256,19 @@ module.exports = {
 
 ```javascript
 var path = require('path');
+
 var webpack = require('webpack');
 
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
+
+console.log("@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@");
 
 module.exports = {
 
     entry: {
-        'polyfills': './angular2App/polyfills.ts',
-        'vendor': './angular2App/vendor.ts',
-        'app': './angular2App/boot.ts' // our angular app
+        'app': './angular2App/main-aot.ts' // AoT compilation
     },
 
     output: {
@@ -306,7 +278,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
 
     devServer: {
@@ -316,48 +288,35 @@ module.exports = {
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts',
-                query: {
-                    'ignoreDiagnostics': [
-                        2403, // 2403 -> Subsequent variable declarations
-                        2300, // 2300 -> Duplicate identifier
-                        2374, // 2374 -> Duplicate number index signature
-                        2375, // 2375 -> Duplicate string index signature
-                        2502 // 2502 -> Referenced directly or indirectly
-                    ]
-                },
-                exclude: [/node_modules\/(?!(ng2-.+))/]
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
             },
-
-            // copy those assets to output
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
                 exclude: /node_modules/,
                 loader: "file?name=assets/[name]-[hash:6].[ext]",
             },
-
-            // Load css files which are required in vendor.ts
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 loader: "style-loader!css-loader"
             },
-
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loader: 'raw-loader!style-loader!css-loader!sass-loader'
+                loaders: ['raw-loader', 'sass-loader']
             },
-
             {
                 test: /\.html$/,
                 loader: 'raw'
             }
         ],
-        noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+        exprContextCritical: false
     },
 
     plugins: [
@@ -369,20 +328,15 @@ module.exports = {
             ]
         ),
         new webpack.NoErrorsPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
         }),
-        new CommonsChunkPlugin({
-            name: ['vendor', 'polyfills']
-        }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'app']),
             template: 'angular2App/index.html'
         }),
 
@@ -393,47 +347,54 @@ module.exports = {
 };
 
 
-
 ```
 
-### webpack.helpers.js
+Webpack Production build
 
+The production build has to be run from the command line.
 
-```javascript
-var path = require('path');
-
-module.exports = {
-    // Helper functions
-    root: function (args) {
-        args = Array.prototype.slice.call(arguments, 0);
-        return path.join.apply(path, [__dirname].concat(args));
-    },
-
-    packageSort: function (packages) {
-        // packages = ['polyfills', 'vendor', 'app']
-        var len = packages.length - 1;
-        var first = packages[0];
-        var last = packages[len];
-        return function sort(a, b) {
-            // polyfills always first
-            if (a.names[0] === first) {
-                return -1;
-            }
-            // main always last
-            if (a.names[0] === last) {
-                return 1;
-            }
-            // vendor before app
-            if (a.names[0] !== first && b.names[0] === last) {
-                return -1;
-            } else {
-                return 1;
-            }
-        };
-    }
-};
+It can be run using npm run buildProduction which is configured in the package.json.
 
 ```
+"buildProduction": "npm run ngc && npm run webpack-prod"
+```
+
+The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
+
+```
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "files": [
+    "angular2App/app/app.module.ts",
+    "angular2App/main-aot.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "aot",
+    "skipMetadataEmit": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false
+}
+```
+
 
 Lets dive into the webpack.dev.js a bit:
 
