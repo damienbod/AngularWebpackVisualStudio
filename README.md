@@ -402,24 +402,27 @@ Firstly, all plugins are loaded which are required to process all the js, ts, ..
 
 ```javascript
 var path = require('path');
+
 var webpack = require('webpack');
 
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-var Autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
 ```
 
 The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.
 
 ```javascript
     entry: {
-        'polyfills': './angular2App/polyfills.ts',
-        'vendor': './angular2App/vendor.ts',
-        'app': './angular2App/boot.ts' // our angular app
+        'app': './angular2App/main.ts' // JiT compilation
+    },
+```
+
+for webpack.prod.js
+
+```javascript
+entry: {
+        'app': './angular2App/main-aot.ts' // AoT compilation
     },
 ```
 
@@ -439,6 +442,7 @@ import 'bootstrap/dist/js/bootstrap';
 
 import './css/bootstrap.css';
 import './css/bootstrap-theme.css';
+
 
 ```
 
