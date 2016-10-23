@@ -82,7 +82,6 @@ The npm package.json configuration loads all the required packages for Angular 2
     "node-sass": "^3.10.1",
     "raw-loader": "0.5.1",
     "rimraf": "^2.5.2",
-    "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",
     "typescript": "2.0.3",
@@ -215,7 +214,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ['raw-loader', 'sass-loader']
+                loaders: ["style", "css", "sass"]
             },
             {
                 test: /\.html$/,
@@ -308,7 +307,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ['raw-loader', 'sass-loader']
+                loaders: ["style", "css", "sass"]
             },
             {
                 test: /\.html$/,
@@ -567,18 +566,14 @@ This runner provides a number of useful commands which can be activated automati
 
 ### Webpack SASS
 
-<a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
+<a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
 ```javascript
-            {
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
-            //{
-            //    test: /\.scss$/,
-            //    exclude: /node_modules/,
-            //    loader: 'raw-loader!style-loader!css-loader!sass-loader'
-//},
+{
+  test: /\.scss$/,
+  exclude: /node_modules/,
+  loaders: ["style", "css", "sass"]
+},
 ```
 
 See: https://damienbod.com/2016/10/14/using-sass-with-webpack-angular2-and-visual-studio/
