@@ -47,7 +47,6 @@
     "node-sass": "^3.10.1",
     "raw-loader": "0.5.1",
     "rimraf": "^2.5.2",
-    "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",
     "typescript": "2.0.3",
