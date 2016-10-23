@@ -598,19 +598,18 @@ And used in Webpack.
 
 ## Angular 2 component files
 
-The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which adds the html or the css, scss to the file directly using Webpack, or as an external link depending on the Webpack config.
+
+Note: require cannot be used because AoT does not work with this.
 
 ```javascript
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { DataService } from '../services/DataService';
+import { TestDataService } from '../services/testDataService';
 
 
 @Component({
     selector: 'homecomponent',
-    template: require('./home.component.html')
-    providers: [DataService]
+    templateUrl: 'home.component.html',
+    providers: [TestDataService]
 })
 
 export class HomeComponent implements OnInit {
@@ -618,18 +617,21 @@ export class HomeComponent implements OnInit {
     public message: string;
     public values: any[];
 
-    constructor(private _dataService: DataService) {
+    constructor(private _dataService: TestDataService) {
         this.message = "Hello from HomeComponent constructor";
     }
 
     ngOnInit() {
         this._dataService
             .GetAll()
-            .subscribe(data => this.values = data,
+            .subscribe(
+            data => this.values = data,
             error => console.log(error),
-            () => console.log('Get all complete'));
+            () => console.log('Get all complete')
+            );
     }
 }
+
 ```
 
 ## The ASP.NET Core API
