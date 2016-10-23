@@ -1,12 +1,10 @@
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { TestDataService } from '../services/testDataService';
 
 
 @Component({
     selector: 'homecomponent',
-    template: require('./home.component.html'),
+    templateUrl: 'home.component.html',
     providers: [TestDataService]
 })
 
@@ -22,8 +20,10 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this._dataService
             .GetAll()
-            .subscribe(data => this.values = data,
+            .subscribe(
+            data => this.values = data,
             error => console.log(error),
-            () => console.log('Get all complete'));
+            () => console.log('Get all complete')
+            );
     }
 }
