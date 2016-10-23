@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TestDataService } from '../services/testDataService';
 
-
 @Component({
-    selector: 'homecomponent',
+    selector: 'home-component',
     templateUrl: 'home.component.html',
     providers: [TestDataService]
 })

@@ -13,7 +13,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
 
-* **2016.10.24:** using AoT, treeshaking, updated  to webpack 2, Switched to @types: removed tsd & typings
+* **2016.10.24:** Using AoT, tree shaking, updated to webpack 2, switched to @types: removed tsd & typings
 * **2016.10.16:** Updated to Angular 2.1.0, typings, Webpack SASS build
 * **2016.10.01** Updated to Angular 2.0.1, typings
 * **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
@@ -80,7 +80,8 @@ The npm package.json configuration loads all the required packages for Angular 2
     "jquery": "^2.2.0",
     "json-loader": "^0.5.3",
     "node-sass": "^3.10.1",
-    "raw-loader": "0.5.1",
+    "sass-loader": "^4.0.2",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",
@@ -290,8 +291,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loaders: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader'
+                    'awesome-typescript-loader'
                 ]
             },
             {
@@ -349,7 +349,7 @@ module.exports = {
 
 ## Webpack Production build
 
-The production build has to be run from the command line. At present ngc, the angular compiler can only be used from the command line. 
+The production build has to be run from the command line. At present ngc, the angular compiler, can only be used from the command line. 
 
 https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli
 
@@ -390,9 +390,6 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
     "genDir": "aot",
     "skipMetadataEmit": true
   },
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true
-  },
   "compileOnSave": false,
   "buildOnSave": false
 }
@@ -425,24 +422,12 @@ The npm environment variable NODE_ENV is used to define the type of build, eithe
 for webpack.prod.js
 
 ```javascript
-entry: {
+    entry: {
         'app': './angular2App/main-aot.ts' // AoT compilation
     },
 ```
 
-The entries provide Webpack with the required information, where to start from, or where to hook in to. Three entry points are defined in this configuration. These strings point to the files required in the solution. The starting point for the app itself is provided in one of these files, boot.ts as a starting-point and also all vendor scripts minified in one file, the vendor.ts. 
-
-
-```typescript
-
-import 'jquery/src/jquery';
-import 'bootstrap/dist/js/bootstrap';
-
-import './css/bootstrap.css';
-import './css/bootstrap-theme.css';
-
-
-```
+The entries provide Webpack with the required information, where to start from, or where to hook in to.
 
 Webpack knows which paths to run and includes the corresponding files and packages.
 
@@ -459,7 +444,7 @@ output: {
     },
 ```
 
-output for production adds a  hash.
+output for production adds a hash:
 
 ```javascript
 output: {
@@ -522,7 +507,7 @@ Source index.html file in the angular2App/public folder:
 
 ```
 
-And the produced build file in the wwwroot folder. The scripts for the app, vendor and boot have been added using Webpack. Hashes are used in a production build for cache busting.
+And the produced build file in the wwwroot folder. The script for the app has been added using Webpack. Hashes are used in a production build for cache busting.
 
 ```javascript
 <!doctype html>
@@ -605,9 +590,8 @@ Note: require cannot be used because AoT does not work with this.
 import { Component, OnInit } from '@angular/core';
 import { TestDataService } from '../services/testDataService';
 
-
 @Component({
-    selector: 'homecomponent',
+    selector: 'home-component',
     templateUrl: 'home.component.html',
     providers: [TestDataService]
 })
@@ -688,7 +672,7 @@ Note that in a normal environment, you should always return the typed classes an
 ```
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 

@@ -23,9 +23,6 @@
     "genDir": "aot",
     "skipMetadataEmit": true
   },
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true
-  },
   "compileOnSave": false,
   "buildOnSave": false
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'about',
+    selector: 'about-component',
     template: 'about.component.html'
 })
 
