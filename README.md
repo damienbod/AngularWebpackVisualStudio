@@ -542,7 +542,7 @@ And the produced build file in the wwwroot folder. The scripts for the app, vend
 </head>
 <body>
     <my-app>Loading...</my-app>
-<script type="text/javascript" src="http://localhost:5000/dist/polyfills.js"></script><script type="text/javascript" src="http://localhost:5000/dist/vendor.js"></script><script type="text/javascript" src="http://localhost:5000/dist/app.js"></script></body>
+<script type="text/javascript" src="/dist/app.bundle.js"></script></body>
 </html>
 
 ```
