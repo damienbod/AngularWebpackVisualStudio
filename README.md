@@ -8,8 +8,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
 <img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70">
-
-<img class="ProfileAvatar-image "  width="70" src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" alt="Roberto Simonetti">
+<img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
