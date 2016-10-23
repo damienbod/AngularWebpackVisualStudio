@@ -348,7 +348,7 @@ module.exports = {
 
 ```
 
-Webpack Production build
+## Webpack Production build
 
 The production build has to be run from the command line.
 
