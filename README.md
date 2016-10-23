@@ -350,13 +350,18 @@ module.exports = {
 
 ## Webpack Production build
 
-The production build has to be run from the command line.
+The production build has to be run from the command line. At present ngc, the angular compiler can only be used from the command line. 
+
+https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli
+
+See also (Using ngc) http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/ 
 
 It can be run using npm run buildProduction which is configured in the package.json.
 
 ```
 "buildProduction": "npm run ngc && npm run webpack-prod"
 ```
+
 
 The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 
@@ -763,3 +768,5 @@ http://sass-lang.com/
 http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html
 
 https://angular.io/docs/ts/latest/guide/webpack.html
+
+http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/
