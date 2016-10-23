@@ -430,12 +430,6 @@ The entries provide Webpack with the required information, where to start from, 
 
 
 ```typescript
-import '@angular/platform-browser-dynamic';
-import '@angular/platform-browser';
-import '@angular/core';
-import '@angular/http';
-import '@angular/router';
-
 
 import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap';
@@ -460,7 +454,19 @@ output: {
         publicPath: "/"
     },
 ```
+
+output for production adds a  hash.
+
+```javascript
+output: {
+        path: "./wwwroot/",
+        filename: 'dist/[name].[hash].bundle.js',
+        publicPath: "/"
+    },
+```
+
 tells webpack where to put the files in the end. You can use like wildcards to use the "name" or an "hash" or something like that.
+
 
 ### The module loaders
 
@@ -497,7 +503,7 @@ Source index.html file in the angular2App/public folder:
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angular 2 Webpack Demo</title>
+    <title>Angular 2 Webpack Template</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
@@ -522,7 +528,7 @@ And the produced build file in the wwwroot folder. The scripts for the app, vend
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angular 2 Webpack Demo</title>
+    <title>Angular 2 Webpack Template</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
