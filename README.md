@@ -103,7 +103,7 @@ The tsconfig is configured to use commonjs as the module. The types are configur
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -329,7 +329,11 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
-            }
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
         }),
 
         new HtmlWebpackPlugin({
