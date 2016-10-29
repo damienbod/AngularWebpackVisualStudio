@@ -37,7 +37,8 @@ namespace Angular2WebpackVisualStudio
             loggerFactory.AddDebug();
 
             var angularRoutes = new[] {
-                 "/home"
+                 "/home",
+                 "/about"
              };
 
             app.Use(async (context, next) =>
