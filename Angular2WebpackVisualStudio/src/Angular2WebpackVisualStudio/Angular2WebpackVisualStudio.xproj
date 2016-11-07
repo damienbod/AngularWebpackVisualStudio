@@ -6,6 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <ProjectGuid>99279475-be89-4dc3-ad47-9a9d139915b0</ProjectGuid>
     <RootNamespace>Angular2WebpackVisualStudio</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
