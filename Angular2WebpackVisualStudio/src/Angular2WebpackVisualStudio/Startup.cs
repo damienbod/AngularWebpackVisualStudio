@@ -26,6 +26,18 @@ namespace Angular2WebpackVisualStudio
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
             // Add framework services.
             services.AddMvc();
         }
@@ -51,6 +63,8 @@ namespace Angular2WebpackVisualStudio
 
                 await next();
             });
+
+            app.UseCors("AllowAllOrigins");
 
             app.UseDefaultFiles();
 
