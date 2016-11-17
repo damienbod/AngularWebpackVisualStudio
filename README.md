@@ -208,7 +208,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
                 exclude: /node_modules/,
-                loader: "file?name=assets/[name]-[hash:6].[ext]",
+                loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
             },
             {
                 test: /\.css$/,
@@ -218,11 +218,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ["style", "css", "sass"]
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.html$/,
-                loader: 'raw'
+                loader: 'raw-loader'
             }
         ],
         exprContextCritical: false
@@ -300,7 +300,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
                 exclude: /node_modules/,
-                loader: "file?name=assets/[name]-[hash:6].[ext]",
+                loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
             },
             {
                 test: /\.css$/,
@@ -310,11 +310,11 @@ module.exports = {
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ["style", "css", "sass"]
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.html$/,
-                loader: 'raw'
+                loader: 'raw-loader'
             }
         ],
         exprContextCritical: false
