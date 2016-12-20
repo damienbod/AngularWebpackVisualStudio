@@ -71,7 +71,6 @@ module.exports = {
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
-                './wwwroot/fonts',
                 './wwwroot/assets'
             ]
         ),
