@@ -80,9 +80,10 @@ module.exports = {
             },
             sourceMap: false
         }),
-         new CommonsChunkPlugin({
-             name: ['vendor']
-         }),
+        new webpack.optimize.CommonsChunkPlugin(
+        {
+            name: ['vendor']
+        }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
