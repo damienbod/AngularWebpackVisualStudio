@@ -11,6 +11,7 @@ console.log("@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@");
 module.exports = {
 
     entry: {
+        'vendor': './angular2App/vendor.ts',
         'app': './angular2App/main-aot.ts' // AoT compilation
     },
 
@@ -79,12 +80,22 @@ module.exports = {
             },
             sourceMap: false
         }),
+         new CommonsChunkPlugin({
+             name: ['vendor']
+         }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
+            chunksSortMode: helpers.packageSort(['vendor', 'app']),
             template: 'angular2App/index.html'
         }),
+
+        //new HtmlWebpackPlugin({
+        //    filename: 'index.html',
+        //    inject: 'body',
+        //    template: 'angular2App/index.html'
+        //}),
 
         new CopyWebpackPlugin([
             { from: './angular2App/images/*.*', to: "assets/", flatten: true }
