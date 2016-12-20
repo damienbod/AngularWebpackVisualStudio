@@ -13,6 +13,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
 
+* **2016.12.20:** Updated to Angular 2.4.0
 * **2016.11.16:** Updated to Angular 2.2.0
 * **2016.10.24:** Using AoT, tree shaking, updated to webpack 2, switched to @types: removed tsd & typings
 * **2016.10.16:** Updated to Angular 2.1.0, typings, Webpack SASS build
@@ -35,66 +36,65 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```javascript
 {
-  "version": "1.0.0",
-  "description": "",
-  "main": "wwwroot/index.html",
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "ngc": "ngc -p ./tsconfig-aot.json",
-    "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
-    "webpack-dev": "set NODE_ENV=development&& webpack",
-    "webpack-prod": "set NODE_ENV=production&& webpack",
-    "build": "npm run webpack-dev",
-    "buildProduction": "npm run ngc && npm run webpack-prod"
-  },
-  "dependencies": {
-  "@angular/common": "~2.2.0",
-    "@angular/compiler": "~2.2.0",
-    "@angular/core": "~2.2.0",
-    "@angular/forms": "~2.2.0",
-    "@angular/http": "~2.2.0",
-    "@angular/platform-browser": "~2.2.0",
-    "@angular/platform-browser-dynamic": "~2.2.0",
-    "@angular/router": "~3.2.0",
-    "@angular/upgrade": "~2.2.0",
-    "angular-in-memory-web-api": "~0.1.15",
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.25",
+    "version": "1.0.0",
+    "description": "",
+    "main": "wwwroot/index.html",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "ngc": "ngc -p ./tsconfig-aot.json",
+        "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
+        "webpack-dev": "set NODE_ENV=development&& webpack",
+        "webpack-prod": "set NODE_ENV=production&& webpack",
+        "build": "npm run webpack-dev",
+        "buildProduction": "npm run ngc && npm run webpack-prod"
+    },
+    "dependencies": {
+        "@angular/common": "~2.4.0",
+        "@angular/compiler": "~2.4.0",
+        "@angular/core": "~2.4.0",
+        "@angular/forms": "~2.4.0",
+        "@angular/http": "~2.4.0",
+        "@angular/platform-browser": "~2.4.0",
+        "@angular/platform-browser-dynamic": "~2.4.0",
+        "@angular/router": "~3.4.0",
+        "@angular/upgrade": "~2.4.0",
+        "angular-in-memory-web-api": "~0.1.15",
+        "core-js": "^2.4.1",
+        "reflect-metadata": "^0.1.8",
+        "rxjs": "5.0.1",
+        "zone.js": "^0.7.4",
 
-    "@angular/compiler-cli": "2.2.0",
-    "@angular/platform-server": "~2.1.0",
-    "bootstrap": "^3.3.7",
-    "ie-shim": "^0.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^6.0.45",
-    "angular2-template-loader": "^0.5.0",
-    "awesome-typescript-loader": "^2.2.4",
-    "clean-webpack-plugin": "^0.1.9",
-    "concurrently": "^3.1.0",
-    "copy-webpack-plugin": "^2.1.3",
-    "css-loader": "^0.23.0",
-    "file-loader": "^0.8.4",
-    "html-webpack-plugin": "^2.8.1",
-    "jquery": "^2.2.0",
-    "json-loader": "^0.5.3",
-    "node-sass": "^3.10.1",
-    "raw-loader": "^0.5.1",
-    "rimraf": "^2.5.2",
-    "sass-loader": "^4.0.2",
-    "source-map-loader": "^0.1.5",
-    "style-loader": "^0.13.0",
-    "ts-helpers": "^1.1.1",
-    "typescript": "2.0.3",
-    "url-loader": "^0.5.6",
-    "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "^1.16.2"
-  }
+        "@angular/compiler-cli": "2.4.0",
+        "@angular/platform-server": "~2.4.0",
+        "bootstrap": "^3.3.7",
+        "ie-shim": "^0.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^6.0.52",
+        "angular2-template-loader": "^0.5.0",
+        "awesome-typescript-loader": "^2.2.4",
+        "clean-webpack-plugin": "^0.1.9",
+        "concurrently": "^3.1.0",
+        "copy-webpack-plugin": "^2.1.3",
+        "css-loader": "^0.23.0",
+        "file-loader": "^0.8.4",
+        "html-webpack-plugin": "^2.8.1",
+        "jquery": "^2.2.0",
+        "json-loader": "^0.5.3",
+        "node-sass": "^3.10.1",
+        "raw-loader": "^0.5.1",
+        "rimraf": "^2.5.2",
+        "sass-loader": "^4.0.2",
+        "source-map-loader": "^0.1.5",
+        "style-loader": "^0.13.0",
+        "ts-helpers": "^1.1.1",
+        "typescript": "2.0.3",
+        "url-loader": "^0.5.6",
+        "webpack": "^2.2.0-rc.1",
+        "webpack-dev-server": "^1.16.2"
+    }
 }
-
 ```
 
 
