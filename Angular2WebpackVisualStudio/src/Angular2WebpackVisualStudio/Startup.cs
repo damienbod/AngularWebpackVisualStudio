@@ -52,10 +52,7 @@ namespace Angular2WebpackVisualStudio
                  "/home",
                  "/about"
              };
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-
+            
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
@@ -69,8 +66,9 @@ namespace Angular2WebpackVisualStudio
 
             app.UseCors("AllowAllOrigins");
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
