@@ -1,10 +1,43 @@
-﻿<div class="panel-group">
+﻿<div class="container-fluid">
 
-    <p>{{message}}</p>
+    <h1>{{message}}</h1>
 
-    <ul>
-        <li *ngFor="let value of values">
-            <span>{{value}} </span>
-        </li>
-    </ul>
+    <div class="row">
+        <form class="form-inline" (ngSubmit)="addThing()" #thingForm="ngForm">
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputThing">Thing</label>
+                <input type="text" class="form-control" id="exampleInputThing" placeholder="Name of the thing ..." name="thing" [(ngModel)]="thing.name"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!thingForm.valid">Send</button>
+        </form>
+    </div>
+
+    <div class="row" *ngIf="things.length > 0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th class="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let thing of things; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{thing.name}}</td>
+                        <td class="text-right">
+                            <button type="button" class="btn btn-xs btn-danger" (click)="deleteThing(thing)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="things.length <= 0">
+        <span>No items found</span>
+    </div>
+
 </div>

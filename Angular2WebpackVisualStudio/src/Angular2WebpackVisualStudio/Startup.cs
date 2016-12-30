@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Angular2WebpackVisualStudio.Repositories.Things;
+using Angular2WebpackVisualStudio.Models;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -39,6 +41,7 @@ namespace Angular2WebpackVisualStudio
             });
 
             // Add framework services.
+            services.AddSingleton<IThingsRepository, ThingsRepository>();
             services.AddMvc();
         }
 
@@ -52,7 +55,7 @@ namespace Angular2WebpackVisualStudio
                  "/home",
                  "/about"
              };
-            
+
             app.Use(async (context, next) =>
             {
                 if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
@@ -68,7 +71,13 @@ namespace Angular2WebpackVisualStudio
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            
+
+            AutoMapper.Mapper.Initialize(mapper =>
+                        {
+                            mapper.CreateMap<Thing, ThingDto>().ReverseMap();
+                        });
+
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

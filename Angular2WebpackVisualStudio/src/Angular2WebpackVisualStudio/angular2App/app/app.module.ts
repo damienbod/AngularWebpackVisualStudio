@@ -1,3 +1,5 @@
+import { CustomFooterComponent } from './customfooter/customfooter.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,14 +19,16 @@ import { TestDataService } from './services/testDataService';
     imports: [
         BrowserModule,
         CommonModule,
-        FormsModule,
         routing,
+        FormsModule,
         HttpModule
     ],
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent
+        HomeComponent,
+        NavigationComponent,
+        CustomFooterComponent
     ],
     providers: [
         TestDataService,
