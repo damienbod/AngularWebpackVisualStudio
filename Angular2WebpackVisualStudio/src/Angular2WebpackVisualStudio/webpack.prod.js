@@ -42,12 +42,10 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
-                exclude: /node_modules/,
                 loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
             },
             {
                 test: /\.css$/,
-                exclude: /node_modules/,
                 loader: "style-loader!css-loader"
             },
             {
@@ -81,9 +79,9 @@ module.exports = {
             sourceMap: false
         }),
         new webpack.optimize.CommonsChunkPlugin(
-        {
-            name: ['vendor']
-        }),
+            {
+                name: ['vendor']
+            }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
