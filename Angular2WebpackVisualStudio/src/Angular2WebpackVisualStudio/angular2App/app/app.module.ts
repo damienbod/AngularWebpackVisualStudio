@@ -18,11 +18,11 @@ import { TestDataService } from './services/testDataService';
     imports: [
         BrowserModule,
         routing,
-        SharedModule,
+        SharedModule.forRoot(),
         AboutModule,
         HomeModule
     ],
-    
+
     declarations: [
         AppComponent
     ],
