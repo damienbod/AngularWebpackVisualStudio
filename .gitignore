@@ -315,3 +315,4 @@ aot/
 **/angular2App/app/*.map
 **/angular2App/*.js
 **/angular2App/*.map
+Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/wwwroot/
