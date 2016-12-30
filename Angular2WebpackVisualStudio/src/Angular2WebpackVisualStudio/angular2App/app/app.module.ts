@@ -1,5 +1,6 @@
-import { CustomFooterComponent } from './customfooter/customfooter.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { HomeModule } from './home/home.module';
+import { AboutModule } from './about/about.module';
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,30 +11,22 @@ import { Configuration } from './app.constants';
 import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 
 import { TestDataService } from './services/testDataService';
 
 @NgModule({
     imports: [
         BrowserModule,
-        CommonModule,
         routing,
-        FormsModule,
-        HttpModule
+        SharedModule,
+        AboutModule,
+        HomeModule
     ],
+    
     declarations: [
-        AppComponent,
-        AboutComponent,
-        HomeComponent,
-        NavigationComponent,
-        CustomFooterComponent
+        AppComponent
     ],
-    providers: [
-        TestDataService,
-        Configuration
-    ],
+
     bootstrap: [AppComponent],
 })
 
