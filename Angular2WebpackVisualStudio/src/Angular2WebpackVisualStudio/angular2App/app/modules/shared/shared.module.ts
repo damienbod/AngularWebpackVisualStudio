@@ -1,5 +1,5 @@
 import { Configuration } from './../../app.constants';
-import { TestDataService } from './../../services/testDataService';
+import { ThingService } from './../../services/thingService';
 import { CustomFooterComponent } from './components/customfooter/customfooter.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
@@ -30,7 +30,7 @@ export class SharedModule {
         return {
             ngModule: SharedModule,
             providers: [
-                TestDataService,
+                ThingService,
                 Configuration
             ]
         };

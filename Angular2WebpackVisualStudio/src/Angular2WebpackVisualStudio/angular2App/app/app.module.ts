@@ -12,8 +12,6 @@ import { routing } from './app.routes';
 
 import { AppComponent } from './app.component';
 
-import { TestDataService } from './services/testDataService';
-
 @NgModule({
     imports: [
         BrowserModule,
