@@ -15,7 +15,7 @@ This post is hosted on both [http://damienbod.com](http://damienbod.com) and [ht
 
 ## Changelog
 
-[https://github.com/damienbod/Angular2WebpackVisualStudio/CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md)
 
 ## Setting up the application
 
