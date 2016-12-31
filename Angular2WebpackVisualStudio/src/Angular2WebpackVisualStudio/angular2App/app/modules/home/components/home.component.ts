@@ -1,5 +1,5 @@
 import { Thing } from './../../../models/thing';
-import { TestDataService } from './../../../services/testDataService';
+import { ThingService } from './../../../services/thingService';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     public things: Thing[] = [];
     public thing: Thing = new Thing();
 
-    constructor(private _dataService: TestDataService) {
+    constructor(private _dataService: ThingService) {
         this.message = "Things from the ASP.NET Core API";
     }
 
