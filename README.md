@@ -367,10 +367,10 @@ https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli
 
 See also (Using ngc) http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/ 
 
-It can be run using npm run buildProduction which is configured in the package.json.
+It can be run using npm run build-production which is configured in the package.json.
 
 ```
-"buildProduction": "npm run ngc && npm run webpack-prod"
+"build-production": "npm run ngc && npm run webpack-prod"
 ```
 
 
@@ -559,12 +559,12 @@ https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 // TODO
 
 ```javascript
-"ngc": "ngc -p ./tsconfig-aot.json"
+"ngc": "ngc -p ./tsconfig-aot.json",
 "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
 "webpack-dev": "set NODE_ENV=development&& webpack",
-"webpack-prod": "set NODE_ENV=production&& webpack",
-"build": "npm run webpack-dev",
-"build-production": "npm run ngc && npm run webpack-prod",
+"webpack-production": "set NODE_ENV=production&& webpack",
+"build-dev": "npm run webpack-dev",
+"build-production": "npm run ngc && npm run webpack-production",
 "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
 "watch-webpack-production": "npm run build-production --watch --color"
 ```
