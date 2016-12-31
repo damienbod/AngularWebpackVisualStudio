@@ -27,63 +27,66 @@ The npm package.json configuration loads all the required packages for Angular a
 
 ```javascript
 {
-    "version": "1.0.0",
-    "description": "",
-    "main": "wwwroot/index.html",
-    "author": "",
-    "license": "ISC",
-    "scripts": {
-        "ngc": "ngc -p ./tsconfig-aot.json",
-        "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
-        "webpack-dev": "set NODE_ENV=development&& webpack",
-        "webpack-prod": "set NODE_ENV=production&& webpack",
-        "build": "npm run webpack-dev",
-        "buildProduction": "npm run ngc && npm run webpack-prod"
-    },
-    "dependencies": {
-        "@angular/common": "~2.4.0",
-        "@angular/compiler": "~2.4.0",
-        "@angular/core": "~2.4.0",
-        "@angular/forms": "~2.4.0",
-        "@angular/http": "~2.4.0",
-        "@angular/platform-browser": "~2.4.0",
-        "@angular/platform-browser-dynamic": "~2.4.0",
-        "@angular/router": "~3.4.0",
-        "@angular/upgrade": "~2.4.0",
-        "angular-in-memory-web-api": "~0.1.15",
-        "core-js": "^2.4.1",
-        "reflect-metadata": "^0.1.8",
-        "rxjs": "5.0.1",
-        "zone.js": "^0.7.4",
-        "@angular/compiler-cli": "2.4.0",
-        "@angular/platform-server": "~2.4.0",
-        "bootstrap": "^3.3.7",
-        "ie-shim": "^0.1.0"
-    },
-    "devDependencies": {
-        "@types/node": "^6.0.52",
-        "angular2-template-loader": "^0.5.0",
-        "awesome-typescript-loader": "^2.2.4",
-        "clean-webpack-plugin": "^0.1.9",
-        "concurrently": "^3.1.0",
-        "copy-webpack-plugin": "^2.1.3",
-        "css-loader": "^0.23.0",
-        "file-loader": "^0.8.4",
-        "html-webpack-plugin": "^2.8.1",
-        "jquery": "^2.2.0",
-        "json-loader": "^0.5.3",
-        "node-sass": "^3.10.1",
-        "raw-loader": "^0.5.1",
-        "rimraf": "^2.5.2",
-        "sass-loader": "^4.0.2",
-        "source-map-loader": "^0.1.5",
-        "style-loader": "^0.13.0",
-        "ts-helpers": "^1.1.1",
-        "typescript": "2.0.3",
-        "url-loader": "^0.5.6",
-        "webpack": "^2.2.0-rc.1",
-        "webpack-dev-server": "^1.16.2"
-    }
+  "version": "1.0.0",
+  "description": "",
+  "main": "wwwroot/index.html",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "ngc": "ngc -p ./tsconfig-aot.json",
+    "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
+    "webpack-dev": "set NODE_ENV=development&& webpack",
+    "webpack-prod": "set NODE_ENV=production&& webpack",
+    "build": "npm run webpack-dev",
+    "build-production": "npm run ngc && npm run webpack-prod",
+    "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
+    "watch-webpack-production": "npm run build-production --watch --color"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.1",
+    "@angular/compiler": "~2.4.1",
+    "@angular/core": "~2.4.1",
+    "@angular/forms": "~2.4.1",
+    "@angular/http": "~2.4.1",
+    "@angular/platform-browser": "~2.4.1",
+    "@angular/platform-browser-dynamic": "~2.4.1",
+    "@angular/router": "~3.4.1",
+    "@angular/upgrade": "~2.4.1",
+    "angular-in-memory-web-api": "~0.2.3",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4",
+    "@angular/compiler-cli": "2.4.1",
+    "@angular/platform-server": "~2.4.1",
+    "bootstrap": "^3.3.7",
+    "ie-shim": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.52",
+    "angular2-template-loader": "^0.5.0",
+    "awesome-typescript-loader": "^2.2.4",
+    "clean-webpack-plugin": "^0.1.9",
+    "concurrently": "^3.1.0",
+    "copy-webpack-plugin": "^2.1.3",
+    "css-loader": "^0.23.0",
+    "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^2.8.1",
+    "jquery": "^2.2.0",
+    "json-loader": "^0.5.3",
+    "node-sass": "^3.10.1",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^4.0.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.0",
+    "ts-helpers": "^1.1.1",
+    "typescript": "2.0.3",
+    "url-loader": "^0.5.6",
+    "webpack": "^2.2.0-rc.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 }
 ```
 
@@ -242,6 +245,8 @@ module.exports = {
     ]
 
 };
+
+
 ```
 
 ### webpack.prod.js
@@ -349,6 +354,8 @@ module.exports = {
         ])
     ]
 };
+
+
 ```
 
 
@@ -539,15 +546,8 @@ And the produced build file in the wwwroot folder. The script for the app has be
 
 ## Visual Studio Tools
 
-<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">Webpack task runner </a> from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production". 
 
-<img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_02.png?w=600" alt="vs_webpack_angular2_02" width="600" height="431" class="alignnone size-medium wp-image-6716" />
-
-The Webpack task runner can also be used by double clicking the task. The execution results are then displayed in the task runner console.
-
-<img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2_03.png?w=600" alt="vs_webpack_angular2_03" width="600" height="231" class="alignnone size-medium wp-image-6717" />
-
-This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config.js file.
+TODO
 
 ```
 /// <binding ProjectOpened='Run - Development' />
@@ -654,6 +654,12 @@ The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD servi
 
 
 ```
+using System.Linq;
+using Angular2WebpackVisualStudio.Models;
+using Angular2WebpackVisualStudio.Repositories.Things;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+
 namespace Angular2WebpackVisualStudio.Controller
 {
     [Route("api/[controller]")]
@@ -669,7 +675,7 @@ namespace Angular2WebpackVisualStudio.Controller
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_thingsRepository.GetAll().Select(x => Mapper.Map<Thing>(x)));
+            return Ok(_thingsRepository.GetAll());
         }
 
         [HttpPost]
@@ -685,9 +691,9 @@ namespace Angular2WebpackVisualStudio.Controller
                 return BadRequest(ModelState);
             }
 
-            Thing newThing = _thingsRepository.Add(Mapper.Map<Thing>(thing));
+            Thing newThing = _thingsRepository.Add(thing);
 
-            return CreatedAtRoute("GetSingleThing", new { id = newThing.Id }, Mapper.Map<Thing>(newThing));
+            return CreatedAtRoute("GetSingleThing", new { id = newThing.Id }, newThing);
         }
 
         [HttpPatch("{id:int}")]
@@ -705,7 +711,7 @@ namespace Angular2WebpackVisualStudio.Controller
                 return NotFound();
             }
 
-            Thing thing = Mapper.Map<Thing>(existingEntity);
+            Thing thing = existingEntity;
             patchDoc.ApplyTo(thing, ModelState);
 
             if (!ModelState.IsValid)
@@ -713,9 +719,9 @@ namespace Angular2WebpackVisualStudio.Controller
                 return BadRequest(ModelState);
             }
 
-            Thing updated = _thingsRepository.Update(id, Mapper.Map<Thing>(thing));
+            Thing updatedThing = _thingsRepository.Update(id, thing);
 
-            return Ok(Mapper.Map<Thing>(updated));
+            return Ok(updatedThing);
         }
 
         [HttpGet]
@@ -729,7 +735,7 @@ namespace Angular2WebpackVisualStudio.Controller
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<Thing>(thing));
+            return Ok(thing);
         }
 
         [HttpDelete]
@@ -768,12 +774,13 @@ namespace Angular2WebpackVisualStudio.Controller
                 return BadRequest(ModelState);
             }
 
-            Thing update = _thingsRepository.Update(id, Mapper.Map<Thing>(thing));
+            Thing updatedThing = _thingsRepository.Update(id, thing);
 
-            return Ok(Mapper.Map<Thing>(update));
+            return Ok(updatedThing);
         }
     }
 }
+
 
 ```
 
@@ -855,8 +862,6 @@ https://github.com/petehunt/webpack-howto/blob/master/README.md
 http://www.sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/
 
 http://sass-lang.com/
-
-<a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner </a> from Mads Kristensen
 
 http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html
 
