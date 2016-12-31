@@ -57,5 +57,6 @@
     "url-loader": "^0.5.6",
     "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^1.16.2"
-  }
+  },
+  "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 }
