@@ -13,6 +13,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
 
+* **2016.12.31:** New Design, added better API with CRUD operations, added favicon, updated readme.md, better angular folder structure with modules. Happy new year :)
 * **2016.12.20:** Updated to Angular 2.4.0
 * **2016.11.16:** Updated to Angular 2.2.0
 * **2016.10.24:** Using AoT, tree shaking, updated to webpack 2, switched to @types: removed tsd & typings
