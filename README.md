@@ -13,19 +13,9 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
 
-* **2016.12.31:** New Design, added better API with CRUD operations, added favicon, updated readme.md, better angular folder structure with modules. Happy new year :)
-* **2016.12.20:** Updated to Angular 2.4.0
-* **2016.11.16:** Updated to Angular 2.2.0
-* **2016.10.24:** Using AoT, tree shaking, updated to webpack 2, switched to @types: removed tsd & typings
-* **2016.10.16:** Updated to Angular 2.1.0, typings, Webpack SASS build
-* **2016.10.01** Updated to Angular 2.0.1, typings
-* **2016.09.15** Updated to Angular2 release and ASP.NET Core 1.0.1
-* **2016.09.03** Updated to Angular2 rc.6
-* **2016.08.12** Updated to Angular2 rc.5 and split webpack file.
-* **2016.07.02** Updated to Angular2 rc.4
-* **2016.06.29** Updated to ASP.NET Core RTM
-* **2016.06.26** Updated to Angular 2 rc.3 and new routing
-* **2016.06.17** Updated to Angular 2 rc.2
+## Changelog
+
+[https://github.com/damienbod/Angular2WebpackVisualStudio/CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/CHANGELOG.md)
 
 ## Setting up the application
 
