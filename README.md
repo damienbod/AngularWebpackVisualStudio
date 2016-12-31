@@ -546,11 +546,15 @@ And the produced build file in the wwwroot folder. The script for the app has be
 
 ## Visual Studio Tools
 
-* npm custom Task Runner
+### npm custom Task Runner
+
+https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
+
+https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 
 // TODO
 
-* npm scripts
+### npm scripts
 
 // TODO
 
@@ -566,9 +570,6 @@ And the produced build file in the wwwroot folder. The script for the app has be
 ```
 
 
-https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
-
-https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 
 
 The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json
