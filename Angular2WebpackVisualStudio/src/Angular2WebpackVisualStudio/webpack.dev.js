@@ -45,8 +45,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
+                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
                 loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
+            },
+            {
+                test: /favicon.ico$/,
+                loader: "file-loader?name=/[name].[ext]",
             },
             {
                 test: /\.css$/,

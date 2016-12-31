@@ -41,8 +41,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
+                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
                 loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
+            },
+            {
+                test: /favicon.ico$/,
+                loader: "file-loader?name=/[name].[ext]",
             },
             {
                 test: /\.css$/,
@@ -89,12 +93,6 @@ module.exports = {
             chunksSortMode: helpers.packageSort(['vendor', 'app']),
             template: 'angular2App/index.html'
         }),
-
-        //new HtmlWebpackPlugin({
-        //    filename: 'index.html',
-        //    inject: 'body',
-        //    template: 'angular2App/index.html'
-        //}),
 
         new CopyWebpackPlugin([
             { from: './angular2App/images/*.*', to: "assets/", flatten: true }
