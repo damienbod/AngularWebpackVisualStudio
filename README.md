@@ -5,6 +5,10 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 ## Code
 [https://github.com/damienbod/Angular2WebpackVisualStudio](https://github.com/damienbod/Angular2WebpackVisualStudio)
 
+Visual Studio 2017 version
+
+https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
+
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
 <img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70">
