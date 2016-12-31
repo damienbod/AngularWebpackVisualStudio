@@ -28,11 +28,11 @@ This post is hosted on both [http://damienbod.com](http://damienbod.com) and [ht
 
 ## Setting up the application
 
-The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
+The ASP.NET Core application contains both the server side API services and also hosts the Angular client application. The source code for the Angular application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
 
 ## npm configuration
 
-The npm package.json configuration loads all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A "npm build" script and also a "npm buildProduction" are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scripts just call the same cmd as the Webpack task runner.
+The npm package.json configuration loads all the required packages for Angular and Webpack. The Webpack packages are all added to the devDependencies. A "npm build" script and also a "npm buildProduction" are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scripts just call the same cmd as the Webpack task runner.
 
 ```javascript
 {
@@ -495,7 +495,7 @@ The plugins you are providing in the end are necessary to configure how the file
 
 ## Angular index.html
 
-The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
+The index.html contains all the references required for the Angular client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
 Source index.html file in the angular2App/public folder:
 
@@ -507,7 +507,7 @@ Source index.html file in the angular2App/public folder:
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angular 2 Webpack Template</title>
+    <title>Angular Webpack Template</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
@@ -530,7 +530,7 @@ And the produced build file in the wwwroot folder. The script for the app has be
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angular 2 Webpack Template</title>
+    <title>Angular Webpack Template</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
@@ -737,7 +737,7 @@ The Webpack configuration could also build all of the scss and css files to a se
 
 If you are building both the client application and the server application in separate projects, you could also consider angular-cli of angular2-webpack for the client application.
 
-Debugging the Angular 2 in Visual Studio with breakpoints is not possible with this setup. The SPA app can be debugged in chrome. 
+Debugging the Angular in Visual Studio with breakpoints is not possible with this setup. The SPA app can be debugged in chrome. 
 
 
 
