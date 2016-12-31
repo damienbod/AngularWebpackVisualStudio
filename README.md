@@ -64,7 +64,6 @@ The npm package.json configuration loads all the required packages for Angular 2
         "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.1",
         "zone.js": "^0.7.4",
-
         "@angular/compiler-cli": "2.4.0",
         "@angular/platform-server": "~2.4.0",
         "bootstrap": "^3.3.7",
@@ -139,7 +138,7 @@ The tsconfig is configured to use commonjs as the module. The types are configur
 
 The Webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
 
-The Webpack config file was created using the excellent gihub repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
+The Webpack config file was created using the excellent github repository https://github.com/preboot/angular2-webpack. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.
 
 ### webpack.config.js
 
@@ -174,7 +173,9 @@ console.log("@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@");
 module.exports = {
 
     devtool: 'source-map',
-
+    performance: {
+        hints: false
+    },
     entry: {
         'app': './angular2App/main.ts' // JiT compilation
     },
@@ -206,13 +207,15 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
-                exclude: /node_modules/,
+                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
                 loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
             },
             {
+                test: /favicon.ico$/,
+                loader: "file-loader?name=/[name].[ext]",
+            },
+            {
                 test: /\.css$/,
-                exclude: /node_modules/,
                 loader: "style-loader!css-loader"
             },
             {
@@ -232,7 +235,6 @@ module.exports = {
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
-                './wwwroot/fonts',
                 './wwwroot/assets'
             ]
         ),
@@ -249,8 +251,6 @@ module.exports = {
     ]
 
 };
-
-
 ```
 
 ### webpack.prod.js
@@ -300,13 +300,15 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
-                exclude: /node_modules/,
+                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
                 loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
             },
             {
+                test: /favicon.ico$/,
+                loader: "file-loader?name=/[name].[ext]",
+            },
+            {
                 test: /\.css$/,
-                exclude: /node_modules/,
                 loader: "style-loader!css-loader"
             },
             {
@@ -340,9 +342,9 @@ module.exports = {
             sourceMap: false
         }),
         new webpack.optimize.CommonsChunkPlugin(
-        {
-            name: ['vendor']
-        }),
+            {
+                name: ['vendor']
+            }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -351,20 +353,11 @@ module.exports = {
             template: 'angular2App/index.html'
         }),
 
-        //new HtmlWebpackPlugin({
-        //    filename: 'index.html',
-        //    inject: 'body',
-        //    template: 'angular2App/index.html'
-        //}),
-
         new CopyWebpackPlugin([
             { from: './angular2App/images/*.*', to: "assets/", flatten: true }
         ])
     ]
 };
-
-
-
 ```
 
 
@@ -385,7 +378,7 @@ It can be run using npm run buildProduction which is configured in the package.j
 
 The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 
-```
+```javascript
 {
   "compilerOptions": {
     "target": "es5",
@@ -482,7 +475,7 @@ tells webpack where to put the files in the end. You can use like wildcards to u
 
 ```javascript
 module: {
-        loaders: [
+        rules: [
            //...loaders here
         ]
     },
@@ -500,12 +493,13 @@ The plugins you are providing in the end are necessary to configure how the file
 
 ```
 
-## Angular 2 index.html
+## Angular index.html
 
 The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
 Source index.html file in the angular2App/public folder:
-```javascript
+
+```
 <!doctype html>
 <html>
 <head>
@@ -524,13 +518,11 @@ Source index.html file in the angular2App/public folder:
     <my-app>Loading...</my-app>
 </body>
 </html>
-
-
 ```
 
 And the produced build file in the wwwroot folder. The script for the app has been added using Webpack. Hashes are used in a production build for cache busting.
 
-```javascript
+```
 <!doctype html>
 <html>
 <head>
@@ -554,7 +546,7 @@ And the produced build file in the wwwroot folder. The script for the app has be
 ```
 
 
-## Visual Studio tools
+## Visual Studio Tools
 
 <a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">Webpack task runner </a> from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production". 
 
@@ -602,7 +594,7 @@ And used in Webpack.
   new CleanWebpackPlugin(['./wwwroot/dist']),
 ```
 
-## Angular 2 component files
+## Angular component files
 
 
 Note: require cannot be used because AoT does not work with this.
@@ -685,7 +677,7 @@ The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD servi
     }
 ```
 
-### The Angular2 Http-Service
+### The Angular Http-Service
 
 Note that in a normal environment, you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
 
