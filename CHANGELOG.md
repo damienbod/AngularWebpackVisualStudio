@@ -5,6 +5,13 @@ For a fresh start, consider running these commands
 
 <a name="2016-12-31"></a>
 # 2016-12-31
+* Updated to Angular 2.4.1
+* Updated to webpack 2.2.0-rc.3
+* Added new npm scripts to replace webpack task runner
+
+
+<a name="2016-12-31"></a>
+# 2016-12-31
 * New Design
 * Better ASP.NET Core WebAPI with CRUD operations
 * Added Forms to talk to the WebAPI
