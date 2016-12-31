@@ -546,11 +546,35 @@ And the produced build file in the wwwroot folder. The script for the app has be
 
 ## Visual Studio Tools
 
+* npm custom Task Runner
 
-TODO
+// TODO
+
+* npm scripts
+
+// TODO
+
+```javascript
+"ngc": "ngc -p ./tsconfig-aot.json"
+"start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
+"webpack-dev": "set NODE_ENV=development&& webpack",
+"webpack-prod": "set NODE_ENV=production&& webpack",
+"build": "npm run webpack-dev",
+"build-production": "npm run ngc && npm run webpack-prod",
+"watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
+"watch-webpack-production": "npm run build-production --watch --color"
+```
+
+
+https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
+
+https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
+
+
+The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json
 
 ```
-/// <binding ProjectOpened='Run - Development' />
+"-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 ```
 
 ### Webpack SASS
@@ -859,7 +883,9 @@ https://github.com/jtangelder/sass-loader
 
 https://github.com/petehunt/webpack-howto/blob/master/README.md
 
-http://www.sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/
+https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
+
+https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 
 http://sass-lang.com/
 
