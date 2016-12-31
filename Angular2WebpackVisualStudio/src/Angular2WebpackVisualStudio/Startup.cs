@@ -72,12 +72,6 @@ namespace Angular2WebpackVisualStudio
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            AutoMapper.Mapper.Initialize(mapper =>
-                        {
-                            mapper.CreateMap<Thing, ThingDto>().ReverseMap();
-                        });
-
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

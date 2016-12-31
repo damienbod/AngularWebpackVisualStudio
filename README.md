@@ -669,13 +669,13 @@ namespace Angular2WebpackVisualStudio.Controller
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_thingsRepository.GetAll().Select(x => Mapper.Map<ThingDto>(x)));
+            return Ok(_thingsRepository.GetAll().Select(x => Mapper.Map<Thing>(x)));
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] ThingDto thingDto)
+        public IActionResult Add([FromBody] Thing thing)
         {
-            if (thingDto == null)
+            if (thing == null)
             {
                 return BadRequest();
             }
@@ -685,13 +685,13 @@ namespace Angular2WebpackVisualStudio.Controller
                 return BadRequest(ModelState);
             }
 
-            Thing newThing = _thingsRepository.Add(Mapper.Map<Thing>(thingDto));
+            Thing newThing = _thingsRepository.Add(Mapper.Map<Thing>(thing));
 
-            return CreatedAtRoute("GetSingleThing", new { id = newThing.Id }, Mapper.Map<ThingDto>(newThing));
+            return CreatedAtRoute("GetSingleThing", new { id = newThing.Id }, Mapper.Map<Thing>(newThing));
         }
 
         [HttpPatch("{id:int}")]
-        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<ThingDto> patchDoc)
+        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<Thing> patchDoc)
         {
             if (patchDoc == null)
             {
@@ -705,17 +705,17 @@ namespace Angular2WebpackVisualStudio.Controller
                 return NotFound();
             }
 
-            ThingDto thingDto = Mapper.Map<ThingDto>(existingEntity);
-            patchDoc.ApplyTo(thingDto, ModelState);
+            Thing thing = Mapper.Map<Thing>(existingEntity);
+            patchDoc.ApplyTo(thing, ModelState);
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Thing updated = _thingsRepository.Update(id, Mapper.Map<Thing>(thingDto));
+            Thing updated = _thingsRepository.Update(id, Mapper.Map<Thing>(thing));
 
-            return Ok(Mapper.Map<ThingDto>(updated));
+            return Ok(Mapper.Map<Thing>(updated));
         }
 
         [HttpGet]
@@ -729,7 +729,7 @@ namespace Angular2WebpackVisualStudio.Controller
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<ThingDto>(thing));
+            return Ok(Mapper.Map<Thing>(thing));
         }
 
         [HttpDelete]
@@ -749,7 +749,7 @@ namespace Angular2WebpackVisualStudio.Controller
 
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Update(int id, [FromBody]ThingDto thing)
+        public IActionResult Update(int id, [FromBody]Thing thing)
         {
             var thingToCheck = _thingsRepository.GetSingle(id);
 
@@ -770,7 +770,7 @@ namespace Angular2WebpackVisualStudio.Controller
 
             Thing update = _thingsRepository.Update(id, Mapper.Map<Thing>(thing));
 
-            return Ok(Mapper.Map<ThingDto>(update));
+            return Ok(Mapper.Map<Thing>(update));
         }
     }
 }
