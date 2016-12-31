@@ -600,29 +600,55 @@ And used in Webpack.
 Note: require cannot be used because AoT does not work with this.
 
 ```javascript
+import { Thing } from './../../../models/thing';
+import { TestDataService } from './../../../services/testDataService';
 import { Component, OnInit } from '@angular/core';
-import { TestDataService } from '../services/testDataService';
 
 @Component({
     selector: 'home-component',
-    templateUrl: 'home.component.html',
-    providers: [TestDataService]
+    templateUrl: 'home.component.html'
 })
 
 export class HomeComponent implements OnInit {
 
     public message: string;
-    public values: any[];
+    public things: Thing[] = [];
+    public thing: Thing = new Thing();
 
     constructor(private _dataService: TestDataService) {
-        this.message = "Hello from HomeComponent constructor";
+        this.message = "Things from the ASP.NET Core API";
     }
 
     ngOnInit() {
+        this.getAllThings();
+    }
+
+    public addThing() {
+        this._dataService
+            .Add(this.thing)
+            .subscribe(() => {
+                this.getAllThings();
+                this.thing = new Thing();
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    public deleteThing(thing: Thing) {
+        this._dataService
+            .Delete(thing.id)
+            .subscribe(() => {
+                this.getAllThings();
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    private getAllThings() {
         this._dataService
             .GetAll()
             .subscribe(
-            data => this.values = data,
+            data => this.things = data,
             error => console.log(error),
             () => console.log('Get all complete')
             );
@@ -637,44 +663,127 @@ The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD servi
 
 
 ```
- [Route("api/[controller]")]
-    public class ValuesController : Microsoft.AspNetCore.Mvc.Controller
+namespace Angular2WebpackVisualStudio.Controller
+{
+    [Route("api/[controller]")]
+    public class ThingsController : Microsoft.AspNetCore.Mvc.Controller
     {
-        // GET: api/values
+        private readonly IThingsRepository _thingsRepository;
+
+        public ThingsController(IThingsRepository thingsRepository)
+        {
+            _thingsRepository = thingsRepository;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
-            return new JsonResult(new string[] { "value1", "value2" });
+            return Ok(_thingsRepository.GetAll().Select(x => Mapper.Map<ThingDto>(x)));
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            return new JsonResult("value");
-        }
-
-        // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]string value)
+        public IActionResult Add([FromBody] ThingDto thingDto)
         {
-            return new CreatedAtRouteResult("anyroute", null);
+            if (thingDto == null)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Thing newThing = _thingsRepository.Add(Mapper.Map<Thing>(thingDto));
+
+            return CreatedAtRoute("GetSingleThing", new { id = newThing.Id }, Mapper.Map<ThingDto>(newThing));
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]string value)
+        [HttpPatch("{id:int}")]
+        public IActionResult PartiallyUpdate(int id, [FromBody] JsonPatchDocument<ThingDto> patchDoc)
         {
-            return new OkResult();
+            if (patchDoc == null)
+            {
+                return BadRequest();
+            }
+
+            Thing existingEntity = _thingsRepository.GetSingle(id);
+
+            if (existingEntity == null)
+            {
+                return NotFound();
+            }
+
+            ThingDto thingDto = Mapper.Map<ThingDto>(existingEntity);
+            patchDoc.ApplyTo(thingDto, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Thing updated = _thingsRepository.Update(id, Mapper.Map<Thing>(thingDto));
+
+            return Ok(Mapper.Map<ThingDto>(updated));
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [HttpGet]
+        [Route("{id:int}", Name = "GetSingleThing")]
+        public IActionResult Single(int id)
         {
-            return new NoContentResult();
+            Thing thing = _thingsRepository.GetSingle(id);
+
+            if (thing == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(Mapper.Map<ThingDto>(thing));
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IActionResult Remove(int id)
+        {
+            Thing thing = _thingsRepository.GetSingle(id);
+
+            if (thing == null)
+            {
+                return NotFound();
+            }
+
+            _thingsRepository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public IActionResult Update(int id, [FromBody]ThingDto thing)
+        {
+            var thingToCheck = _thingsRepository.GetSingle(id);
+
+            if (thingToCheck == null)
+            {
+                return NotFound();
+            }
+
+            if (id != thing.Id)
+            {
+                return BadRequest("Ids do not match");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Thing update = _thingsRepository.Update(id, Mapper.Map<Thing>(thing));
+
+            return Ok(Mapper.Map<ThingDto>(update));
         }
     }
+}
+
 ```
 
 ### The Angular Http-Service
@@ -683,6 +792,7 @@ Note that in a normal environment, you should always return the typed classes an
 
 
 ```
+import { Thing } from './../models/thing';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -690,41 +800,41 @@ import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../app.constants';
 
 @Injectable()
-export class DataService {
+export class TestDataService {
 
     private actionUrl: string;
     private headers: Headers;
 
     constructor(private _http: Http, private _configuration: Configuration) {
 
-        this.actionUrl = _configuration.Server + 'api/values/';
+        this.actionUrl = _configuration.Server + 'api/things/';
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
 
-    public GetAll = (): Observable<any> => {
-        return this._http.get(this.actionUrl).map((response: Response) => <any>response.json());
+    public GetAll = (): Observable<Thing[]> => {
+        return this._http.get(this.actionUrl).map((response: Response) => <Thing[]>response.json());
     }
 
-    public GetSingle = (id: number): Observable<Response> => {
-        return this._http.get(this.actionUrl + id).map(res => res.json());
+    public GetSingle = (id: number): Observable<Thing> => {
+        return this._http.get(this.actionUrl + id).map(res => <Thing>res.json());
     }
 
-    public Add = (itemName: string): Observable<Response> => {
-        var toAdd = JSON.stringify({ ItemName: itemName });
+    public Add = (thingToAdd: Thing): Observable<Thing> => {
+        var toAdd = JSON.stringify({ name: thingToAdd.name });
 
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
+        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Thing>res.json());
     }
 
-    public Update = (id: number, itemToUpdate: any): Observable<Response> => {
+    public Update = (id: number, itemToUpdate: any): Observable<Thing> => {
         return this._http
             .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .map(res => res.json());
+            .map(res => <Thing>res.json());
     }
 
-    public Delete = (id: number): Observable<Response> => {
+    public Delete = (id: number): Observable<any> => {
         return this._http.delete(this.actionUrl + id);
     }
 }
