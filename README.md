@@ -37,7 +37,7 @@ The npm package.json configuration loads all the required packages for Angular a
     "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development&& webpack",
     "webpack-prod": "set NODE_ENV=production&& webpack",
-    "build": "npm run webpack-dev",
+    "build-dev": "npm run webpack-dev",
     "build-production": "npm run ngc && npm run webpack-prod",
     "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color"
