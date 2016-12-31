@@ -1,5 +1,5 @@
-import { Thing } from './../../models/thing';
-import { TestDataService } from './../../services/testDataService';
+import { Thing } from './../../../models/thing';
+import { TestDataService } from './../../../services/testDataService';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

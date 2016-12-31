@@ -1,8 +1,8 @@
+import { Configuration } from './../../app.constants';
+import { TestDataService } from './../../services/testDataService';
 import { CustomFooterComponent } from './components/customfooter/customfooter.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
-import { Configuration } from './../app.constants';
-import { TestDataService } from './../services/testDataService';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
         NavigationComponent,
         CustomFooterComponent
     ]
-    
+
 })
 
 export class SharedModule {
