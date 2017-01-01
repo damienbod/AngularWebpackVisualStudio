@@ -12,7 +12,8 @@
     "build-dev": "npm run webpack-dev",
     "build-production": "npm run ngc && npm run webpack-production",
     "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
-    "watch-webpack-production": "npm run build-production --watch --color"
+    "watch-webpack-production": "npm run build-production --watch --color",
+    "publish-for-iis": "npm run build-production && dotnet publish -c Release" 
   },
   "dependencies": {
     "@angular/common": "~2.4.1",
