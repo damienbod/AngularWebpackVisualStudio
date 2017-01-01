@@ -588,7 +588,7 @@ The watch-webpack-dev npm script can be automatically be started in Visual Studi
 "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 ```
 
-<b>Note</b> Webpac task runner cannot be used to build the Angular webpack application as it uses the wrong options and cannot be used to do a production build due to the ngc.
+<b>Note</b> Webpack task runner cannot be used to build the Angular webpack application as it uses the wrong options and cannot be used to do a production build due to the ngc.
 
 ### Webpack SASS
 
