@@ -377,7 +377,7 @@ See also (Using ngc) http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-pr
 It can be run using npm run build-production which is configured in the package.json.
 
 ```
-"build-production": "npm run ngc && npm run webpack-prod"
+"build-production": "npm run ngc && npm run webpack-prodroduction"
 ```
 
 
@@ -555,15 +555,21 @@ And the produced build file in the wwwroot folder. The script for the app has be
 
 ### npm custom Task Runner
 
-https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
+The NPM Task Runner can be used to build  the client SPA application from inside Visual Studio. This task runner can be downloaded from:
 
 https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 
-// TODO
+The task runners need to be configured correctly. 
+Go to Tools –> Options –> Projects and Solutions –> External Web Tools.
+
+Check that are options are checked. See:
+
+https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/
+
 
 ### npm scripts
 
-// TODO
+The npm scripts are used to build, watch the client application as required. The scripts can be run from the command line or the npm task runner.
 
 ```javascript
 "ngc": "ngc -p ./tsconfig-aot.json",
@@ -576,14 +582,13 @@ https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 "watch-webpack-production": "npm run build-production --watch --color"
 ```
 
-
-
-
 The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json
 
 ```
 "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 ```
+
+<b>Note</b> Webpac task runner cannot be used to build the Angular webpack application as it uses the wrong options and cannot be used to do a production build due to the ngc.
 
 ### Webpack SASS
 
