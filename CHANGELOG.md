@@ -4,7 +4,7 @@ For a fresh start, consider running these commands
 * `npm install`
 
 <a name="2016-12-31"></a>
-# 2016-12-31
+# 2017-01-01
 * Updated to Angular 2.4.1
 * Updated to webpack 2.2.0-rc.3
 * Added new npm scripts to replace webpack task runner
