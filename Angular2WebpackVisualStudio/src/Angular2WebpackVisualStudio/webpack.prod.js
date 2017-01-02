@@ -7,19 +7,20 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var helpers = require('./webpack.helpers');
 
-console.log("@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@");
+console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 
 module.exports = {
 
     entry: {
         'vendor': './angular2App/vendor.ts',
-        'app': './angular2App/main-aot.ts' // AoT compilation
+        'app': './angular2App/main-aot.ts', // AoT compilation
+        'polyfills': './angular2App/polyfills.ts'
     },
 
     output: {
-        path: "./wwwroot/",
+        path: './wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
-        publicPath: "/"
+        publicPath: '/'
     },
 
     resolve: {
@@ -42,20 +43,20 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
+                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: "file-loader?name=/[name].[ext]",
+                loader: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
@@ -84,18 +85,17 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin(
             {
-                name: ['vendor']
+                name: ['app','vendor', 'polyfills']
             }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            chunksSortMode: helpers.packageSort(['vendor', 'app']),
             template: 'angular2App/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: "assets/", flatten: true }
+            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 };

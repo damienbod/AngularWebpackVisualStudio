@@ -7,13 +7,13 @@
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
     "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
-    "webpack-dev": "set NODE_ENV=development&& webpack",
-    "webpack-production": "set NODE_ENV=production&& webpack",
+    "webpack-dev": "set NODE_ENV=development && webpack",
+    "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
     "build-production": "npm run ngc && npm run webpack-production",
-    "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
+    "watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color",
-    "publish-for-iis": "npm run build-production && dotnet publish -c Release" 
+    "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
     "@angular/common": "~2.4.1",
@@ -54,10 +54,16 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",
+    "tslint": "^4.2.0",
+    "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
     "url-loader": "^0.5.6",
     "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^1.16.2"
   },
-  "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
+  "-vs-binding": {
+    "ProjectOpened": [
+      "watch-webpack-dev"
+    ]
+  }
 }
