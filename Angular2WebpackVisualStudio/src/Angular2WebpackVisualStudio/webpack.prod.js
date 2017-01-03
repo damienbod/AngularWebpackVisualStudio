@@ -13,8 +13,7 @@ module.exports = {
 
     entry: {
         'vendor': './angular2App/vendor.ts',
-        'app': './angular2App/main-aot.ts', // AoT compilation
-        'polyfills': './angular2App/polyfills.ts'
+        'app': './angular2App/main-aot.ts' // AoT compilation
     },
 
     output: {
@@ -85,7 +84,7 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin(
             {
-                name: ['app','vendor', 'polyfills']
+                name: ['vendor']
             }),
 
         new HtmlWebpackPlugin({
