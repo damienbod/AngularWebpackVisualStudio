@@ -10,6 +10,6 @@ export class AboutComponent {
     public message: string;
 
     constructor() {
-        this.message = "Hello from AboutComponent constructor";
+        this.message = 'Hello from AboutComponent constructor';
     }
 }

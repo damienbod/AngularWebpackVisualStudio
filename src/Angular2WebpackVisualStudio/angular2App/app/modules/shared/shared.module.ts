@@ -22,7 +22,6 @@ import { CommonModule } from '@angular/common';
         NavigationComponent,
         CustomFooterComponent
     ]
-
 })
 
 export class SharedModule {
