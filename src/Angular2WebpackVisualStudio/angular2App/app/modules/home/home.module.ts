@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
         HttpModule,
         HomeRoutes
     ],
-    
+
     declarations: [
         HomeComponent
     ],
