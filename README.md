@@ -43,11 +43,12 @@ The npm package.json configuration loads all the required packages for Angular a
     "ngc": "ngc -p ./tsconfig-aot.json",
     "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development&& webpack",
-    "webpack-prod": "set NODE_ENV=production&& webpack",
+    "webpack-production": "set NODE_ENV=production&& webpack",
     "build-dev": "npm run webpack-dev",
-    "build-production": "npm run ngc && npm run webpack-prod",
+    "build-production": "npm run ngc && npm run webpack-production",
     "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
-    "watch-webpack-production": "npm run build-production --watch --color"
+    "watch-webpack-production": "npm run build-production --watch --color",
+    "publish-for-iis": "npm run build-production && dotnet publish -c Release" 
   },
   "dependencies": {
     "@angular/common": "~2.4.1",
@@ -579,7 +580,8 @@ The npm scripts are used to build, watch the client application as required. The
 "build-dev": "npm run webpack-dev",
 "build-production": "npm run ngc && npm run webpack-production",
 "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
-"watch-webpack-production": "npm run build-production --watch --color"
+"watch-webpack-production": "npm run build-production --watch --color",
+"publish-for-iis": "npm run build-production && dotnet publish -c Release" 
 ```
 
 The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json
