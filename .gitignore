@@ -316,3 +316,16 @@ aot/
 **/angular2App/*.js
 **/angular2App/*.map
 Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/wwwroot/
+src/Angular2WebpackVisualStudio/wwwroot
+src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-448c34.woff2
+src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-898896.svg
+src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-e18bbf.ttf
+src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-f4769f.eot
+src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-fa2772.woff
+src/Angular2WebpackVisualStudio/wwwroot/assets/RobertoSimonetti.jpg
+src/Angular2WebpackVisualStudio/wwwroot/dist/app.bundle.js
+src/Angular2WebpackVisualStudio/wwwroot/dist/app.bundle.js.map
+src/Angular2WebpackVisualStudio/wwwroot/dist/polyfills.bundle.js
+src/Angular2WebpackVisualStudio/wwwroot/dist/polyfills.bundle.js.map
+src/Angular2WebpackVisualStudio/wwwroot/favicon.ico
+src/Angular2WebpackVisualStudio/wwwroot/index.html
