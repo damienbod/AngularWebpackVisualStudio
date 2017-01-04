@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     public thing: Thing = new Thing();
 
     constructor(private _dataService: ThingService) {
-        this.message = "Things from the ASP.NET Core API";
+        this.message = 'Things from the ASP.NET Core API';
     }
 
     ngOnInit() {
