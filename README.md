@@ -694,6 +694,10 @@ export class HomeComponent implements OnInit {
 
 ```
 
+## tslint file
+
+https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/src/Angular2WebpackVisualStudio/tslint.json
+
 ## The ASP.NET Core API
 
 The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD service.
