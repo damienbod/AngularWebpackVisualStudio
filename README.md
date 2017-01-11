@@ -18,7 +18,7 @@ https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
 <img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
-This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
+This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://blog.offering.solutions/](http://blog.offering.solutions/)
 
 ## Changelog
 
