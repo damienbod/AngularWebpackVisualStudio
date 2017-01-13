@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/node": "7.0.0",
     "angular2-template-loader": "^0.6.0",
-    "angular2-router-loader": "^0.3.4",
+    "angular-router-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.4",
     "clean-webpack-plugin": "^0.1.15",
     "concurrently": "^3.1.0",
