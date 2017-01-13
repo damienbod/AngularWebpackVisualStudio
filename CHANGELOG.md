@@ -3,11 +3,11 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
-<a name="2016-12-31"></a>
+<a name="2017-01-04"></a>
 # 2017-01-04
 * Added tslint
 
-<a name="2016-12-31"></a>
+<a name="2017-01-01"></a>
 # 2017-01-01
 * Updated to Angular 2.4.1
 * Updated to webpack 2.2.0-rc.3

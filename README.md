@@ -18,7 +18,7 @@ https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
 <img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
-This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://offering.solutions/](http://offering.solutions/)
+This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://blog.offering.solutions/](http://blog.offering.solutions/)
 
 ## Changelog
 
@@ -42,13 +42,13 @@ The npm package.json configuration loads all the required packages for Angular a
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
     "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
-    "webpack-dev": "set NODE_ENV=development&& webpack",
-    "webpack-production": "set NODE_ENV=production&& webpack",
+    "webpack-dev": "set NODE_ENV=development && webpack",
+    "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
     "build-production": "npm run ngc && npm run webpack-production",
-    "watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
+    "watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color",
-    "publish-for-iis": "npm run build-production && dotnet publish -c Release" 
+    "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
     "@angular/common": "~2.4.1",
@@ -89,12 +89,18 @@ The npm package.json configuration loads all the required packages for Angular a
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.1",
+    "tslint": "^4.2.0",
+    "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
     "url-loader": "^0.5.6",
     "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^1.16.2"
   },
-  "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
+  "-vs-binding": {
+    "ProjectOpened": [
+      "watch-webpack-dev"
+    ]
+  }
 }
 ```
 
@@ -169,8 +175,9 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var helpers = require('./webpack.helpers');
 
-console.log("@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@");
+console.log('@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@');
 
 module.exports = {
 
@@ -179,13 +186,13 @@ module.exports = {
         hints: false
     },
     entry: {
-        'app': './angular2App/main.ts' // JiT compilation
+        'app': './angular2App/main.ts'
     },
 
     output: {
-        path: "./wwwroot/",
+        path: './wwwroot/',
         filename: 'dist/[name].bundle.js',
-        publicPath: "/"
+        publicPath: '/'
     },
 
     resolve: {
@@ -205,25 +212,26 @@ module.exports = {
                 loaders: [
                     'awesome-typescript-loader',
                     'angular2-template-loader',
-                    'source-map-loader'
+                    'source-map-loader',
+                    'tslint-loader'
                 ]
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
+                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: "file-loader?name=/[name].[ext]",
+                loader: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
@@ -232,8 +240,9 @@ module.exports = {
         ],
         exprContextCritical: false
     },
-
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills']}),
+
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
@@ -248,13 +257,11 @@ module.exports = {
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: "assets/", flatten: true }
+            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 
 };
-
-
 ```
 
 ### webpack.prod.js
@@ -686,6 +693,10 @@ export class HomeComponent implements OnInit {
 }
 
 ```
+
+## tslint file
+
+https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/src/Angular2WebpackVisualStudio/tslint.json
 
 ## The ASP.NET Core API
 
