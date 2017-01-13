@@ -6,6 +6,7 @@ export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
         loadChildren: './modules/about/about.module#AboutModule',
+        //loadChildren: './modules/about/about.module.ngfactory#AboutModuleNgFactory',
         path: 'about'
     }
 ];

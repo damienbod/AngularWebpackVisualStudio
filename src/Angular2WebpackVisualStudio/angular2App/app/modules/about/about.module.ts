@@ -14,9 +14,6 @@ import { CommonModule } from '@angular/common';
         AboutComponent
     ],
 
-    exports: [
-        AboutComponent
-    ]
 })
 
 export class AboutModule { }
