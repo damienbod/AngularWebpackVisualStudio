@@ -1,4 +1,7 @@
-This article shows how Angular 2 lazy loading can be supported using Webpack 2 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
+
+# Angular 2 Lazy Loading with Webpack 2
+
+This documentation shows how Angular 2 lazy loading can be supported using Webpack 2 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
