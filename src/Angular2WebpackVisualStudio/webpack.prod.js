@@ -39,7 +39,7 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'angular-router-loader?aot=true&genDir=aot',
+                    'angular-router-loader?aot=true&genDir=aot/angular2App',
                     'angular-router-loader',
                 ]
             },
