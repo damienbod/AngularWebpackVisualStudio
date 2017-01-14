@@ -705,6 +705,11 @@ export class HomeComponent implements OnInit {
 
 ```
 
+## Lazy Loading
+
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
+
+
 ## tslint file
 
 https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/src/Angular2WebpackVisualStudio/tslint.json
