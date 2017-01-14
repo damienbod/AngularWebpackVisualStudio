@@ -5,7 +5,7 @@ This documentation shows how Angular 2 lazy loading can be supported using Webpa
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
-## Code:
+## Code
 
 Visual Studio 2015 version:
 
