@@ -1,7 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 
-const appRoutes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+export const routes: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    {
+        path: 'about', loadChildren: './modules/about/about.module#AboutModule',
+    }
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const AppRoutes = RouterModule.forRoot(routes);

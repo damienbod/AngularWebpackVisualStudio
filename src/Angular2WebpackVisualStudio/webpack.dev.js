@@ -22,6 +22,7 @@ module.exports = {
     output: {
         path: './wwwroot/',
         filename: 'dist/[name].bundle.js',
+        chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
     },
 
@@ -41,7 +42,8 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'angular2-template-loader',
+                    'angular-router-loader',
+                    'angular2-template-loader',        
                     'source-map-loader',
                     'tslint-loader'
                 ]
@@ -71,7 +73,7 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills']}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills']}),
 
         new CleanWebpackPlugin(
             [
