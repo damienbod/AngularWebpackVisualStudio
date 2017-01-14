@@ -3,6 +3,12 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
+<a name="2017-01-14"></a>
+# 2017-01-14
+* Support and documentation for Angular 2 lazy loading
+* Updated to Angular 2.4.3
+* Updated npm packages for build
+
 <a name="2017-01-04"></a>
 # 2017-01-04
 * Added tslint
