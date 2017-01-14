@@ -1,28 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 
-declare var System: any;
-
-export const appRoutes: Routes = [
+export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
-        loadChildren: './modules/about/about.module#AboutModule',
-        path: 'about'
+        path: 'about', loadChildren: './modules/about/about.module#AboutModule',
     }
 ];
 
-
-export const routing = RouterModule.forRoot(appRoutes);
-
-//loadChildren: './modules/about/about.module.ngfactory#AboutModuleNgFactory',
-		
-////loadChildren: () => System.import('./modules/about/about.module').then(function (module: any) {
-////    return module['AboutModule'];
-////})
-
-////loadChildren: () => new Promise(function (resolve) {
-////    (require as any).ensure([], function (require: any) {
-////        resolve(require('./modules/about/about.module.ngfactory')['AboutModuleNgFactory']);
-////    });
-////})   
-
-////loadChildren: './modules/about/about.module.ngfactory#AboutModuleNgFactory',
+export const AppRoutes = RouterModule.forRoot(routes);

@@ -20,6 +20,7 @@ module.exports = {
     output: {
         path: './wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
+        chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: '/'
     },
 
@@ -39,8 +40,7 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'angular-router-loader?aot=true&genDir=aot/angular2App',
-                    'angular-router-loader',
+                    'angular-router-loader?aot=true&genDir=aot/'
                 ]
             },
             {

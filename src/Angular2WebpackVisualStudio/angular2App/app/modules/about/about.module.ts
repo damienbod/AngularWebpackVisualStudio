@@ -1,8 +1,8 @@
-import { AboutRoutes } from './about.routes';
-import { AboutComponent } from './components/about.component';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { AboutRoutes } from './about.routes';
+import { AboutComponent } from './components/about.component';
 
 @NgModule({
     imports: [
