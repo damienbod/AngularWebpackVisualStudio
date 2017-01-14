@@ -34,6 +34,7 @@ The npm package.json configuration loads all the required packages for Angular a
 
 ```javascript
 {
+  "name": "angular2-webpack-visualstudio",
   "version": "1.0.0",
   "description": "",
   "main": "wwwroot/index.html",
@@ -51,49 +52,50 @@ The npm package.json configuration loads all the required packages for Angular a
     "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
-    "@angular/common": "~2.4.1",
-    "@angular/compiler": "~2.4.1",
-    "@angular/core": "~2.4.1",
-    "@angular/forms": "~2.4.1",
-    "@angular/http": "~2.4.1",
-    "@angular/platform-browser": "~2.4.1",
-    "@angular/platform-browser-dynamic": "~2.4.1",
+    "@angular/common": "~2.4.3",
+    "@angular/compiler": "~2.4.3",
+    "@angular/core": "~2.4.3",
+    "@angular/forms": "~2.4.3",
+    "@angular/http": "~2.4.3",
+    "@angular/platform-browser": "~2.4.3",
+    "@angular/platform-browser-dynamic": "~2.4.3",
     "@angular/router": "~3.4.1",
-    "@angular/upgrade": "~2.4.1",
-    "angular-in-memory-web-api": "~0.2.3",
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.1",
-    "zone.js": "^0.7.4",
-    "@angular/compiler-cli": "2.4.1",
-    "@angular/platform-server": "~2.4.1",
+    "@angular/upgrade": "~2.4.3",
+    "angular-in-memory-web-api": "0.2.4",
+    "core-js": "2.4.1",
+    "reflect-metadata": "0.1.9",
+    "rxjs": "5.0.3",
+    "zone.js": "0.7.5",
+    "@angular/compiler-cli": "~2.4.3",
+    "@angular/platform-server": "~2.4.3",
     "bootstrap": "^3.3.7",
-    "ie-shim": "^0.1.0"
+    "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-    "@types/node": "^6.0.52",
-    "angular2-template-loader": "^0.5.0",
+    "@types/node": "7.0.0",
+    "angular2-template-loader": "^0.6.0",
+    "angular-router-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.4",
-    "clean-webpack-plugin": "^0.1.9",
+    "clean-webpack-plugin": "^0.1.15",
     "concurrently": "^3.1.0",
-    "copy-webpack-plugin": "^2.1.3",
-    "css-loader": "^0.23.0",
-    "file-loader": "^0.8.4",
-    "html-webpack-plugin": "^2.8.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.26.0",
     "jquery": "^2.2.0",
-    "json-loader": "^0.5.3",
-    "node-sass": "^3.10.1",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.3.0",
     "raw-loader": "^0.5.1",
-    "rimraf": "^2.5.2",
-    "sass-loader": "^4.0.2",
-    "source-map-loader": "^0.1.5",
-    "style-loader": "^0.13.0",
-    "ts-helpers": "^1.1.1",
-    "tslint": "^4.2.0",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "source-map-loader": "^0.1.6",
+    "style-loader": "^0.13.1",
+    "ts-helpers": "^1.1.2",
+    "tslint": "^4.3.1",
     "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
-    "url-loader": "^0.5.6",
-    "webpack": "^2.2.0-rc.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.0-rc.4",
     "webpack-dev-server": "^1.16.2"
   },
   "-vs-binding": {
@@ -102,6 +104,7 @@ The npm package.json configuration loads all the required packages for Angular a
     ]
   }
 }
+
 ```
 
 
@@ -131,6 +134,7 @@ The tsconfig is configured to use commonjs as the module. The types are configur
   },
   "files": [
     "angular2App/app/app.module.ts",
+    "angular2App/app/modules/about/about.module.ts",
     "angular2App/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
@@ -192,6 +196,7 @@ module.exports = {
     output: {
         path: './wwwroot/',
         filename: 'dist/[name].bundle.js',
+        chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
     },
 
@@ -211,7 +216,8 @@ module.exports = {
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'angular2-template-loader',
+                    'angular-router-loader',
+                    'angular2-template-loader',        
                     'source-map-loader',
                     'tslint-loader'
                 ]
@@ -241,7 +247,7 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills']}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills']}),
 
         new CleanWebpackPlugin(
             [
@@ -277,19 +283,21 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var helpers = require('./webpack.helpers');
 
-console.log("@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@");
+console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 
 module.exports = {
 
     entry: {
         'vendor': './angular2App/vendor.ts',
+        'polyfills': './angular2App/polyfills.ts',
         'app': './angular2App/main-aot.ts' // AoT compilation
     },
 
     output: {
-        path: "./wwwroot/",
+        path: './wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
-        publicPath: "/"
+        chunkFilename: 'dist/[id].[hash].chunk.js',
+        publicPath: '/'
     },
 
     resolve: {
@@ -307,25 +315,26 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loaders: [
-                    'awesome-typescript-loader'
+                    'awesome-typescript-loader',
+                    'angular-router-loader?aot=true&genDir=aot/'
                 ]
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: "file-loader?name=assets/[name]-[hash:6].[ext]",
+                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: "file-loader?name=/[name].[ext]",
+                loader: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.scss$/,
                 exclude: /node_modules/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.html$/,
@@ -342,7 +351,7 @@ module.exports = {
                 './wwwroot/assets'
             ]
         ),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -354,18 +363,17 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin(
             {
-                name: ['vendor']
+                name: ['vendor', 'polyfills']
             }),
 
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            chunksSortMode: helpers.packageSort(['vendor', 'app']),
             template: 'angular2App/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: "assets/", flatten: true }
+            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 };
@@ -411,6 +419,7 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
   },
   "files": [
     "angular2App/app/app.module.ts",
+    "angular2App/app/modules/about/about.module.ts",
     "angular2App/main-aot.ts"
   ],
   "angularCompilerOptions": {
@@ -467,6 +476,7 @@ In this project configuration, if a production node parameter is set, different 
 output: {
         path: "./wwwroot/",
         filename: 'dist/[name].bundle.js',
+		chunkFilename: 'dist/[id].chunk.js',
         publicPath: "/"
     },
 ```
@@ -477,6 +487,7 @@ output for production adds a hash:
 output: {
         path: "./wwwroot/",
         filename: 'dist/[name].[hash].bundle.js',
+		chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: "/"
     },
 ```
