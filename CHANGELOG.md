@@ -7,6 +7,7 @@ For a fresh start, consider running these commands
 # 2017-01-14
 * Support and documentation for Angular 2 lazy loading
 * Updated to Angular 2.4.3
+* Updated to webpack 2.2.0-rc.4
 * Updated npm packages for build
 
 <a name="2017-01-04"></a>
