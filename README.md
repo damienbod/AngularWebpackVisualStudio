@@ -95,7 +95,7 @@ The npm package.json configuration loads all the required packages for Angular a
     "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0-rc.4",
+    "webpack": "^2.2.0",
     "webpack-dev-server": "^1.16.2"
   },
   "-vs-binding": {
