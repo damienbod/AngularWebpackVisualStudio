@@ -3,6 +3,11 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
+
+<a name="2017-18"></a>
+# 2017-01-18
+* Updated to Webpack 2.2.0
+
 <a name="2017-01-14"></a>
 # 2017-01-14
 * Support and documentation for Angular 2 lazy loading
