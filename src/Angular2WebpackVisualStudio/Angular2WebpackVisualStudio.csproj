@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
@@ -6,13 +6,11 @@
     <OutputType>Exe</OutputType>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
-  
   <ItemGroup>
     <Content Include="wwwroot\**\*;appsettings.json;web.config">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.App" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.0" />
@@ -34,6 +32,20 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild1-final" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </Content>
+    <Content Update="docker-compose.override.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </Content>
+    <Content Update="docker-compose.vs.debug.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </Content>
+    <Content Update="docker-compose.vs.release.yml">
+      <DependentUpon>docker-compose.yml</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>

@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  angular2webpackvisualstudio:
+    image: angular2webpackvisualstudio
+    build:
+      context: .
+      dockerfile: Dockerfile
