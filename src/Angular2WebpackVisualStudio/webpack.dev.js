@@ -9,6 +9,7 @@ var helpers = require('./webpack.helpers');
 
 console.log('@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@');
 
+module.hot
 module.exports = {
 
     devtool: 'source-map',
@@ -20,7 +21,7 @@ module.exports = {
     },
 
     output: {
-        path: '/wwwroot/',
+        path: __dirname +  '/wwwroot/',
         filename: 'dist/[name].bundle.js',
         chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
@@ -31,16 +32,12 @@ module.exports = {
     },
 	
     devServer: {
-     historyApiFallback: true,
-     watchOptions: {
-        aggregateTimeout: 300,
-      poll: 1000
-     }
-    },
-    devServer: {
         historyApiFallback: true,
-        stats: 'minimal',
-        contentBase: path.join(__dirname, 'wwwroot/')
+        contentBase: path.join(__dirname, '/wwwroot/'),
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        }
     },
 
     module: {
