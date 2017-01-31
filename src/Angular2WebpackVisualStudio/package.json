@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
-    "start": "concurrently \"webpack-dev-server --inline --hot --port 8080\" \"dotnet run\" ",
+    "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development && webpack",
     "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
@@ -60,8 +60,7 @@
     "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0",
-    "webpack-dev-middleware": "^1.9.0",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "2.2.1"
   },
   "-vs-binding": {
