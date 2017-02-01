@@ -1,6 +1,6 @@
 # Hot Module Replacement
 
-This article shows how HMR, or <a href="https://webpack.js.org/concepts/hot-module-replacement/">Hot Module Replacement </a>can be used together with Angular 2 and Webpack.
+This article shows how HMR, or <a href="https://webpack.js.org/concepts/hot-module-replacement/">Hot Module Replacement </a>can be used together with Angular and Webpack.
 
 ## package.json npm file
 
