@@ -442,7 +442,7 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 
 ## Hot Module Replacement
 
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
+[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
 
 
 Lets dive into the webpack.dev.js a bit:
