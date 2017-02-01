@@ -436,6 +436,14 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 }
 ```
 
+## Lazy Loading
+
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
+
+## Hot Module Replacement
+
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
+
 
 Lets dive into the webpack.dev.js a bit:
 
@@ -709,11 +717,6 @@ export class HomeComponent implements OnInit {
 }
 
 ```
-
-## Lazy Loading
-
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-
 
 ## tslint file
 
