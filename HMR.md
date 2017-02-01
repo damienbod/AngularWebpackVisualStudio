@@ -49,7 +49,7 @@ output: {
 
 ## Running the application
 
-Build the application using the webpack dev build. This can be done in the commnad line. Before building, you need to install all the npm packages using npm install.
+Build the application using the webpack dev build. This can be done in the command line. Before building, you need to install all the npm packages using npm install.
 ```javascript
 $ npm run build-dev
 ```
