@@ -3,8 +3,11 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
+<a name="2017-02.01"></a>
+# 2017-02.01
+* Added support for Hot Module Replacement
 
-<a name="2017-18"></a>
+<a name="2017-01-18"></a>
 # 2017-01-18
 * Updated to Webpack 2.2.0
 

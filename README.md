@@ -42,7 +42,7 @@ The npm package.json configuration loads all the required packages for Angular a
   "license": "ISC",
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
-    "start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
+    "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development && webpack",
     "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
@@ -95,8 +95,8 @@ The npm package.json configuration loads all the required packages for Angular a
     "tslint-loader": "^3.3.0",
     "typescript": "2.0.3",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "2.2.1"
   },
   "-vs-binding": {
     "ProjectOpened": [
@@ -194,7 +194,7 @@ module.exports = {
     },
 
     output: {
-        path: './wwwroot/',
+        path: __dirname +  '/wwwroot/',
         filename: 'dist/[name].bundle.js',
         chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
@@ -203,11 +203,14 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
-
+	
     devServer: {
         historyApiFallback: true,
-        stats: 'minimal',
-        outputPath: path.join(__dirname, 'wwwroot/')
+        contentBase: path.join(__dirname, '/wwwroot/'),
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        }
     },
 
     module: {
@@ -268,6 +271,8 @@ module.exports = {
     ]
 
 };
+
+
 ```
 
 ### webpack.prod.js
@@ -592,7 +597,7 @@ The npm scripts are used to build, watch the client application as required. The
 
 ```javascript
 "ngc": "ngc -p ./tsconfig-aot.json",
-"start": "concurrently \"webpack-dev-server --inline --progress --port 8080\" \"dotnet run\" ",
+"start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
 "webpack-dev": "set NODE_ENV=development&& webpack",
 "webpack-production": "set NODE_ENV=production&& webpack",
 "build-dev": "npm run webpack-dev",
