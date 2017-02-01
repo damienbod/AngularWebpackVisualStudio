@@ -9,7 +9,6 @@ var helpers = require('./webpack.helpers');
 
 console.log('@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@');
 
-module.hot
 module.exports = {
 
     devtool: 'source-map',
