@@ -436,7 +436,15 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 }
 ```
 
+## Lazy Loading
 
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
+
+## Hot Module Replacement
+
+[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
+
+## webpack.dev.js 
 Lets dive into the webpack.dev.js a bit:
 
 Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
@@ -709,11 +717,6 @@ export class HomeComponent implements OnInit {
 }
 
 ```
-
-## Lazy Loading
-
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-
 
 ## tslint file
 
