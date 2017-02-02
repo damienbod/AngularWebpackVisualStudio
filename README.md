@@ -1,4 +1,4 @@
-This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>could be used together with <a href="https://www.visualstudio.com/">Visual Studio</a> ASP.NET Core and <a href="https://angular.io/docs/ts/latest/quickstart.html">Angular2</a>. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.
+This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>could be used together with <a href="https://www.visualstudio.com/">Visual Studio</a> ASP.NET Core and <a href="https://angular.io/docs/ts/latest/quickstart.html">Angular</a>. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
@@ -436,7 +436,15 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
 }
 ```
 
+## Lazy Loading
 
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
+
+## Hot Module Replacement
+
+[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
+
+## webpack.dev.js 
 Lets dive into the webpack.dev.js a bit:
 
 Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
@@ -709,11 +717,6 @@ export class HomeComponent implements OnInit {
 }
 
 ```
-
-## Lazy Loading
-
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-
 
 ## tslint file
 
