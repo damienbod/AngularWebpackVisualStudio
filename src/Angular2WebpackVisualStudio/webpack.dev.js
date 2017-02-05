@@ -16,7 +16,7 @@ module.exports = {
         hints: false
     },
     entry: {
-        'app': './angular2App/main.ts'
+        'app': './angularApp/main.ts'
     },
 
     output: {
@@ -88,11 +88,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            template: 'angular2App/index.html'
+            template: 'angularApp/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
+            { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 
