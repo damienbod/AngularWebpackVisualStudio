@@ -20,7 +20,7 @@ module.exports = {
     },
 
     output: {
-        path: __dirname +  '/wwwroot/',
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
         chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
@@ -29,7 +29,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
-	
+
     devServer: {
         historyApiFallback: true,
         contentBase: path.join(__dirname, '/wwwroot/'),
@@ -46,7 +46,7 @@ module.exports = {
                 loaders: [
                     'awesome-typescript-loader',
                     'angular-router-loader',
-                    'angular2-template-loader',        
+                    'angular2-template-loader',
                     'source-map-loader',
                     'tslint-loader'
                 ]
@@ -76,7 +76,7 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills']}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills'] }),
 
         new CleanWebpackPlugin(
             [

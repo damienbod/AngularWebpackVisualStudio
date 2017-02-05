@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { SharedModule } from './modules/shared/shared.module';
-import { HomeModule } from './modules/home/home.module';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
 
 import { Configuration } from './app.constants';
 import { AppRoutes } from './app.routes';
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         AppRoutes,
-        SharedModule.forRoot(),
+        SharedModule,
+        CoreModule.forRoot(),
         HomeModule
     ],
 
