@@ -4,6 +4,10 @@ For a fresh start, consider running these commands
 * `npm install`
 
 <a name="2017-02.01"></a>
+# 2017-02.05
+* Updated npm packages
+
+<a name="2017-02.01"></a>
 # 2017-02.01
 * Added support for Hot Module Replacement
 
