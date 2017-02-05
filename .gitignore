@@ -309,12 +309,12 @@ $RECYCLE.BIN/
 aot/
 
 # TypeScript compilation files
-**/angular2App/app/**/*.js
-**/angular2App/app/**/*.map
-**/angular2App/app/*.js
-**/angular2App/app/*.map
-**/angular2App/*.js
-**/angular2App/*.map
+**/angularApp/app/**/*.js
+**/angularApp/app/**/*.map
+**/angularApp/app/*.js
+**/angularApp/app/*.map
+**/angularApp/*.js
+**/angularApp/*.map
 Angular2WebpackVisualStudio/src/Angular2WebpackVisualStudio/wwwroot/
 src/Angular2WebpackVisualStudio/wwwroot
 src/Angular2WebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-448c34.woff2
