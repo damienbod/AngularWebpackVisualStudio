@@ -26,7 +26,7 @@ This post is hosted on both [http://damienbod.com](http://damienbod.com) and [ht
 
 ## Setting up the application
 
-The ASP.NET Core application contains both the server side API services and also hosts the Angular client application. The source code for the Angular application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
+The ASP.NET Core application contains both the server side API services and also hosts the Angular client application. The source code for the Angular application is implemented in the angularApp folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
 
 ## npm configuration
 
@@ -52,22 +52,22 @@ The npm package.json configuration loads all the required packages for Angular a
     "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
-    "@angular/common": "~2.4.3",
-    "@angular/compiler": "~2.4.3",
-    "@angular/core": "~2.4.3",
-    "@angular/forms": "~2.4.3",
-    "@angular/http": "~2.4.3",
-    "@angular/platform-browser": "~2.4.3",
-    "@angular/platform-browser-dynamic": "~2.4.3",
-    "@angular/router": "~3.4.1",
-    "@angular/upgrade": "~2.4.3",
+    "@angular/common": "~2.4.6",
+    "@angular/compiler": "~2.4.6",
+    "@angular/core": "~2.4.6",
+    "@angular/forms": "~2.4.6",
+    "@angular/http": "~2.4.5",
+    "@angular/platform-browser": "~2.4.6",
+    "@angular/platform-browser-dynamic": "~2.4.6",
+    "@angular/router": "~3.4.6",
+    "@angular/upgrade": "~2.4.6",
     "angular-in-memory-web-api": "0.2.4",
     "core-js": "2.4.1",
     "reflect-metadata": "0.1.9",
     "rxjs": "5.0.3",
     "zone.js": "0.7.5",
-    "@angular/compiler-cli": "~2.4.3",
-    "@angular/platform-server": "~2.4.3",
+    "@angular/compiler-cli": "~2.4.6",
+    "@angular/platform-server": "~2.4.6",
     "bootstrap": "^3.3.7",
     "ie-shim": "~0.1.0"
   },
@@ -133,9 +133,9 @@ The tsconfig is configured to use commonjs as the module. The types are configur
     ]
   },
   "files": [
-    "angular2App/app/app.module.ts",
-    "angular2App/app/modules/about/about.module.ts",
-    "angular2App/main.ts"
+    "angularApp/app/app.module.ts",
+    "angularApp/app/about/about.module.ts",
+    "angularApp/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
@@ -143,7 +143,6 @@ The tsconfig is configured to use commonjs as the module. The types are configur
   "compileOnSave": false,
   "buildOnSave": false
 }
-
 ```
 
 ## Webpack build
@@ -190,7 +189,7 @@ module.exports = {
         hints: false
     },
     entry: {
-        'app': './angular2App/main.ts'
+        'app': './angularApp/main.ts'
     },
 
     output: {
@@ -262,11 +261,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            template: 'angular2App/index.html'
+            template: 'angularApp/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
+            { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 
@@ -293,9 +292,9 @@ console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 module.exports = {
 
     entry: {
-        'vendor': './angular2App/vendor.ts',
-        'polyfills': './angular2App/polyfills.ts',
-        'app': './angular2App/main-aot.ts' // AoT compilation
+        'vendor': './angularApp/vendor.ts',
+        'polyfills': './angularApp/polyfills.ts',
+        'app': './angularApp/main-aot.ts' // AoT compilation
     },
 
     output: {
@@ -374,11 +373,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            template: 'angular2App/index.html'
+            template: 'angularApp/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
+            { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 };
@@ -423,9 +422,9 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
     ]
   },
   "files": [
-    "angular2App/app/app.module.ts",
-    "angular2App/app/modules/about/about.module.ts",
-    "angular2App/main-aot.ts"
+    "angularApp/app/app.module.ts",
+    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/main-aot.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
@@ -464,7 +463,7 @@ The npm environment variable NODE_ENV is used to define the type of build, eithe
 
 ```javascript
     entry: {
-        'app': './angular2App/main.ts' // JiT compilation
+        'app': './angularApp/main.ts' // JiT compilation
     },
 ```
 
@@ -472,7 +471,7 @@ for webpack.prod.js
 
 ```javascript
     entry: {
-        'app': './angular2App/main-aot.ts' // AoT compilation
+        'app': './angularApp/main-aot.ts' // AoT compilation
     },
 ```
 
@@ -534,7 +533,7 @@ The plugins you are providing in the end are necessary to configure how the file
 
 The index.html contains all the references required for the Angular client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
-Source index.html file in the angular2App/public folder:
+Source index.html file in the angularApp/public folder:
 
 ```
 <!doctype html>

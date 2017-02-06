@@ -12,9 +12,9 @@ console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 module.exports = {
 
     entry: {
-        'vendor': './angular2App/vendor.ts',
-        'polyfills': './angular2App/polyfills.ts',
-        'app': './angular2App/main-aot.ts' // AoT compilation
+        'vendor': './angularApp/vendor.ts',
+        'polyfills': './angularApp/polyfills.ts',
+        'app': './angularApp/main-aot.ts' // AoT compilation
     },
 
     output: {
@@ -93,11 +93,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
-            template: 'angular2App/index.html'
+            template: 'angularApp/index.html'
         }),
 
         new CopyWebpackPlugin([
-            { from: './angular2App/images/*.*', to: 'assets/', flatten: true }
+            { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
 };

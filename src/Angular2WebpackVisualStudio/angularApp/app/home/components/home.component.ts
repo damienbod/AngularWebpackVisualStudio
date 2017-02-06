@@ -1,5 +1,5 @@
-import { Thing } from './../../../models/thing';
-import { ThingService } from './../../../services/thingService';
+import { ThingService } from './../../core/services/thing-data.service';
+import { Thing } from './../../models/thing';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     public things: Thing[] = [];
     public thing: Thing = new Thing();
 
-    constructor(private _dataService: ThingService) {
+    constructor(private dataService: ThingService) {
         this.message = 'Things from the ASP.NET Core API';
     }
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     }
 
     public addThing() {
-        this._dataService
+        this.dataService
             .Add(this.thing)
             .subscribe(() => {
                 this.getAllThings();
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     }
 
     public deleteThing(thing: Thing) {
-        this._dataService
+        this.dataService
             .Delete(thing.id)
             .subscribe(() => {
                 this.getAllThings();
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     }
 
     private getAllThings() {
-        this._dataService
+        this.dataService
             .GetAll()
             .subscribe(
             data => this.things = data,

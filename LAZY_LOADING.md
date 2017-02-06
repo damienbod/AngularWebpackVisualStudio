@@ -98,9 +98,9 @@ The files property contains all the module entry points as well as the app entry
     ]
   },
   "files": [
-    "angular2App/app/app.module.ts",
-    "angular2App/app/modules/about/about.module.ts",
-    "angular2App/main-aot.ts"
+    "angularApp/app/app.module.ts",
+    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/main-aot.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
@@ -136,9 +136,9 @@ The modules and entry points are also defined for the JIT build.
     ]
   },
   "files": [
-    "angular2App/app/app.module.ts",
-    "angular2App/app/modules/about/about.module.ts",
-    "angular2App/main.ts"
+    "angularApp/app/app.module.ts",
+    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
