@@ -134,7 +134,7 @@ The tsconfig is configured to use commonjs as the module. The types are configur
   },
   "files": [
     "angularApp/app/app.module.ts",
-    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/app/about/about.module.ts",
     "angularApp/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
@@ -143,7 +143,6 @@ The tsconfig is configured to use commonjs as the module. The types are configur
   "compileOnSave": false,
   "buildOnSave": false
 }
-
 ```
 
 ## Webpack build
