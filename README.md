@@ -56,7 +56,7 @@ The npm package.json configuration loads all the required packages for Angular a
     "@angular/compiler": "~2.4.6",
     "@angular/core": "~2.4.6",
     "@angular/forms": "~2.4.6",
-    "@angular/http": "~2.4.5",
+    "@angular/http": "~2.4.6",
     "@angular/platform-browser": "~2.4.6",
     "@angular/platform-browser-dynamic": "~2.4.6",
     "@angular/router": "~3.4.6",

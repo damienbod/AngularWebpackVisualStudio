@@ -1,7 +1,7 @@
 
-# Angular 2 Lazy Loading with Webpack 2
+# Angular Lazy Loading with Webpack 2
 
-This documentation shows how Angular 2 lazy loading can be supported using Webpack 2 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
+This documentation shows how Angular lazy loading can be supported using Webpack 2 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
@@ -15,7 +15,7 @@ Visual Studio 2017 version:
 
 https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
 
-## First create an Angular 2 module
+## First create an Angular module
 
 In this example, the about module will be lazy loaded when the user clicks on the about tab. The about.module.ts is the entry point for this feature. The module has its own component and routing. 
 The app will now be setup to lazy load the AboutModule.
@@ -99,7 +99,7 @@ The files property contains all the module entry points as well as the app entry
   },
   "files": [
     "angularApp/app/app.module.ts",
-    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/app/about/about.module.ts",
     "angularApp/main-aot.ts"
   ],
   "angularCompilerOptions": {
@@ -137,7 +137,7 @@ The modules and entry points are also defined for the JIT build.
   },
   "files": [
     "angularApp/app/app.module.ts",
-    "angularApp/app/modules/about/about.module.ts",
+    "angularApp/app/about/about.module.ts",
     "angularApp/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
