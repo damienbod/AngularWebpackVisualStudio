@@ -252,8 +252,6 @@ https://github.com/brandonroberts/angular-router-loader
 
 https://www.npmjs.com/package/angular-router-loader
 
-https://github.com/robisim74/angular2localization/tree/gh-pages
-
 https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb
 
 https://webpack.github.io/docs/
