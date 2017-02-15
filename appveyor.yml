@@ -11,5 +11,6 @@ build_script:
 - cd src\Angular2WebpackVisualStudio
 - npm install
 - npm run build-production
+- npm run build-dev
 before_build:
 - appveyor-retry dotnet restore -v Minimal
