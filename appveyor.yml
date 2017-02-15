@@ -7,5 +7,6 @@ install:
   - dotnet restore
 build_script:
 - dotnet build
+- npm -g install npm@latest
 before_build:
 - appveyor-retry dotnet restore -v Minimal
