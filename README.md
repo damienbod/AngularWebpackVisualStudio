@@ -72,10 +72,10 @@ The npm package.json configuration loads all the required packages for Angular a
     "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-    "@types/node": "7.0.0",
+    "@types/node": "7.0.5",
     "angular2-template-loader": "^0.6.0",
     "angular-router-loader": "^0.5.0",
-    "awesome-typescript-loader": "^2.2.4",
+    "awesome-typescript-loader": "3.0.4",
     "clean-webpack-plugin": "^0.1.15",
     "concurrently": "^3.1.0",
     "copy-webpack-plugin": "^4.0.1",
@@ -189,11 +189,13 @@ module.exports = {
         hints: false
     },
     entry: {
+        'polyfills': './angularApp/polyfills.ts',
+        'vendor': './angularApp/vendor.ts',
         'app': './angularApp/main.ts'
     },
 
     output: {
-        path: __dirname +  '/wwwroot/',
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
         chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
@@ -202,7 +204,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
-	
+
     devServer: {
         historyApiFallback: true,
         contentBase: path.join(__dirname, '/wwwroot/'),
@@ -219,7 +221,7 @@ module.exports = {
                 loaders: [
                     'awesome-typescript-loader',
                     'angular-router-loader',
-                    'angular2-template-loader',        
+                    'angular2-template-loader',
                     'source-map-loader',
                     'tslint-loader'
                 ]
@@ -249,7 +251,7 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills']}),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills'] }),
 
         new CleanWebpackPlugin(
             [
@@ -270,7 +272,6 @@ module.exports = {
     ]
 
 };
-
 
 ```
 
