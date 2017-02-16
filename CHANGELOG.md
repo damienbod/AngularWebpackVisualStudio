@@ -3,7 +3,11 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
-<a name="2017-02.01"></a>
+<a name="2017-02.16"></a>
+# 2017-02.16
+* Updated typescript, awesome-typescript-loader and @types/node
+
+<a name="2017-02.05"></a>
 # 2017-02.05
 * Updated npm packages
 
