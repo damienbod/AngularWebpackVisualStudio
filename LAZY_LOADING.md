@@ -5,15 +5,15 @@ This documentation shows how Angular lazy loading can be supported using Webpack
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
-## Code
 
-Visual Studio 2015 version:
+<strong>Code:</strong> <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
 
-https://github.com/damienbod/Angular2WebpackVisualStudio
-
-Visual Studio 2017 version:
-
-https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
+<ul>	
+    <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
+    <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
 
 ## First create an Angular module
 
