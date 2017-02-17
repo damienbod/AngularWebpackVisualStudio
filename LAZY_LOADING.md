@@ -48,12 +48,12 @@ To add lazy loading to the app, the angular-router-loader npm package needs to b
 
 ```javascript
 "devDependencies": {
-    "@types/node": "7.0.0",
+    "@types/node": "7.0.5",
     "angular2-template-loader": "^0.6.0",
     "angular-router-loader": "^0.5.0",
 ```
 
-## Configure the Angular 2 routing
+## Configure the Angular routing
 
 The lazy loading routing can be added to the app.routes.ts file. The loadChildren defines the module and the class name of the module which can be lazy loaded. It is also possible to pre-load lazy load modules if required.
 
