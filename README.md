@@ -8,15 +8,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
-## Code
-
-Visual Studio 2015 version:
-
-[https://github.com/damienbod/Angular2WebpackVisualStudio](https://github.com/damienbod/Angular2WebpackVisualStudio)
-
-Visual Studio 2017 version:
-
-https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
 
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
@@ -24,11 +16,15 @@ https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
 <img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
-This post is hosted on both [http://damienbod.com](http://damienbod.com) and [http://blog.offering.solutions/](http://blog.offering.solutions/)
+This post is hosted on both <a href="https://damienbod.com/2016/06/12/asp-net-core-angular2-with-webpack-and-visual-studio/">damienbod.com</a> and <a href="http://offering.solutions/blog/articles/2016/06/12/asp-net-core-angular-webpack-visual-studio/">offering.solutions</a>.
 
-## Changelog
+<ul>	
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md">Lazy Loading</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
+	 <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
 
-[CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md)
 
 ## Setting up the application
 
@@ -441,14 +437,6 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
   "buildOnSave": false
 }
 ```
-
-## Lazy Loading
-
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-
-## Hot Module Replacement
-
-[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
 
 ## webpack.dev.js 
 Lets dive into the webpack.dev.js a bit:

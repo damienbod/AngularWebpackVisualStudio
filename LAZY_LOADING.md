@@ -5,15 +5,15 @@ This documentation shows how Angular lazy loading can be supported using Webpack
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
-## Code
 
-Visual Studio 2015 version:
+<strong>Code:</strong> <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
 
-https://github.com/damienbod/Angular2WebpackVisualStudio
-
-Visual Studio 2017 version:
-
-https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017
+<ul>	
+    <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
+    <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
 
 ## First create an Angular module
 
@@ -48,12 +48,12 @@ To add lazy loading to the app, the angular-router-loader npm package needs to b
 
 ```javascript
 "devDependencies": {
-    "@types/node": "7.0.0",
+    "@types/node": "7.0.5",
     "angular2-template-loader": "^0.6.0",
     "angular-router-loader": "^0.5.0",
 ```
 
-## Configure the Angular 2 routing
+## Configure the Angular routing
 
 The lazy loading routing can be added to the app.routes.ts file. The loadChildren defines the module and the class name of the module which can be lazy loaded. It is also possible to pre-load lazy load modules if required.
 

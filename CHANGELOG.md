@@ -3,6 +3,9 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
+<a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
+
+
 <a name="2017-02.16"></a>
 # 2017-02.16
 * Updated typescript, awesome-typescript-loader and @types/node
