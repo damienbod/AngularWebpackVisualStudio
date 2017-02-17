@@ -3,6 +3,13 @@ For a fresh start, consider running these commands
 * `rimraf node_modules` 
 * `npm install`
 
+<ul>	
+  <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md">Lazy Loading</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
+	<li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
+
 <a name="2017-02.16"></a>
 # 2017-02.16
 * Updated typescript, awesome-typescript-loader and @types/node
