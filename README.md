@@ -12,6 +12,14 @@ Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual S
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_.
 This post is hosted on both <a href="https://damienbod.com/2016/06/12/asp-net-core-angular2-with-webpack-and-visual-studio/">damienbod.com</a> and <a href="http://offering.solutions/blog/articles/2016/06/12/asp-net-core-angular-webpack-visual-studio/">offering.solutions</a>.
 
+<ul>	
+        <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/edit/master/README.md">Readme</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md">Lazy Loading</a></li>
+	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
+	 <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
+
 ## Changelog
 
 [CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md)
