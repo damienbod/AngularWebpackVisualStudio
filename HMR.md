@@ -2,6 +2,15 @@
 
 This article shows how HMR, or <a href="https://webpack.js.org/concepts/hot-module-replacement/">Hot Module Replacement </a>can be used together with Angular and Webpack.
 
+<strong>Code:</strong> <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
+
+<ul>	
+    <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
+    <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
+    <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md">Lazy Loading</a></li>
+    <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+</ul>
+
 ## package.json npm file
 
 The <a href="https://webpack.js.org/configuration/dev-server/#devserver">webpack-dev-server</a> from <a href="https://twitter.com/keeskluskens">Kees Kluskens</a> is added to the devDependencies in the npm package.json file. The webpack-dev-server package implements and supports the HMR feature.
