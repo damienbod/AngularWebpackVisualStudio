@@ -2,7 +2,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
-# Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
 
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
@@ -15,6 +15,15 @@ This post is hosted on both <a href="https://damienbod.com/2016/06/12/asp-net-co
 ## Changelog
 
 [CHANGELOG.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md)
+
+
+## Lazy Loading
+
+[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
+
+## Hot Module Replacement
+
+[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
 
 ## Setting up the application
 
@@ -427,14 +436,6 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
   "buildOnSave": false
 }
 ```
-
-## Lazy Loading
-
-[LAZY_LOADING.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-
-## Hot Module Replacement
-
-[HMR.md](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
 
 ## webpack.dev.js 
 Lets dive into the webpack.dev.js a bit:
