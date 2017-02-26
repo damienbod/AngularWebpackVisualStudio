@@ -2,8 +2,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
-Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
-
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70">
 <img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70">
