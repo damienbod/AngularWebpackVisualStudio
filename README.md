@@ -57,7 +57,7 @@ The npm package.json configuration loads all the required packages for Angular a
     "@angular/common": "4.0.0-rc.2",
     "@angular/compiler": "4.0.0-rc.2",
     "@angular/core": "4.0.0-rc.2",
-    "@angular/forms": "4.0.0-rc.1",
+    "@angular/forms": "4.0.0-rc.2",
     "@angular/http": "4.0.0-rc.2",
     "@angular/platform-browser": "4.0.0-rc.2",
     "@angular/platform-browser-dynamic": "4.0.0-rc.2",
