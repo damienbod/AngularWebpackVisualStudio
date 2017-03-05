@@ -6,7 +6,7 @@ For a fresh start, consider running these commands
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
 <a name="2017-03.03"></a>
-# 2017-02.16
+# 2017-03.03
 * Updated to 2.4.9 and 4.0.0-rc.2
 
 <a name="2017-02.16"></a>
