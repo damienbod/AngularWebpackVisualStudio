@@ -6,7 +6,8 @@ This documentation shows how Angular lazy loading can be supported using Webpack
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
 
-<strong>Code:</strong> <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">Visual Studio 2015 project</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">Visual Studio 2017 project</a> 
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
+
 
 <ul>	
     <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
