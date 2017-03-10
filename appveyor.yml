@@ -8,7 +8,7 @@ install:
 build_script:
 - dotnet build
 - npm -g install npm@latest
-- cd src\Angular2WebpackVisualStudio
+- cd src\AngularWebpackVisualStudio
 - npm install
 - npm run build-production
 - npm run build-dev
