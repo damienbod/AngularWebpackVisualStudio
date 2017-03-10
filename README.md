@@ -35,7 +35,7 @@ The npm package.json configuration loads all the required packages for Angular a
 
 ```javascript
 {
-  "name": "angular2-webpack-visualstudio",
+  "name": "angular-webpack-visualstudio",
   "version": "1.0.0",
   "description": "",
   "main": "wwwroot/index.html",
