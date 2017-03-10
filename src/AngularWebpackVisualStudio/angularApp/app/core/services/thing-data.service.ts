@@ -21,7 +21,7 @@ export class ThingService {
     }
 
     public GetAll = (): Observable<Thing[]> => {
-        return this.http.get(this.actionUrl).map((response: Response) => <Thing[]>response.json());
+        return this.http.post(this.actionUrl + "all/", "", { headers: this.headers }).map((response: Response) => <Thing[]>response.json());
     }
 
     public GetSingle = (id: number): Observable<Thing> => {

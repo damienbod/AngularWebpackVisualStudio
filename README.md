@@ -1,5 +1,11 @@
 This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>could be used together with <a href="https://www.visualstudio.com/">Visual Studio</a> ASP.NET Core and <a href="https://angular.io/docs/ts/latest/quickstart.html">Angular</a>. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.
 
+|                           | Build                                                                                                                                                             |       
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| .NET Core, angular        | [![Build status](https://ci.appveyor.com/api/projects/status/3x6y01a8312x6o2p?svg=true)](https://ci.appveyor.com/project/damienbod/angular2webpackvisualstudio)   |
+
+
+
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
 Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2015 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/VisualStudio2017">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
@@ -29,7 +35,7 @@ The npm package.json configuration loads all the required packages for Angular a
 
 ```javascript
 {
-  "name": "angular2-webpack-visualstudio",
+  "name": "angular-webpack-visualstudio",
   "version": "1.0.0",
   "description": "",
   "main": "wwwroot/index.html",

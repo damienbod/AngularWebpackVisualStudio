@@ -16,8 +16,16 @@ namespace Angular2WebpackVisualStudio.Controller
             _thingsRepository = thingsRepository;
         }
 
+        // problems with cache
         [HttpGet]
         public IActionResult Get()
+        {
+            return Ok(_thingsRepository.GetAll());
+        }
+
+        [HttpPost]
+        [Route("all")]
+        public IActionResult GetAll()
         {
             return Ok(_thingsRepository.GetAll());
         }
