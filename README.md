@@ -302,7 +302,7 @@ module.exports = {
     },
 
     output: {
-        path: './wwwroot/',
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
         chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: '/'
@@ -482,7 +482,7 @@ In this project configuration, if a production node parameter is set, different 
 ### The output
 ```javascript
 output: {
-        path: "./wwwroot/",
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
 		chunkFilename: 'dist/[id].chunk.js',
         publicPath: "/"
@@ -493,7 +493,7 @@ output for production adds a hash:
 
 ```javascript
 output: {
-        path: "./wwwroot/",
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
 		chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: "/"
