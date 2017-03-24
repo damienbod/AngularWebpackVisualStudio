@@ -9,7 +9,6 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
 Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
-
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70"><img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70"><img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
@@ -46,7 +45,7 @@ The npm package.json configuration loads all the required packages for Angular a
   },
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
-    "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
+    "start": "concurrently \"webpack-dev-server --hot --inline --open --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development && webpack",
     "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
@@ -56,27 +55,27 @@ The npm package.json configuration loads all the required packages for Angular a
     "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
-    "@angular/common": "4.0.0-rc.4",
-    "@angular/compiler": "4.0.0-rc.4",
-    "@angular/core": "4.0.0-rc.4",
-    "@angular/forms": "4.0.0-rc.4",
-    "@angular/http": "4.0.0-rc.4",
-    "@angular/platform-browser": "4.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "4.0.0-rc.4",
-    "@angular/router": "4.0.0-rc.4",
-    "@angular/upgrade": "4.0.0-rc.4",
+    "@angular/common": "~2.4.10",
+    "@angular/compiler": "~2.4.10",
+    "@angular/core": "~2.4.10",
+    "@angular/forms": "~2.4.10",
+    "@angular/http": "~2.4.10",
+    "@angular/platform-browser": "~2.4.10",
+    "@angular/platform-browser-dynamic": "~2.4.10",
+    "@angular/router": "~3.4.10",
+    "@angular/upgrade": "~2.4.10",
     "angular-in-memory-web-api": "0.3.1",
     "core-js": "2.4.1",
-    "reflect-metadata": "0.1.9",
-    "rxjs": "5.0.3",
-    "zone.js": "0.8.4",
-    "@angular/compiler-cli": "4.0.0-rc.4",
-    "@angular/platform-server": "4.0.0-rc.4",
+    "reflect-metadata": "0.1.10",
+    "rxjs": "5.2.0",
+    "zone.js": "0.7.2",
+    "@angular/compiler-cli": "~2.4.10",
+    "@angular/platform-server": "~2.4.10",
     "bootstrap": "^3.3.7",
     "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-     "@types/node": "7.0.8",
+    "@types/node": "7.0.8",
     "angular2-template-loader": "0.6.2",
     "angular-router-loader": "^0.5.0",
     "awesome-typescript-loader": "3.1.2",
@@ -303,7 +302,7 @@ module.exports = {
     },
 
     output: {
-        path: './wwwroot/',
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
         chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: '/'
@@ -483,7 +482,7 @@ In this project configuration, if a production node parameter is set, different 
 ### The output
 ```javascript
 output: {
-        path: "./wwwroot/",
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
 		chunkFilename: 'dist/[id].chunk.js',
         publicPath: "/"
@@ -494,7 +493,7 @@ output for production adds a hash:
 
 ```javascript
 output: {
-        path: "./wwwroot/",
+        path: __dirname + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
 		chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: "/"
