@@ -36,9 +36,17 @@ See this link for more details on yarn:
 
 https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course#yarn-not-necessary-but-nice-to-have
 
+or
+
+https://yarnpkg.com/en/docs/install
+
 Node Path in Visual Studio
 
 The installed nodejs on your system needs to be used inside Visual Studio and not VS one. You need to set the path of you node before the VS node.
+
+In Visual Studio Tools/Options/Projects and Solutions/Web Package Management/External Web Tools
+
+More the $(Path) option above the Visual Studio one.
 
 Also see:
 
