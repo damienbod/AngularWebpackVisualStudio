@@ -40,7 +40,7 @@ or
 
 https://yarnpkg.com/en/docs/install
 
-Node Path in Visual Studio
+### Node Path in Visual Studio
 
 The installed nodejs on your system needs to be used inside Visual Studio and not VS one. You need to set the path of you node before the VS node.
 
