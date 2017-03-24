@@ -22,6 +22,27 @@ This post is hosted on both <a href="https://damienbod.com/2016/06/12/asp-net-co
 	<li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
 </ul>
 
+## Tools
+
+yarn, nodejs and npm are required to run this solution.
+
+Update to the latest versions:
+
+npm install npm@latest -g 
+
+npm install yarn -g
+
+See this link for more details on yarn:
+
+https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course#yarn-not-necessary-but-nice-to-have
+
+Node Path in Visual Studio
+
+The installed nodejs on your system needs to be used inside Visual Studio and not VS one. You need to set the path of you node before the VS node.
+
+Also see:
+
+https://github.com/madskristensen/NpmTaskRunner/issues/46
 
 ## Setting up the application
 
