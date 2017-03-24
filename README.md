@@ -40,6 +40,8 @@ or
 
 https://yarnpkg.com/en/docs/install
 
+If you remove the yarn.lock file, you do not require yarn.
+
 ### Node Path in Visual Studio
 
 The installed nodejs on your system needs to be used inside Visual Studio and not VS one. You need to set the path of you node before the VS node.
