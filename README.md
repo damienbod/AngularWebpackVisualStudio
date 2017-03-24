@@ -8,7 +8,7 @@ This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>coul
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
-Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 4.x</a> | <a href="https://github.com/damienbod/AngularWebpackVisualStudio/tree/VS2017-angular-2">VS2017 angular 2.x</a> 
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70"><img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70"><img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
