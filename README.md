@@ -19,7 +19,7 @@ This post is hosted on both <a href="https://damienbod.com/2016/06/12/asp-net-co
 	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/CHANGELOG.md">Changelog</a></li>
 	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md">Lazy Loading</a></li>
 	<li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md">Hot Module Replacement</a></li>
-	 <li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
+	<li><a href="https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/">Building production ready Angular apps with Visual Studio and ASP.NET Core</a></li>
 </ul>
 
 
@@ -45,7 +45,7 @@ The npm package.json configuration loads all the required packages for Angular a
   },
   "scripts": {
     "ngc": "ngc -p ./tsconfig-aot.json",
-    "start": "concurrently \"webpack-dev-server --hot --inline --open --port 8080\" \"dotnet run\" ",
+    "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development && webpack",
     "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
@@ -55,27 +55,28 @@ The npm package.json configuration loads all the required packages for Angular a
     "publish-for-iis": "npm run build-production && dotnet publish -c Release"
   },
   "dependencies": {
-    "@angular/common": "~2.4.10",
-    "@angular/compiler": "~2.4.10",
-    "@angular/core": "~2.4.10",
-    "@angular/forms": "~2.4.10",
-    "@angular/http": "~2.4.10",
-    "@angular/platform-browser": "~2.4.10",
-    "@angular/platform-browser-dynamic": "~2.4.10",
-    "@angular/router": "~3.4.10",
-    "@angular/upgrade": "~2.4.10",
+    "@angular/common": "4.0.0",
+    "@angular/compiler": "4.0.0",
+    "@angular/core": "4.0.0",
+    "@angular/forms": "4.0.0",
+    "@angular/http": "4.0.0",
+    "@angular/platform-browser": "4.0.0",
+    "@angular/platform-browser-dynamic": "4.0.0",
+    "@angular/router": "4.0.0",
+    "@angular/upgrade": "4.0.0",
+	"@angular/animations": "4.0.0",
     "angular-in-memory-web-api": "0.3.1",
     "core-js": "2.4.1",
-    "reflect-metadata": "0.1.10",
-    "rxjs": "5.2.0",
-    "zone.js": "0.7.2",
-    "@angular/compiler-cli": "~2.4.10",
-    "@angular/platform-server": "~2.4.10",
+    "reflect-metadata": "0.1.9",
+    "rxjs": "5.0.3",
+    "zone.js": "0.8.4",
+    "@angular/compiler-cli": "4.0.0",
+    "@angular/platform-server": "4.0.0",
     "bootstrap": "^3.3.7",
     "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-    "@types/node": "7.0.8",
+     "@types/node": "7.0.8",
     "angular2-template-loader": "0.6.2",
     "angular-router-loader": "^0.5.0",
     "awesome-typescript-loader": "3.1.2",
