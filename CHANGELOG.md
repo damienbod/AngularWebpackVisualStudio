@@ -5,6 +5,11 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2017-04.08"></a>
+# 2017-04.08
+* Updated angular 4.0.1
+* Added XUnit test for API
+
 <a name="2017-03.24"></a>
 # 2017-03.24
 * Updated angular 4.0.0
