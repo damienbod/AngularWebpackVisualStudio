@@ -15,5 +15,5 @@ build_script:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 test_script:
-- cd tests\AngularWebpackVisualStudio_Tests
+- cd C:\projects\angular2webpackvisualstudio\tests\AngularWebpackVisualStudio_Tests
 - dotnet test
