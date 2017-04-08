@@ -14,3 +14,6 @@ build_script:
 - npm run build-dev
 before_build:
 - appveyor-retry dotnet restore -v Minimal
+test_script:
+- cd tests/AngularWebpackVisualStudio_Tests
+- dotnet test
