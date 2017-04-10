@@ -5,6 +5,7 @@ install:
   - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
   - dotnet --version
   - dotnet restore
+  - choco install googlechrome
 build_script:
 - dotnet build
 - npm -g install npm@latest
@@ -15,5 +16,6 @@ build_script:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 test_script:
+- npm test
 - cd C:\projects\angular2webpackvisualstudio\tests\AngularWebpackVisualStudio_Tests
 - dotnet test

@@ -83,11 +83,14 @@ The npm package.json configuration loads all the required packages for Angular a
     "build-production": "npm run ngc && npm run webpack-production",
     "watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color",
-    "publish-for-iis": "npm run build-production && dotnet publish -c Release"
+    "publish-for-iis": "npm run build-production && dotnet publish -c Release",
+    "test": "karma start"
   },
   "dependencies": {
     "@angular/common": "4.0.1",
     "@angular/compiler": "4.0.1",
+    "@angular/compiler-cli": "4.0.1",
+    "@angular/platform-server": "4.0.1",
     "@angular/core": "4.0.1",
     "@angular/forms": "4.0.1",
     "@angular/http": "4.0.1",
@@ -98,40 +101,46 @@ The npm package.json configuration loads all the required packages for Angular a
     "@angular/animations": "4.0.1",
     "angular-in-memory-web-api": "0.3.1",
     "core-js": "2.4.1",
-    "reflect-metadata": "0.1.9",
-    "rxjs": "5.0.3",
-    "zone.js": "0.8.4",
-    "@angular/compiler-cli": "4.0.1",
-    "@angular/platform-server": "4.0.1",
+    "reflect-metadata": "0.1.10",
+    "rxjs": "5.3.0",
+    "zone.js": "0.8.5",
     "bootstrap": "^3.3.7",
     "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-     "@types/node": "7.0.8",
+    "@types/node": "7.0.12",
+    "@types/jasmine": "2.5.46",
     "angular2-template-loader": "0.6.2",
-    "angular-router-loader": "^0.5.0",
+    "angular-router-loader": "^0.6.0",
     "awesome-typescript-loader": "3.1.2",
-    "clean-webpack-plugin": "^0.1.15",
+    "clean-webpack-plugin": "^0.1.16",
     "concurrently": "^3.4.0",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.27.1",
-    "file-loader": "^0.10.1",
+    "css-loader": "^0.28.0",
+    "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.5.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
-    "source-map-loader": "^0.2.0",
-    "style-loader": "^0.13.2",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.16.1",
     "ts-helpers": "^1.1.2",
-    "tslint": "^4.5.1",
-    "tslint-loader": "^3.4.3",
-    "typescript": "2.2.1",
+    "tslint": "^5.0.0",
+    "tslint-loader": "^3.5.2",
+    "typescript": "2.2.2",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "2.4.1"
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "2.4.2",
+    "jasmine-core": "2.5.2",
+    "karma": "1.6.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-jasmine": "1.1.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-reporter": "0.0.30",
+    "karma-webpack": "2.0.3"
   },
   "-vs-binding": {
     "ProjectOpened": [
@@ -139,7 +148,6 @@ The npm package.json configuration loads all the required packages for Angular a
     ]
   }
 }
-
 ```
 
 
@@ -164,13 +172,14 @@ The tsconfig is configured to use commonjs as the module. The types are configur
       "dom"
     ],
     "types": [
-      "node"
+      "node",
+      "jasmine"
     ]
   },
-  "files": [
-    "angularApp/app/app.module.ts",
-    "angularApp/app/about/about.module.ts",
-    "angularApp/main.ts"
+  "exclude": [
+    "node_modules",
+    "aot",
+    "angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
@@ -633,13 +642,14 @@ The npm scripts are used to build, watch the client application as required. The
 ```javascript
 "ngc": "ngc -p ./tsconfig-aot.json",
 "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
-"webpack-dev": "set NODE_ENV=development&& webpack",
-"webpack-production": "set NODE_ENV=production&& webpack",
+"webpack-dev": "set NODE_ENV=development && webpack",
+"webpack-production": "set NODE_ENV=production && webpack",
 "build-dev": "npm run webpack-dev",
 "build-production": "npm run ngc && npm run webpack-production",
-"watch-webpack-dev": "set NODE_ENV=development&& webpack --watch --color",
+"watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
 "watch-webpack-production": "npm run build-production --watch --color",
-"publish-for-iis": "npm run build-production && dotnet publish -c Release" 
+"publish-for-iis": "npm run build-production && dotnet publish -c Release",
+"test": "karma start"
 ```
 
 The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json
@@ -688,8 +698,8 @@ And used in Webpack.
 Note: require cannot be used because AoT does not work with this.
 
 ```javascript
-import { Thing } from './../../../models/thing';
-import { TestDataService } from './../../../services/testDataService';
+import { ThingService } from './../../core/services/thing-data.service';
+import { Thing } from './../../models/thing';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -703,8 +713,8 @@ export class HomeComponent implements OnInit {
     public things: Thing[] = [];
     public thing: Thing = new Thing();
 
-    constructor(private _dataService: TestDataService) {
-        this.message = "Things from the ASP.NET Core API";
+    constructor(private dataService: ThingService) {
+        this.message = 'Things from the ASP.NET Core API';
     }
 
     ngOnInit() {
@@ -712,7 +722,7 @@ export class HomeComponent implements OnInit {
     }
 
     public addThing() {
-        this._dataService
+        this.dataService
             .Add(this.thing)
             .subscribe(() => {
                 this.getAllThings();
@@ -723,7 +733,7 @@ export class HomeComponent implements OnInit {
     }
 
     public deleteThing(thing: Thing) {
-        this._dataService
+        this.dataService
             .Delete(thing.id)
             .subscribe(() => {
                 this.getAllThings();
@@ -733,7 +743,7 @@ export class HomeComponent implements OnInit {
     }
 
     private getAllThings() {
-        this._dataService
+        this.dataService
             .GetAll()
             .subscribe(
             data => this.things = data,
@@ -742,7 +752,6 @@ export class HomeComponent implements OnInit {
             );
     }
 }
-
 ```
 
 ## tslint file
@@ -891,22 +900,22 @@ Note that in a normal environment, you should always return the typed classes an
 
 
 ```
-import { Thing } from './../models/thing';
+import { Thing } from './../../models/thing';
+import { Configuration } from './../../app.constants';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { Configuration } from '../app.constants';
 
 @Injectable()
-export class TestDataService {
+export class ThingService {
 
     private actionUrl: string;
     private headers: Headers;
 
-    constructor(private _http: Http, private _configuration: Configuration) {
+    constructor(private http: Http, private configuration: Configuration) {
 
-        this.actionUrl = _configuration.Server + 'api/things/';
+        this.actionUrl = configuration.Server + 'api/things/';
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
@@ -914,31 +923,47 @@ export class TestDataService {
     }
 
     public GetAll = (): Observable<Thing[]> => {
-        return this._http.get(this.actionUrl).map((response: Response) => <Thing[]>response.json());
+        return this.http.post(this.actionUrl + 'all/', '', { headers: this.headers }).map((response: Response) => <Thing[]>response.json());
     }
 
     public GetSingle = (id: number): Observable<Thing> => {
-        return this._http.get(this.actionUrl + id).map(res => <Thing>res.json());
+        return this.http.get(this.actionUrl + id).map(res => <Thing>res.json());
     }
 
     public Add = (thingToAdd: Thing): Observable<Thing> => {
-        var toAdd = JSON.stringify({ name: thingToAdd.name });
+        let toAdd = JSON.stringify({ name: thingToAdd.name });
 
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Thing>res.json());
+        return this.http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Thing>res.json());
     }
 
     public Update = (id: number, itemToUpdate: any): Observable<Thing> => {
-        return this._http
+        return this.http
             .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
             .map(res => <Thing>res.json());
     }
 
     public Delete = (id: number): Observable<any> => {
-        return this._http.delete(this.actionUrl + id);
+        return this.http.delete(this.actionUrl + id);
     }
 }
 ```
 
+## Testing
+
+The XUnit test for ASP.NET Core API is in tests/AngularWebpackVisualStudio_Tests folder:
+
+dotnet test
+
+or from Visual Studio: Test > Run > All Tests
+
+See this link for more details on XUnit testing in ASP.NET Core: https://docs.microsoft.com/it-it/dotnet/articles/core/testing/unit-testing-with-dotnet-test
+
+
+The Angular test is in angularApp/tests folder. It uses Karma test runner and Jasmine test framework:
+
+npm test
+
+See this link for more details on Angular testing: https://angular.io/docs/ts/latest/guide/testing.html
 
 ## Notes
 

@@ -14,13 +14,14 @@
       "dom"
     ],
     "types": [
-      "node"
+      "node",
+      "jasmine"
     ]
   },
-  "files": [
-    "angularApp/app/app.module.ts",
-    "angularApp/app/about/about.module.ts",
-    "angularApp/main.ts"
+  "exclude": [
+    "node_modules",
+    "aot",
+    "angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
