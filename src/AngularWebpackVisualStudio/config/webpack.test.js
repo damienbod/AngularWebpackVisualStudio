@@ -1,11 +1,13 @@
 ﻿module.exports = {
 
+    devtool: 'inline-source-map',
+
     performance: {
         hints: false
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.css', '.scss', '.html']
     },
 
     module: {
@@ -14,7 +16,8 @@
                 test: /\.ts$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'angular2-template-loader'
+                    'angular2-template-loader',
+                    'source-map-loader'
                 ]
             },
             {

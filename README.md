@@ -963,6 +963,8 @@ The Angular test is in angularApp/tests folder. It uses Karma test runner and Ja
 
 npm test
 
+To enable debugging, you have to set to false the singleRun property in karma.conf.js file.
+
 See this link for more details on Angular testing: https://angular.io/docs/ts/latest/guide/testing.html
 
 ## Notes
