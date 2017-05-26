@@ -8,6 +8,7 @@ For a fresh start, consider running these commands
 <a name="2017-05.26"></a>
 # 2017-05.26
 * Updating angular 4.1.3
+* Updating dotnet packages 
 
 <a name="2017-05.17"></a>
 # 2017-05.17
