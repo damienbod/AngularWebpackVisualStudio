@@ -87,18 +87,18 @@ The npm package.json configuration loads all the required packages for Angular a
     "test": "karma start"
   },
   "dependencies": {
-    "@angular/common": "4.1.0",
-    "@angular/compiler": "4.1.0",
-    "@angular/compiler-cli": "4.1.0",
-    "@angular/platform-server": "4.1.0",
-    "@angular/core": "4.1.0",
-    "@angular/forms": "4.1.0",
-    "@angular/http": "4.1.0",
-    "@angular/platform-browser": "4.1.0",
-    "@angular/platform-browser-dynamic": "4.1.0",
-    "@angular/router": "4.1.0",
-    "@angular/upgrade": "4.1.0",
-    "@angular/animations": "4.1.0",
+    "@angular/common": "4.1.3",
+    "@angular/compiler": "4.1.3",
+    "@angular/compiler-cli": "4.1.3",
+    "@angular/platform-server": "4.1.3",
+    "@angular/core": "4.1.3",
+    "@angular/forms": "4.1.3",
+    "@angular/http": "4.1.3",
+    "@angular/platform-browser": "4.1.3",
+    "@angular/platform-browser-dynamic": "4.1.3",
+    "@angular/router": "4.1.3",
+    "@angular/upgrade": "4.1.3",
+    "@angular/animations": "4.1.3",
     "angular-in-memory-web-api": "0.3.1",
     "core-js": "2.4.1",
     "reflect-metadata": "0.1.10",
@@ -108,8 +108,8 @@ The npm package.json configuration loads all the required packages for Angular a
     "ie-shim": "~0.1.0"
   },
   "devDependencies": {
-    "@types/node": "7.0.12",
-    "@types/jasmine": "2.5.46",
+    "@types/node": "7.0.13",
+    "@types/jasmine": "2.5.47",
     "angular2-template-loader": "0.6.2",
     "angular-router-loader": "^0.6.0",
     "awesome-typescript-loader": "3.1.2",
@@ -128,18 +128,18 @@ The npm package.json configuration loads all the required packages for Angular a
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.16.1",
     "ts-helpers": "^1.1.2",
-    "tslint": "^5.0.0",
+    "tslint": "^5.1.0",
     "tslint-loader": "^3.5.2",
-    "typescript": "2.2.2",
+    "typescript": "2.3.2",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.3",
+    "webpack": "^2.4.1",
     "webpack-dev-server": "2.4.2",
     "jasmine-core": "2.5.2",
     "karma": "1.6.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-jasmine": "1.1.0",
     "karma-sourcemap-loader": "0.3.7",
-    "karma-spec-reporter": "0.0.30",
+    "karma-spec-reporter": "0.0.31",
     "karma-webpack": "2.0.3"
   },
   "-vs-binding": {
@@ -148,6 +148,7 @@ The npm package.json configuration loads all the required packages for Angular a
     ]
   }
 }
+
 ```
 
 
