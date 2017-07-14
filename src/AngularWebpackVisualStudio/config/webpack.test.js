@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿const path = require('path');
+
+module.exports = {
 
     devtool: 'inline-source-map',
 
@@ -7,14 +9,14 @@
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js']
     },
 
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: [
+                use: [
                     'awesome-typescript-loader',
                     'angular2-template-loader',
                     'source-map-loader'
@@ -22,16 +24,31 @@
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                include: path.join(__dirname, 'angularApp/styles'),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                exclude: path.join(__dirname, 'angularApp/styles'),
+                use: [
+                    'raw-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: 'raw-loader'
+                use: 'raw-loader'
             }
         ],
         exprContextCritical: false

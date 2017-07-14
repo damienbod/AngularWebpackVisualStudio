@@ -70,77 +70,75 @@ The npm package.json configuration loads all the required packages for Angular a
   "main": "wwwroot/index.html",
   "author": "",
   "license": "ISC",
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/damienbod/Angular2WebpackVisualStudio.git"
   },
   "scripts": {
-    "ngc": "ngc -p ./tsconfig-aot.json",
     "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
     "webpack-dev": "set NODE_ENV=development && webpack",
     "webpack-production": "set NODE_ENV=production && webpack",
     "build-dev": "npm run webpack-dev",
-    "build-production": "npm run ngc && npm run webpack-production",
+    "build-production": "npm run webpack-production",
     "watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color",
     "publish-for-iis": "npm run build-production && dotnet publish -c Release",
     "test": "karma start"
   },
   "dependencies": {
-    "@angular/common": "4.2.4",
-    "@angular/compiler": "4.2.4",
-    "@angular/compiler-cli": "4.2.4",
-    "@angular/platform-server": "4.2.4",
-    "@angular/core": "4.2.4",
-    "@angular/forms": "4.2.4",
-    "@angular/http": "4.2.4",
-    "@angular/platform-browser": "4.2.4",
-    "@angular/platform-browser-dynamic": "4.2.4",
-    "@angular/router": "4.2.4",
-    "@angular/upgrade": "4.2.4",
-    "@angular/animations": "4.2.4",
-    "angular-in-memory-web-api": "0.3.1",
+    "@angular/animations": "4.2.6",
+    "@angular/common": "4.2.6",
+    "@angular/compiler": "4.2.6",
+    "@angular/compiler-cli": "4.2.6",
+    "@angular/core": "4.2.6",
+    "@angular/forms": "4.2.6",
+    "@angular/http": "4.2.6",
+    "@angular/platform-browser": "4.2.6",
+    "@angular/platform-browser-dynamic": "4.2.6",
+    "@angular/platform-server": "4.2.6",
+    "@angular/router": "4.2.6",
+    "@angular/upgrade": "4.2.6",
+    "angular-in-memory-web-api": "0.3.2",
+    "bootstrap": "3.3.7",
     "core-js": "2.4.1",
-    "reflect-metadata": "0.1.10",
-    "rxjs": "5.3.0",
-    "zone.js": "0.8.8",
-    "bootstrap": "^3.3.7",
-    "ie-shim": "~0.1.0"
+    "ie-shim": "0.1.0",
+    "rxjs": "5.4.2",
+    "zone.js": "0.8.12"
   },
   "devDependencies": {
-    "@types/node": "7.0.22",
-    "@types/jasmine": "2.5.47",
-    "angular2-template-loader": "0.6.2",
+    "@ngtools/webpack": "^1.5.1",
+    "@types/node": "^8.0.12",
+    "@types/jasmine": "^2.5.53",
+    "angular2-template-loader": "^0.6.2",
     "angular-router-loader": "^0.6.0",
-    "awesome-typescript-loader": "3.1.2",
+    "awesome-typescript-loader": "^3.2.1",
     "clean-webpack-plugin": "^0.1.16",
-    "concurrently": "^3.4.0",
+    "concurrently": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
-    "file-loader": "^0.11.1",
-    "html-webpack-plugin": "^2.28.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.29.0",
     "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.3",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
-    "style-loader": "^0.16.1",
-    "ts-helpers": "^1.1.2",
-    "tslint": "^5.1.0",
-    "tslint-loader": "^3.5.2",
-    "typescript": "2.3.4",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
-    "webpack-dev-server": "2.4.2",
-    "jasmine-core": "2.5.2",
-    "karma": "1.6.0",
-    "karma-chrome-launcher": "2.0.0",
-    "karma-jasmine": "1.1.0",
-    "karma-sourcemap-loader": "0.3.7",
-    "karma-spec-reporter": "0.0.31",
-    "karma-webpack": "2.0.3"
+    "style-loader": "^0.18.2",
+    "tslint": "^5.5.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.4.1",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1",
+    "jasmine-core": "^2.6.4",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.31",
+    "karma-webpack": "^2.0.4"
   },
   "-vs-binding": {
     "ProjectOpened": [
@@ -172,14 +170,12 @@ The tsconfig is configured to use commonjs as the module. The types are configur
       "es2015",
       "dom"
     ],
-    "types": [
-      "node",
-      "jasmine"
+    "typeRoots": [
+      "./node_modules/@types/"
     ]
   },
   "exclude": [
     "node_modules",
-    "aot",
     "angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
@@ -202,28 +198,30 @@ The Webpack config file was created using the excellent github repository https:
 ```javascript
 /// <binding ProjectOpened='Run - Development' />
 
-var environment = (process.env.NODE_ENV || "development").trim();
+const environment = (process.env.NODE_ENV || "development").trim();
 
 if (environment === "development") {
-    module.exports = require('./webpack.dev.js');
+    module.exports = require('./config/webpack.dev.js');
 } else {
-    module.exports = require('./webpack.prod.js');
+    module.exports = require('./config/webpack.prod.js');
 }
-
 ```
 
 ### webpack.dev.js
 
 
 ```javascript
-var path = require('path');
+const path = require('path');
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+const helpers = require('./webpack.helpers');
+
+const ROOT = path.resolve(__dirname, '..');
 
 console.log('@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@');
 
@@ -240,19 +238,19 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + '/wwwroot/',
+        path: ROOT + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
         chunkFilename: 'dist/[id].chunk.js',
         publicPath: '/'
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json']
     },
 
     devServer: {
         historyApiFallback: true,
-        contentBase: path.join(__dirname, '/wwwroot/'),
+        contentBase: path.join(ROOT, '/wwwroot/'),
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
@@ -263,7 +261,7 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: [
+                use: [
                     'awesome-typescript-loader',
                     'angular-router-loader',
                     'angular2-template-loader',
@@ -273,36 +271,52 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+                use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: 'file-loader?name=/[name].[ext]'
+                use: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                include: path.join(ROOT, 'angularApp/styles'),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                exclude: path.join(ROOT, 'angularApp/styles'),
+                use: [
+                    'raw-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: 'raw-loader'
+                use: 'raw-loader'
             }
         ],
         exprContextCritical: false
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'polyfills'] }),
+        new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'] }),
 
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
                 './wwwroot/assets'
-            ]
+            ],
+            { root: ROOT }
         ),
 
         new HtmlWebpackPlugin({
@@ -317,21 +331,24 @@ module.exports = {
     ]
 
 };
-
 ```
 
 ### webpack.prod.js
 
 
 ```javascript
-var path = require('path');
+const path = require('path');
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ngToolsWebpack = require('@ngtools/webpack');
+
+const helpers = require('./webpack.helpers');
+
+const ROOT = path.resolve(__dirname, '..');
 
 console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 
@@ -344,62 +361,79 @@ module.exports = {
     },
 
     output: {
-        path: __dirname + '/wwwroot/',
+        path: ROOT + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
         chunkFilename: 'dist/[id].[hash].chunk.js',
         publicPath: '/'
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json']
     },
 
     devServer: {
         historyApiFallback: true,
         stats: 'minimal',
-        outputPath: path.join(__dirname, 'wwwroot/')
+        outputPath: path.join(ROOT, 'wwwroot/')
     },
 
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript-loader',
-                    'angular-router-loader?aot=true&genDir=aot/'
-                ]
+                use: '@ngtools/webpack'
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+                use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: 'file-loader?name=/[name].[ext]'
+                use: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                include: path.join(ROOT, 'angularApp/styles'),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                exclude: path.join(ROOT, 'angularApp/styles'),
+                use: [
+                    'raw-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: 'raw-loader'
+                use: 'raw-loader'
             }
         ],
         exprContextCritical: false
     },
 
     plugins: [
+        // AoT plugin.
+        new ngToolsWebpack.AotPlugin({
+            tsConfigPath: './tsconfig-aot.json'
+        }),
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
                 './wwwroot/assets'
-            ]
+            ],
+            { root: ROOT }
         ),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
@@ -427,27 +461,19 @@ module.exports = {
         ])
     ]
 };
-
-
 ```
 
 
 ## Webpack Production build
 
-The production build has to be run from the command line. At present ngc, the angular compiler, can only be used from the command line. 
-
-https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli
-
-See also (Using ngc) http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/ 
-
 It can be run using npm run build-production which is configured in the package.json.
 
 ```
-"build-production": "npm run ngc && npm run webpack-prodroduction"
+"build-production": "npm run webpack-production"
 ```
 
 
-The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
+The production build uses tsconfig-aot.json and main-aot.ts as an entry point. It uses @ngtools/webpack plugin for AoT compilation.
 
 ```javascript
 {
@@ -467,13 +493,9 @@ The production build uses tsconfig-aot.json and main-aot.ts as an entry point.
       "dom"
     ]
   },
-  "files": [
-    "angularApp/app/app.module.ts",
-    "angularApp/app/modules/about/about.module.ts",
-    "angularApp/main-aot.ts"
-  ],
   "angularCompilerOptions": {
-    "genDir": "aot",
+    "genDir": "./aot",
+    "entryModule": "./angularApp/app/app.module#AppModule",
     "skipMetadataEmit": true
   },
   "compileOnSave": false,
@@ -488,13 +510,13 @@ Firstly, all plugins are loaded which are required to process all the js, ts, ..
 
 
 ```javascript
-var path = require('path');
+const path = require('path');
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 ```
 
 The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.
@@ -523,22 +545,22 @@ In this project configuration, if a production node parameter is set, different 
 
 ### The output
 ```javascript
-output: {
-        path: __dirname + '/wwwroot/',
+    output: {
+        path: ROOT + '/wwwroot/',
         filename: 'dist/[name].bundle.js',
-		chunkFilename: 'dist/[id].chunk.js',
-        publicPath: "/"
+        chunkFilename: 'dist/[id].chunk.js',
+        publicPath: '/'
     },
 ```
 
 output for production adds a hash:
 
 ```javascript
-output: {
-        path: __dirname + '/wwwroot/',
+    output: {
+        path: ROOT + '/wwwroot/',
         filename: 'dist/[name].[hash].bundle.js',
-		chunkFilename: 'dist/[id].[hash].chunk.js',
-        publicPath: "/"
+        chunkFilename: 'dist/[id].[hash].chunk.js',
+        publicPath: '/'
     },
 ```
 
@@ -641,12 +663,11 @@ https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-
 The npm scripts are used to build, watch the client application as required. The scripts can be run from the command line or the npm task runner.
 
 ```javascript
-"ngc": "ngc -p ./tsconfig-aot.json",
 "start": "concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" ",
 "webpack-dev": "set NODE_ENV=development && webpack",
 "webpack-production": "set NODE_ENV=production && webpack",
 "build-dev": "npm run webpack-dev",
-"build-production": "npm run ngc && npm run webpack-production",
+"build-production": "npm run webpack-production",
 "watch-webpack-dev": "set NODE_ENV=development && webpack --watch --color",
 "watch-webpack-production": "npm run build-production --watch --color",
 "publish-for-iis": "npm run build-production && dotnet publish -c Release",
@@ -659,17 +680,27 @@ The watch-webpack-dev npm script can be automatically be started in Visual Studi
 "-vs-binding": { "ProjectOpened": [ "watch-webpack-dev" ] }
 ```
 
-<b>Note</b> Webpack task runner cannot be used to build the Angular webpack application as it uses the wrong options and cannot be used to do a production build due to the ngc.
-
 ### Webpack SASS
 
 <a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
 ```javascript
 {
-  test: /\.scss$/,
-  exclude: /node_modules/,
-  loaders: ["style", "css", "sass"]
+    test: /\.scss$/,
+    include: path.join(ROOT, 'angularApp/styles'),
+    use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+    ]
+},
+{
+    test: /\.scss$/,
+    exclude: path.join(ROOT, 'angularApp/styles'),
+    use: [
+        'raw-loader',
+        'sass-loader'
+    ]
 },
 ```
 
@@ -683,14 +714,20 @@ See: https://damienbod.com/2016/10/14/using-sass-with-webpack-angular2-and-visua
 The clean task can be configured as follows:
 
 ```javascript
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 ```
 
 And used in Webpack.
 
 ```javascript
-  new CleanWebpackPlugin(['./wwwroot/dist']),
+new CleanWebpackPlugin(
+    [
+        './wwwroot/dist',
+        './wwwroot/assets'
+    ],
+    { root: ROOT }
+),
 ```
 
 ## Angular component files

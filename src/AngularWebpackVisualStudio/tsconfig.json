@@ -13,14 +13,12 @@
       "es2015",
       "dom"
     ],
-    "types": [
-      "node",
-      "jasmine"
+    "typeRoots": [
+      "./node_modules/@types/"
     ]
   },
   "exclude": [
     "node_modules",
-    "aot",
     "angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
