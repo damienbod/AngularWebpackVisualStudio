@@ -3,6 +3,7 @@ init:
   - git config --global core.autocrlf true
 install:
   - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
+  - Install-Product node ''
   - dotnet --version
   - dotnet restore
   - choco install googlechrome
