@@ -1,11 +1,13 @@
-var path = require('path');
+const path = require('path');
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var helpers = require('./webpack.helpers');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ngToolsWebpack = require('@ngtools/webpack');
+
+const helpers = require('./webpack.helpers');
 
 console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 
@@ -25,7 +27,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json']
     },
 
     devServer: {
@@ -38,37 +40,53 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript-loader',
-                    'angular-router-loader?aot=true&genDir=aot/'
-                ]
+                use: '@ngtools/webpack'
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                loader: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+                use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
             },
             {
                 test: /favicon.ico$/,
-                loader: 'file-loader?name=/[name].[ext]'
+                use: 'file-loader?name=/[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
             {
                 test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                include: path.join(__dirname, 'angularApp/styles'),
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                exclude: path.join(__dirname, 'angularApp/styles'),
+                use: [
+                    'raw-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: 'raw-loader'
+                use: 'raw-loader'
             }
         ],
         exprContextCritical: false
     },
 
     plugins: [
+        // AoT plugin.
+        new ngToolsWebpack.AotPlugin({
+            tsConfigPath: './tsconfig-aot.json'
+        }),
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
