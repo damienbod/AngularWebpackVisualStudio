@@ -1,9 +1,11 @@
 image: Visual Studio 2017
 init:
   - git config --global core.autocrlf true
+environment:
+  nodejs_version: "6"
 install:
   - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
-  - Install-Product node ''
+  - ps: Install-Product node $env:nodejs_version
   - dotnet --version
   - dotnet restore
   - choco install googlechrome
