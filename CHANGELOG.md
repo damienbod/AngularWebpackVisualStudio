@@ -5,6 +5,12 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2017-07-15"></a>
+# 2017-07-15
+* Updating angular 4.3.0
+* Updated to Webpack 3
+* @ngtools/webpack
+
 <a name="2017-06-23"></a>
 # 2017-06-23
 * Updating angular 4.2.4
