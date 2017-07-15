@@ -1,12 +1,12 @@
 
-# Angular Lazy Loading with Webpack 2
+# Angular Lazy Loading with Webpack 3
 
-This documentation shows how Angular lazy loading can be supported using Webpack 2 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
+This documentation shows how Angular lazy loading can be supported using Webpack 3 for both JIT and AOT builds. The Webpack loader <a href="https://github.com/brandonroberts/angular-router-loader">angular-router-loader</a> from Brandon Roberts is used to implement this.
 
 A big thanks to <a href="https://twitter.com/robisim74">Roberto Simonetti</a> for his help in this.
 
 
-Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 4.x</a> 
 
 
 <ul>	
@@ -49,7 +49,7 @@ To add lazy loading to the app, the angular-router-loader npm package needs to b
 
 ```javascript
 "devDependencies": {
-    "@types/node": "7.0.5",
+    "@types/node": "8.0.12",
     "angular2-template-loader": "^0.6.0",
     "angular-router-loader": "^0.5.0",
 ```
@@ -98,13 +98,9 @@ The files property contains all the module entry points as well as the app entry
       "dom"
     ]
   },
-  "files": [
-    "angularApp/app/app.module.ts",
-    "angularApp/app/about/about.module.ts",
-    "angularApp/main-aot.ts"
-  ],
   "angularCompilerOptions": {
-    "genDir": "aot",
+    "genDir": "./aot",
+    "entryModule": "./angularApp/app/app.module#AppModule",
     "skipMetadataEmit": true
   },
   "compileOnSave": false,
@@ -132,14 +128,13 @@ The modules and entry points are also defined for the JIT build.
       "es2015",
       "dom"
     ],
-    "types": [
-      "node"
+    "typeRoots": [
+      "./node_modules/@types/"
     ]
   },
-  "files": [
-    "angularApp/app/app.module.ts",
-    "angularApp/app/about/about.module.ts",
-    "angularApp/main.ts"
+  "exclude": [
+    "node_modules",
+    "angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
@@ -147,6 +142,7 @@ The modules and entry points are also defined for the JIT build.
   "compileOnSave": false,
   "buildOnSave": false
 }
+
 
 ```
 

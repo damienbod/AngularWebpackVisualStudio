@@ -2,7 +2,7 @@
 
 This article shows how HMR, or <a href="https://webpack.js.org/concepts/hot-module-replacement/">Hot Module Replacement </a>can be used together with Angular and Webpack.
 
-Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 2.x</a> | <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/tree/angular4">VS2017 angular 4</a> 
+Code <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">VS2017 angular 4.x</a> 
 
 <ul>	
     <li><a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a></li>
@@ -17,8 +17,8 @@ The <a href="https://webpack.js.org/configuration/dev-server/#devserver">webpack
 ```javascript
 "devDependencies": {
   ...
-  "webpack": "^2.2.1",
-  "webpack-dev-server": "2.2.1"
+  "webpack": "^3.2.0",
+  "webpack-dev-server": "^2.5.1",
 },
 ```
 
