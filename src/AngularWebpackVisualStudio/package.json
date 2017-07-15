@@ -38,7 +38,7 @@
     "core-js": "2.4.1",
     "ie-shim": "0.1.0",
     "rxjs": "5.4.2",
-    "zone.js": "0.8.13"
+    "zone.js": "0.8.12"
   },
   "devDependencies": {
     "@ngtools/webpack": "^1.5.1",
