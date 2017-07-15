@@ -18,17 +18,17 @@ describe('HomeComponent', () => {
     let fixture: ComponentFixture<HomeComponent>;
     let comp: HomeComponent;
 
-    let configuration = new Configuration();
-    let actionUrl: string = configuration.Server + 'api/things/';
+    const configuration = new Configuration();
+    const actionUrl: string = configuration.Server + 'api/things/';
 
     // Multiple requests with different URL.
-    let responses: any = {};
-    let data: any = JSON.stringify([{ id: 1, name: "NetCore" }]);
+    const responses: any = {};
+    const data: any = JSON.stringify([{ id: 1, name: 'NetCore' }]);
     responses[actionUrl + 'all/'] = new Response(new ResponseOptions({ body: data }));
-    
+
     function expectURL(backend: MockBackend, responses: any) {
         backend.connections.subscribe((c: MockConnection) => {
-            let response: any = responses[c.request.url];
+            const response: any = responses[c.request.url];
             c.mockRespond(response);
         });
     }

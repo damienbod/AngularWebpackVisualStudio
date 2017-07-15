@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import { HomeRoutes } from './home.routes';
 import { HomeComponent } from './components/home.component';
+import { HomeRoutes } from './home.routes';
 
 @NgModule({
     imports: [
