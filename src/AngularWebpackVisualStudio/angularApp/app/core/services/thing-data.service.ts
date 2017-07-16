@@ -1,9 +1,11 @@
-﻿import { Thing } from './../../models/thing';
-import { Configuration } from './../../app.constants';
+﻿import 'rxjs/add/operator/map';
+
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Headers, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
+import { Configuration } from './../../app.constants';
+import { Thing } from './../../models/thing';
 
 @Injectable()
 export class ThingService {
@@ -29,7 +31,7 @@ export class ThingService {
     }
 
     public Add = (thingToAdd: Thing): Observable<Thing> => {
-        let toAdd = JSON.stringify({ name: thingToAdd.name });
+        const toAdd = JSON.stringify({ name: thingToAdd.name });
 
         return this.http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Thing>res.json());
     }

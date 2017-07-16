@@ -1,9 +1,10 @@
-import { ThingService } from './../../core/services/thing-data.service';
-import { Thing } from './../../models/thing';
 import { Component, OnInit } from '@angular/core';
 
+import { ThingService } from './../../core/services/thing-data.service';
+import { Thing } from './../../models/thing';
+
 @Component({
-    selector: 'home-component',
+    selector: 'app-home-component',
     templateUrl: './home.component.html'
 })
 
