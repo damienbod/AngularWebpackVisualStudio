@@ -9,6 +9,24 @@ Template for <a href="http://webpack.github.io/docs/">Webpack </a> , <a href="ht
 
 <img src="https://damienbod.files.wordpress.com/2016/06/vs_webpack_angular2.png?w=600" alt="vs_webpack_angular2" width="600" height="225" class="alignnone size-medium wp-image-6700" />
 
+## Features
+<ul>	
+	<li>AoT supported</li>
+	<li>Lazy Loading supported</li>
+	<li>Best practices for Angular</li>
+	<li>tslint</li>
+	<li>HMR (npm start)</li>
+	<li>Testing client, Jasmine and Karma.</li>
+	<li>Testing server, xunit</li>
+	<li>Webpack</li>
+	<li>Development, Production builds</li>
+	<li>Typescript</li>
+	<li>SASS, CSS supported</li>
+	<li>Type manager with @types</li>
+	<li>Yarn npm 5 onwards</li>
+	<li>regular updates</li>
+	<li>Easy to use with CI</li>
+</ul>
 
 ## Authors
 <img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70"><img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70"><img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
