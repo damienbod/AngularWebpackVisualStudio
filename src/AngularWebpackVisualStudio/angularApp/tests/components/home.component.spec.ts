@@ -24,7 +24,7 @@ describe('HomeComponent', () => {
     // Multiple requests with different URL.
     const responses: any = {};
     const data: any = JSON.stringify([{ id: 1, name: 'NetCore' }]);
-    responses[actionUrl + 'all/'] = new Response(new ResponseOptions({ body: data }));
+    responses[actionUrl] = new Response(new ResponseOptions({ body: data }));
 
     function expectURL(backend: MockBackend, responses: any) {
         backend.connections.subscribe((c: MockConnection) => {
