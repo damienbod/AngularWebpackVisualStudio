@@ -8,6 +8,7 @@ For a fresh start, consider running these commands
 <a name="2017-07-20"></a>
 # 2017-07-20
 * Release 1.0.0: Angular 4.3.1, typescript 2.4.2, webpack 3.3.0
+* Updated versions 
 
 <a name="2017-07-15"></a>
 # 2017-07-15
