@@ -48,9 +48,12 @@ For npm > v 5 the package-lock.json exists.
 
 Update to the latest versions:
 
+```
 npm install npm@latest -g 
-
+```
+```
 npm install yarn -g
+```
 
 See this link for more details on yarn:
 
