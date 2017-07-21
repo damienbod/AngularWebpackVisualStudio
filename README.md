@@ -16,7 +16,7 @@ Template for <a href="http://webpack.github.io/docs/">Webpack </a> , <a href="ht
 	<li>Best practices for Angular</li>
 	<li>tslint</li>
 	<li>HMR (npm start)</li>
-	<li>Testing client, Jasmine and Karma.</li>
+	<li>Testing client, Jasmine and Karma</li>
 	<li>Testing server, xunit</li>
 	<li>Webpack</li>
 	<li>Development, Production builds</li>
@@ -40,7 +40,11 @@ Template for <a href="http://webpack.github.io/docs/">Webpack </a> , <a href="ht
 
 ## Tools
 
-yarn, nodejs and npm are required to run this solution.
+You can use this template with yarn and with npm on clientside, the dotnet cli on server side.
+
+For yarn the yarn.lock file exists.
+
+For npm > v 5 the package-lock.json exists.
 
 Update to the latest versions:
 
@@ -56,13 +60,13 @@ or
 
 https://yarnpkg.com/en/docs/install
 
-If you remove the yarn.lock file, you do not require yarn.
+So npm _and_ yarn works. YOu can take whatever you prefer.
 
 ### Node Path in Visual Studio
 
-The installed nodejs on your system needs to be used inside Visual Studio and not VS one. You need to set the path of you node before the VS node.
+The installed nodejs on your system needs to be used inside Visual Studio and not the nodejd from Visual Studio. You need to set the path of your node before the VS node.
 
-In Visual Studio Tools/Options/Projects and Solutions/Web Package Management/External Web Tools
+In Visual Studio: Tools -> Options -> Projects and Solutions -> Web Package Management -> External Web Tools
 
 More the $(Path) option above the Visual Studio one.
 
@@ -72,7 +76,7 @@ https://github.com/madskristensen/NpmTaskRunner/issues/46
 
 ## Setting up the application
 
-The ASP.NET Core application contains both the server side API services and also hosts the Angular client application. The source code for the Angular application is implemented in the angularApp folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
+The ASP.NET Core application contains both the server side API services and also hosts the Angular client application. The source code for the Angular application is implemented in the "angularApp" folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.
 
 ## npm configuration
 
@@ -80,7 +84,7 @@ The npm package.json configuration loads all the required packages for Angular a
 
 ## Production build
 
-It can be run using npm run build-production which is configured in the package.json.
+It can be run using `npm run build-production` which is configured in the package.json.
 
 ```
 npm run webpack-production
@@ -100,7 +104,7 @@ It can be run using npm run build-production which is configured in the package.
 npm start
 ```
 
-## watch for development
+## Watch for development
 
 ```
 npm run watch-webpack-dev
@@ -110,7 +114,7 @@ npm run watch-webpack-dev
 
 ### npm custom Task Runner
 
-The NPM Task Runner can be used to build  the client SPA application from inside Visual Studio. This task runner can be downloaded from:
+The NPM Task Runner can be used to build the client SPA application from inside Visual Studio. This task runner can be downloaded from:
 
 https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner
 
@@ -136,9 +140,11 @@ The watch-webpack-dev npm script can be automatically be started in Visual Studi
 
 The XUnit test for ASP.NET Core API is in tests/AngularWebpackVisualStudio_Tests folder:
 
+```
 dotnet test
+```
 
-or from Visual Studio: Test > Run > All Tests
+or from Visual Studio: Test -> Run -> All Tests
 
 See this link for more details on XUnit testing in ASP.NET Core: https://docs.microsoft.com/it-it/dotnet/articles/core/testing/unit-testing-with-dotnet-test
 
