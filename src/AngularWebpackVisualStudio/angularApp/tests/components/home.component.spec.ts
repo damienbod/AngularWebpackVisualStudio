@@ -1,12 +1,5 @@
-﻿import { inject, async, TestBed, ComponentFixture } from '@angular/core/testing';
-import { MockBackend, MockConnection } from '@angular/http/testing';
-import {
-    Http,
-    ConnectionBackend,
-    BaseRequestOptions,
-    Response,
-    ResponseOptions
-} from '@angular/http';
+﻿import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { Configuration } from '../../app/app.constants';
@@ -18,36 +11,15 @@ describe('HomeComponent', () => {
     let fixture: ComponentFixture<HomeComponent>;
     let comp: HomeComponent;
 
-    const configuration = new Configuration();
-    const actionUrl: string = configuration.Server + 'api/things/';
-
-    // Multiple requests with different URL.
-    const responses: any = {};
-    const data: any = JSON.stringify([{ id: 1, name: 'NetCore' }]);
-    responses[actionUrl] = new Response(new ResponseOptions({ body: data }));
-
-    function expectURL(backend: MockBackend, responses: any) {
-        backend.connections.subscribe((c: MockConnection) => {
-            const response: any = responses[c.request.url];
-            c.mockRespond(response);
-        });
-    }
-
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [
-                FormsModule
+                FormsModule,
+                HttpClientTestingModule
             ],
             providers: [
-                BaseRequestOptions,
-                MockBackend,
                 ThingService,
-                Configuration,
-                {
-                    provide: Http, useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
-                        return new Http(backend, defaultOptions);
-                    }, deps: [MockBackend, BaseRequestOptions]
-                }
+                Configuration
             ],
             declarations: [HomeComponent]
         }).compileComponents();
@@ -58,21 +30,19 @@ describe('HomeComponent', () => {
         comp = fixture.componentInstance;
     });
 
-    it('on init should get all things', async(
-        inject([ThingService, MockBackend],
-            (dataService: ThingService, backend: MockBackend) => {
-                // Mock backend for testing the Http service.
-                expectURL(backend, responses);
+    it('on init should get all things', async () => {
+        const http = TestBed.get(HttpTestingController);
+        const customConfiguration = TestBed.get(Configuration);
+        const expectedResponse = [{ id: 1, name: 'NetCore' }];
 
-                fixture.detectChanges();
-                // Waits for async response.
-                fixture.whenStable().then(() => {
-                    // Updates view with data.
-                    fixture.detectChanges();
+        const url = customConfiguration.Server + 'api/things/';
 
-                    expect(JSON.stringify(comp.things)).toEqual(data);
-                });
-            })
-    ));
+        fixture.detectChanges();
 
+        http.expectOne(url).flush(expectedResponse);
+
+        fixture.whenStable().then(() => {
+            expect(comp.things).toEqual(expectedResponse);
+        });
+    })
 });

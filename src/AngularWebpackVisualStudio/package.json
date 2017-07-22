@@ -19,6 +19,7 @@
     "watch-webpack-production": "npm run build-production --watch --color",
     "publish-for-iis": "npm run build-production && dotnet publish -c Release",
     "test": "karma start",
+    "test-watch": "karma start --no-single-run",
     "lint": "tslint ./angularApp"
   },
   "dependencies": {
