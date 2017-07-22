@@ -63,7 +63,7 @@ or
 
 https://yarnpkg.com/en/docs/install
 
-So npm _and_ yarn works. YOu can take whatever you prefer.
+So npm _and_ yarn works. You can take whatever you prefer.
 
 ### Node Path in Visual Studio
 
