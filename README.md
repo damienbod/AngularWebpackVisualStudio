@@ -18,7 +18,7 @@
 - _Yarn_ & _npm 5_
 
 ## Authors
-<img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70"><img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70"><img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
+<img src="https://avatars.githubusercontent.com/u/11268349?v=3" width="70" alt="Fabian Gosebrink"><img src="https://avatars.githubusercontent.com/u/3442158?v=3" width="70" alt="Damien Bowden"><img src="https://pbs.twimg.com/profile_images/707847627992338432/ytT_FxUY_400x400.jpg" width="70" alt="Roberto Simonetti">
 
 _[Fabian Gosebrink](https://twitter.com/FabianGosebrink), [Damien Bowden](https://twitter.com/damien_bod), [Roberto Simonetti](https://twitter.com/robisim74)_
 
@@ -145,8 +145,8 @@ See this link for more details on Angular testing: https://angular.io/guide/test
 The Webpack configuration could also build all of the scss and css files to a separate _app.css_ or _app."hash".css_ which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the html header using the _index.html_ file and not included in the Webpack build.
 
 ## <a name="6"></a>Links
-- [Lazy Loading](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/LAZY_LOADING.md)
-- [Hot Module Replacement](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/HMR.md)
+- [Lazy Loading](https://github.com/damienbod/Angular2WebpackVisualStudio/tree/master/docs/LAZY_LOADING.md)
+- [Hot Module Replacement](https://github.com/damienbod/Angular2WebpackVisualStudio/tree/master/docs/HMR.md)
 
 - [Building production ready Angular apps with Visual Studio and ASP.NET Core](https://damienbod.com/2017/01/01/building-production-ready-angular-apps-with-visual-studio-and-asp-net-core/)
 
