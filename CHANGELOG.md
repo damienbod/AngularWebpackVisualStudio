@@ -5,7 +5,7 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
-<a name="2017-08-15"></a>
+<a name="2017-08-18"></a>
 # 2017-08-15
 * Update ASP.NET Core 2.0
 
