@@ -322,11 +322,4 @@ src/Angular2WebpackVisualStudio/wwwroot/assets
 src/Angular2WebpackVisualStudio/wwwroot/dist
 src/AngularWebpackVisualStudio/wwwroot/dist/
 src/AngularWebpackVisualStudio/wwwroot/index.html
-src/AngularWebpackVisualStudio/wwwroot/assets/damienbod.jpg
-src/AngularWebpackVisualStudio/wwwroot/assets/fabianGosebrink.jpg
-src/AngularWebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-448c34.woff2
-src/AngularWebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-898896.svg
-src/AngularWebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-e18bbf.ttf
-src/AngularWebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-f4769f.eot
-src/AngularWebpackVisualStudio/wwwroot/assets/glyphicons-halflings-regular-fa2772.woff
-src/AngularWebpackVisualStudio/wwwroot/assets/RobertoSimonetti.jpg
+src/AngularWebpackVisualStudio/wwwroot/
