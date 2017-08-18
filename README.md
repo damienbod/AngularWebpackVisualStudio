@@ -62,7 +62,7 @@ Blogs:
 
 ## <a name="2"></a>Installing
 Requirements:
-- At least [.NET Core 1.1.2](https://www.microsoft.com/net/download/core)
+- At least [.NET Core 2.0.0](https://www.microsoft.com/net/download/core)
 - At least _node 6.9_ and _npm 4_
 
 #### Yarn
