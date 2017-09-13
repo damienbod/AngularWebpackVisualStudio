@@ -41,6 +41,7 @@ Blogs:
 ## <a name="1"></a>Project structure
 - **src**
 	- **AngularWebpackVisualStudio** _ASP.NET Core Web API project_
+		- **.template.config** _Folder containing the template information about the dotnet new template_
 		- **wwwroot** _Root for Angular application deployment_
 		- **angularApp** _Angular application_
 			- **main.ts** _Entry point for JiT compilation_
