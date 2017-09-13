@@ -34,8 +34,9 @@ Blogs:
 	* [Development](#3.2)
 	* [Production](#3.3)
 * [Testing](#4)
-* [Notes](#5)
-* [Links](#6)
+* [Dotnet Template](#5)
+* [Notes](#6)
+* [Links](#7)
 
 ## <a name="1"></a>Project structure
 - **src**
@@ -141,10 +142,22 @@ npm test
 ```
 See this link for more details on Angular testing: https://angular.io/guide/testing
 
-## <a name="5"></a>Notes
+## <a name="4"></a>Dotnet Template
+To install a template for this package we prepared a `template.json` to do that.
+
+Just run `dotnet new --install <PATH>` where <PATH> is the path to the folder where the `.template.config` folder lives.
+
+After that you should see the template when running `dotnet new` on commandline
+
+![dotnetnew](.github/dotnet-new.jpg "dotnetnew")
+
+Now you can use the temaplte with `dotnet new angularwebapi`
+
+
+## <a name="6"></a>Notes
 The Webpack configuration could also build all of the scss and css files to a separate _app.css_ or _app."hash".css_ which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the html header using the _index.html_ file and not included in the Webpack build.
 
-## <a name="6"></a>Links
+## <a name="7"></a>Links
 - [Lazy Loading](https://github.com/damienbod/Angular2WebpackVisualStudio/tree/master/docs/LAZY_LOADING.md)
 - [Hot Module Replacement](https://github.com/damienbod/Angular2WebpackVisualStudio/tree/master/docs/HMR.md)
 
