@@ -142,7 +142,7 @@ npm test
 ```
 See this link for more details on Angular testing: https://angular.io/guide/testing
 
-## <a name="4"></a>Dotnet Template
+## <a name="5"></a>Dotnet Template
 To install a template for this package we prepared a `template.json` to do that.
 
 Just run `dotnet new --install <PATH>` where <PATH> is the path to the folder where the `.template.config` folder lives.
