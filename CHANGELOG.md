@@ -8,7 +8,7 @@ For a fresh start, consider running these commands
 <a name="2017-09-16"></a>
 # 2017-09-16
 * Updated Angular 4.4.1
-* supported for dotnet templates
+* support for dotnet templates
 
 <a name="2017-08-18"></a>
 # 2017-08-15
