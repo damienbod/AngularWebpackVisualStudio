@@ -16,9 +16,9 @@ console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 module.exports = {
 
     entry: {
-        'vendor': './angularApp/vendor.ts',
         'polyfills': './angularApp/polyfills.ts',
-        'app': './angularApp/main-aot.ts' // AoT compilation
+        'vendor': './angularApp/vendor.ts',
+        'app': './angularApp/main-aot.ts'
     },
 
     output: {
@@ -42,7 +42,13 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: '@ngtools/webpack'
+                use: [
+                    'awesome-typescript-loader',
+                    'angular-router-loader',
+                    'angular2-template-loader',
+                    'source-map-loader',
+                    'tslint-loader'
+                ]
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
@@ -83,12 +89,8 @@ module.exports = {
         ],
         exprContextCritical: false
     },
-
     plugins: [
-        // AoT plugin.
-        new ngToolsWebpack.AotPlugin({
-            tsConfigPath: './tsconfig-aot.json'
-        }),
+
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
@@ -110,7 +112,6 @@ module.exports = {
             {
                 name: ['vendor', 'polyfills']
             }),
-
         new HtmlWebpackPlugin({
             filename: 'index.html',
             inject: 'body',
@@ -121,5 +122,6 @@ module.exports = {
             { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
         ])
     ]
+
 };
 

@@ -19,7 +19,7 @@
   },
   "exclude": [
     "node_modules",
-    "angularApp/main-aot.ts"
+    "angularApp/main.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true
