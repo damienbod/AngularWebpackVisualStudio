@@ -5,6 +5,10 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2017-10-28"></a>
+# ...coming soon
+* Updated Angular 5
+
 <a name="2017-10-15"></a>
 # 2017-10-15
 * Updated Angular 4.4.5
