@@ -1,11 +1,9 @@
 const path = require('path');
-
 const webpack = require('webpack');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ngToolsWebpack = require('@ngtools/webpack');
+const webpackTools = require('@ngtools/webpack');
 
 const helpers = require('./webpack.helpers');
 
@@ -41,14 +39,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
-                use: [
-                    'awesome-typescript-loader',
-                    'angular-router-loader',
-                    'angular2-template-loader',
-                    'source-map-loader',
-                    'tslint-loader'
-                ]
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+                use: '@ngtools/webpack'
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
@@ -90,6 +82,10 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
+        new webpackTools.AngularCompilerPlugin({
+            tsConfigPath: './tsconfig.json',
+            entryModule: './angularApp/app/app.module#AppModule'
+        }),
 
         new CleanWebpackPlugin(
             [
