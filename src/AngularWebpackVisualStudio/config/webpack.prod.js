@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackTools = require('@ngtools/webpack');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const helpers = require('./webpack.helpers');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -82,6 +82,9 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static'
+        }),
         new webpackTools.AngularCompilerPlugin({
             tsConfigPath: './tsconfig.json',
             entryModule: './angularApp/app/app.module#AppModule'
