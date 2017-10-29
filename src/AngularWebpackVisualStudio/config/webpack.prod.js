@@ -86,8 +86,8 @@ module.exports = {
         //    analyzerMode: 'static'
         //}),
         new webpackTools.AngularCompilerPlugin({
-            tsConfigPath: './tsconfig.json',
-            entryModule: './angularApp/app/app.module#AppModule'
+            tsConfigPath: './tsconfig-aot.json'
+            // entryModule: './angularApp/app/app.module#AppModule'
         }),
 
         new CleanWebpackPlugin(
