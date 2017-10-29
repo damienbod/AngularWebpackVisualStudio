@@ -82,9 +82,9 @@ module.exports = {
         exprContextCritical: false
     },
     plugins: [
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static'
-        }),
+        //new BundleAnalyzerPlugin({
+        //    analyzerMode: 'static'
+        //}),
         new webpackTools.AngularCompilerPlugin({
             tsConfigPath: './tsconfig.json',
             entryModule: './angularApp/app/app.module#AppModule'
