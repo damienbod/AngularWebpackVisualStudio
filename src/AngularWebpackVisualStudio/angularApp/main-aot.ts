@@ -1,10 +1,9 @@
 ﻿import './styles.scss';
 
-import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
+import { enableProdMode } from '@angular/core';
+import { AppModuleNgFactory } from './app/app.module.ngfactory';
 
-// Styles.
 enableProdMode();
 
-platformBrowser().bootstrapModule(AppModule);
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
