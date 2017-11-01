@@ -104,7 +104,7 @@ All available commands are the following:
 "watch-webpack-production": "npm run build-production --watch --color",
 "publish-for-iis": "npm run build-production && dotnet publish -c Release",
 "test": "karma start",
-"test-watch": "karma start --no-single-run",
+"test-ci": "karma start --single-run --browsers ChromeHeadless",
 "lint": "tslint ./angularApp"
 ```
 
@@ -141,6 +141,12 @@ The Angular test is in _angularApp/tests_ folder. It uses _Karma_ test runner an
 ```
 npm test
 ```
+
+runs the tests and watches for development. If you want to run the tests with a headless browser only one single time just type
+```
+npm run test-ci
+```
+
 See this link for more details on Angular testing: https://angular.io/guide/testing
 
 ## <a name="5"></a>Dotnet Template

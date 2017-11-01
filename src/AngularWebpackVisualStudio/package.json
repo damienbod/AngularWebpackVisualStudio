@@ -19,7 +19,7 @@
     "watch-webpack-production": "npm run build-production --watch --color",
     "publish-for-iis": "npm run build-production && dotnet publish -c Release",
     "test": "karma start",
-    "test-watch": "karma start --no-single-run",
+    "test-ci": "karma start --single-run --browsers ChromeHeadless",
     "lint": "tslint ./angularApp"
   },
   "dependencies": {
@@ -44,8 +44,8 @@
   },
   "devDependencies": {
     "@ngtools/webpack": "^1.7.1",
-    "@types/node": "^8.0.28",
     "@types/jasmine": "^2.6.0",
+    "@types/node": "^8.0.28",
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.2",
@@ -62,6 +62,7 @@
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.31",
     "karma-webpack": "^2.0.4",
