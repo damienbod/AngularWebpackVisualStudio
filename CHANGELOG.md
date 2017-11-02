@@ -1,9 +1,17 @@
 ## Angular Webpack Visual Studio Changelog
 For a fresh start, consider running these commands 
-* `rimraf node_modules` 
+* `rimraf node_modules && del package-lock.json` 
 * `npm install`
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
+
+<a name="2017-10-28"></a>
+# 2017-11-02
+* Updated Angular 5
+
+<a name="2017-10-28"></a>
+# ...coming soon
+* Updated Angular 5
 
 <a name="2017-10-15"></a>
 # 2017-10-15

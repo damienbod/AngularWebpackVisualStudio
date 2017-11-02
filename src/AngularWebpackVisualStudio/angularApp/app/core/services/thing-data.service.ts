@@ -13,7 +13,7 @@ export class ThingService {
     private actionUrl: string;
     private headers: HttpHeaders;
 
-    constructor(private http: HttpClient, private configuration: Configuration) {
+    constructor(private http: HttpClient, configuration: Configuration) {
 
         this.actionUrl = configuration.Server + 'api/things/';
 

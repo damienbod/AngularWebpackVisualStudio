@@ -1,4 +1,4 @@
-# Angular Visual Studio Webpack Starter
+s# Angular Visual Studio Webpack Starter
 [![Build status](https://ci.appveyor.com/api/projects/status/3x6y01a8312x6o2p?svg=true)](https://ci.appveyor.com/project/damienbod/angular2webpackvisualstudio)
 
 >Template for [Webpack](https://webpack.js.org/concepts/), [Visual Studio](https://www.visualstudio.com/), [ASP.NET Core](https://docs.microsoft.com/en-us/dotnet/core/) and [Angular](https://angular.io/). Both the client and the server side of the application are implemented inside one ASP.NET Core project which makes it easier to deploy.
@@ -95,7 +95,7 @@ The _watch-webpack-dev_ npm script automatically starts in Visual Studio because
 
 All available commands are the following:
 ```
-"start": "concurrently \"webpack-dev-server --env=dev --hot --inline --port 8080\" \"dotnet run\" ",
+"start": "concurrently \"webpack-dev-server --env=dev --open --hot --inline --port 8080\" \"dotnet run\" ",
 "webpack-dev": "webpack --env=dev",
 "webpack-production": "webpack --env=prod",
 "build-dev": "npm run webpack-dev",
