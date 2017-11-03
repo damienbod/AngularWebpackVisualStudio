@@ -102,6 +102,12 @@ module.exports = {
 
         new webpack.optimize.CommonsChunkPlugin({ name: ['vendor', 'polyfills'] }),
 
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
+
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
