@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class CustomFooterComponent {
-    public currentYear: number = new Date().getFullYear();
+    currentYear: number = new Date().getFullYear();
 }

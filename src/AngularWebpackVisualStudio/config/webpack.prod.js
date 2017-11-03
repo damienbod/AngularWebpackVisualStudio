@@ -1,4 +1,5 @@
 const path = require('path');
+const rxPaths = require('rxjs/_esm5/path-mapping');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -27,7 +28,8 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.ts', '.js', '.json']
+        extensions: ['.ts', '.js', '.json'],
+        alias: rxPaths()
     },
 
     devServer: {
@@ -90,12 +92,14 @@ module.exports = {
             // entryModule: './angularApp/app/app.module#AppModule'
         }),
 
+        new webpack.optimize.ModuleConcatenationPlugin(),
+
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
         }),
-
+     
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
