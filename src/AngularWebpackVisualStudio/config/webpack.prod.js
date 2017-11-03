@@ -94,6 +94,12 @@ module.exports = {
 
         new webpack.optimize.ModuleConcatenationPlugin(),
 
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
+
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',

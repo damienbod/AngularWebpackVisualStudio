@@ -1,43 +1,48 @@
-﻿<div class="container-fluid">
-
-    <h1>{{message}}</h1>
-
+﻿<div class="jumbotron">
+    <h1 class="display-4">
+        {{message}}
+    </h1>
+</div>
+<form #thingForm="ngForm" (ngSubmit)="addThing()">
     <div class="row">
-        <form class="form-inline" (ngSubmit)="addThing()" #thingForm="ngForm">
-            <div class="form-group">
+        <div class="col-6">
+            <div class="input-group">
                 <label class="sr-only" for="exampleInputThing">Thing</label>
-                <input type="text" class="form-control" id="exampleInputThing" placeholder="Name of the thing ..." name="thing" [(ngModel)]="thing.name"
-                    required>
+                <input [(ngModel)]="thing.name" class="form-control" id="exampleInputThing" name="thing" placeholder="Name of the thing ..." required
+                       type="text">
+                <span class="input-group-btn">
+                    <button [disabled]="!thingForm.valid" class="btn btn-primary" type="submit">Create new Thing</button>
+                </span>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!thingForm.valid">Create new Thing</button>
-        </form>
-    </div>
-
-    <div class="row" *ngIf="things.length > 0">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th class="text-right"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let thing of things; let i = index">
-                        <td>{{i + 1}}</td>
-                        <td>{{thing.name}}</td>
-                        <td class="text-right">
-                            <button type="button" class="btn btn-xs btn-danger" (click)="deleteThing(thing)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
-
-    <div class="row" *ngIf="things.length <= 0">
-        <span>No items found</span>
+</form>
+<div *ngIf="things.length > 0" class="mt-4 row">
+    <div class="col-12 table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th class="text-right">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let thing of things; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{thing.name}}</td>
+                <td class="text-right">
+                    <button (click)="deleteThing(thing)" class="btn btn-danger btn-sm" type="button">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
+</div>
+<div *ngIf="things.length <= 0" class="mt-4 row">
+    <div class="col-12">
+        <div class="alert alert-warning">
+            No items found
+        </div>
+    </div>
 </div>
