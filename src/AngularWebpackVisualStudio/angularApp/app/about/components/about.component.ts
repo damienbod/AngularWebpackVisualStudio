@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 
 export class AboutComponent {
 
-    public message: string;
+    message: string;
 
     constructor() {
         this.message = 'Hello from AboutComponent constructor';

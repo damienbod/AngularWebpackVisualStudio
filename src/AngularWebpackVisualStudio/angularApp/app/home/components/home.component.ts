@@ -10,9 +10,9 @@ import { Thing } from './../../models/thing';
 
 export class HomeComponent implements OnInit {
 
-    public message: string;
-    public things: Thing[] = [];
-    public thing: Thing = new Thing();
+    message: string;
+    things: Thing[] = [];
+    thing: Thing = new Thing();
 
     constructor(private dataService: ThingService) {
         this.message = 'Things from the ASP.NET Core API';
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         this.getAllThings();
     }
 
-    public addThing() {
+    addThing() {
         this.dataService
             .add(this.thing)
             .subscribe(() => {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
             });
     }
 
-    public deleteThing(thing: Thing) {
+    deleteThing(thing: Thing) {
         this.dataService
             .delete(thing.id)
             .subscribe(() => {
