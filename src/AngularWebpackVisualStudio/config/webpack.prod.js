@@ -90,6 +90,12 @@ module.exports = {
             // entryModule: './angularApp/app/app.module#AppModule'
         }),
 
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
+
         new CleanWebpackPlugin(
             [
                 './wwwroot/dist',
