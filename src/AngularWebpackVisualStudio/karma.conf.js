@@ -23,8 +23,9 @@ module.exports = function (config) {
         ],
 
         client: {
-            clearContext: false
+            captureConsole: false
         },
+
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -39,12 +40,20 @@ module.exports = function (config) {
             noInfo: true
         },
 
-        coverageReporter: { includeAllSources: true, dir: 'coverage/' },
+        coverageReporter: {
+            type: 'in-memory'
+        },
+
+        remapCoverageReporter: {
+            'text-summary': null,
+            json: './coverage/coverage.json',
+            html: './coverage/html'
+        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec', 'kjhtml', 'coverage'],
+        reporters: ['spec', 'kjhtml', 'coverage', 'remap-coverage'],
 
 
         // web server port

@@ -68,7 +68,18 @@ module.exports = {
                     /\.(e2e|spec)\.ts$/,
                     /node_modules/
                 ]
+            },
+            {
+                enforce: 'post',
+                test: /\.(js|ts)$/,
+                loader: 'istanbul-instrumenter-loader',
+                include: path.join(__dirname, 'angularApp'),
+                exclude: [
+                    /\.(e2e|spec)\.ts$/,
+                    /node_modules/
+                ]
             }
+
         ],
         exprContextCritical: false
     }
