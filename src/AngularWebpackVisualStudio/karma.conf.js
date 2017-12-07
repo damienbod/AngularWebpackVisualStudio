@@ -8,6 +8,7 @@ module.exports = function (config) {
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
+
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
@@ -28,7 +29,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './config/spec.bundle.js': ['webpack', 'sourcemap']
+            './config/spec.bundle.js': ['webpack', 'sourcemap', 'coverage']
         },
 
         // webpack
@@ -38,11 +39,12 @@ module.exports = function (config) {
             noInfo: true
         },
 
+        coverageReporter: { includeAllSources: true, dir: 'coverage/' },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['spec', 'kjhtml'],
+        reporters: ['spec', 'kjhtml', 'coverage'],
 
 
         // web server port

@@ -15,6 +15,15 @@ module.exports = {
     module: {
         rules: [
             {
+                //enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader',
+                exclude: [
+                    path.join(__dirname, 'node_modules/rxjs'),
+                    path.join(__dirname, 'node_modules/@angular')
+                ]
+            },
+            {
                 test: /\.ts$/,
                 use: [
                     'awesome-typescript-loader',
@@ -49,6 +58,16 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: 'raw-loader'
+            },
+            {
+                enforce: 'post',
+                test: /\.(js|ts)$/,
+                loader: 'istanbul-instrumenter-loader',
+                include: path.join(__dirname, 'angularApp'),
+                exclude: [
+                    /\.(e2e|spec)\.ts$/,
+                    /node_modules/
+                ]
             }
         ],
         exprContextCritical: false

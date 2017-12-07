@@ -18,7 +18,7 @@
     "watch-webpack-dev": "webpack --env=dev --watch --color",
     "watch-webpack-production": "npm run build-production --watch --color",
     "publish-for-iis": "npm run build-production && dotnet publish -c Release",
-    "test": "karma start",
+    "test": "tsc && karma start",
     "test-ci": "karma start --single-run --browsers ChromeHeadless",
     "lint": "tslint ./angularApp"
   },
@@ -60,6 +60,7 @@
     "json-loader": "^0.5.7",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
