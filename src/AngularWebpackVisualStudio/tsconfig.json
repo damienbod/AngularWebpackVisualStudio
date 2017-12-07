@@ -1,22 +1,30 @@
-﻿{
+{
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": true,
-    "noImplicitAny": true,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
     "lib": [
-      "es2015",
-      "dom"
+      "dom",
+      "es6"
     ],
+    "baseUrl": "./angularApp",
+    "paths": {
+      "@angular/*": [ "node_modules/@angular/*" ]
+    },
     "typeRoots": [
-      "./node_modules/@types/"
+      "node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "node"
     ]
   },
   "exclude": [
@@ -24,8 +32,12 @@
     "./angularApp/main-aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
     "useWebpackText": true
   },
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
