@@ -1,7 +1,16 @@
-<footer class="footer">
-    <p>
-        <a href="https://twitter.com/FabianGosebrink">Fabian Gosebrink</a>&nbsp;Blog: <a href="http://offering.solutions">Offering.Solutions</a>        &amp;
-        <a href="https://twitter.com/damien_bod">Damien Bowden</a>&nbsp;Blog: <a href="https://damienbod.com/">Software Engineering</a>        &amp;
-        <a href="https://twitter.com/robisim74">Roberto Simonetti</a> &copy; {{currentYear}}
-    </p>
-</footer>
+<nav class="bg-light fixed-bottom navbar navbar-expand navbar-light">
+    <a [routerLink]="['/home']" class="navbar-brand">
+        <em>ASP.NET Core Angular Webpack</em>
+    </a>
+    <button aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#bottomNavbarCollapse" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="bottomNavbarCollapse">
+        <span class="navbar-text">
+            <a href="https://twitter.com/FabianGosebrink">Fabian Gosebrink</a>&nbsp;Blog: <a href="http://offering.solutions">Offering.Solutions</a>
+            &nbsp;|&nbsp;<a href="https://twitter.com/damien_bod">Damien Bowden</a>&nbsp;Blog: <a href="https://damienbod.com/">Software Engineering</a>
+            &nbsp;|&nbsp;<a href="https://twitter.com/robisim74">Roberto Simonetti</a>
+            &nbsp;|&nbsp;&copy; {{currentYear}}
+        </span>
+    </div>
+</nav>
