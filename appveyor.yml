@@ -8,7 +8,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - dotnet --version
   - dotnet restore
-  - choco install googlechrome
+  - choco install googlechrome --notsilent
 build_script:
 - dotnet build
 - npm -g install npm@latest
