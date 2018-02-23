@@ -43,7 +43,7 @@ namespace AngularWebpackVisualStudio_Tests
             var resultsInString = await responseGet.Content.ReadAsStringAsync();
             var restulsInThingsArray = JsonConvert.DeserializeObject<Thing[]>(resultsInString);
 
-            Assert.Equal(restulsInThingsArray.Length, 1);
+            Assert.Single(restulsInThingsArray);
         }
     }
 }
