@@ -44,33 +44,54 @@ module.exports = {
     rules: [
       {
         test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-        use: '@ngtools/webpack'
+        use: '@ngtools/webpack',
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-        use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+        use: 'file-loader?name=assets/[name]-[hash:6].[ext]',
+        parser: {
+          system: true
+        }
       },
       {
         test: /favicon.ico$/,
-        use: 'file-loader?name=/[name].[ext]'
+        use: 'file-loader?name=/[name].[ext]',
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.scss$/,
         include: path.join(ROOT, 'angularApp/styles'),
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.scss$/,
         exclude: path.join(ROOT, 'angularApp/styles'),
-        use: ['raw-loader', 'sass-loader']
+        use: ['raw-loader', 'sass-loader'],
+        parser: {
+          system: true
+        }
       },
       {
         test: /\.html$/,
-        use: 'raw-loader'
+        use: 'raw-loader',
+        parser: {
+          system: true
+        }
       }
     ],
     exprContextCritical: false
