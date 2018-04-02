@@ -97,10 +97,10 @@ module.exports = {
     exprContextCritical: false
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      generateStatsFile: true
-    }),
+    // new BundleAnalyzerPlugin({
+    //  analyzerMode: 'static',
+    //  generateStatsFile: true
+    // }),
     new webpackTools.AngularCompilerPlugin({
       tsConfigPath: './tsconfig-aot.json'
       // entryModule: './angularApp/app/app.module#AppModule'
