@@ -35,6 +35,7 @@
     "@angular/platform-server": "5.2.9",
     "@angular/router": "5.2.9",
     "@angular/upgrade": "5.2.9",
+    "@angular-devkit/core": "0.4.8",
     "bootstrap": "4.0.0",
     "core-js": "2.5.4",
     "ie-shim": "0.1.0",
