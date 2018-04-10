@@ -40,6 +40,7 @@
     "core-js": "2.5.5",
     "ie-shim": "0.1.0",
     "rxjs": "6.0.0-rc.1",
+    "rxjs-compat": "6.0.0-rc.1",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
