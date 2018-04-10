@@ -46,7 +46,7 @@
     "@ngtools/webpack": "^6.0.0-rc.2.4",
     "@types/jasmine": "^2.8.6",
     "@types/node": "^9.6.1",
-    "angular-router-loader": "^0.8.3",
+    "angular-router-loader": "0.8.2",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^5.0.0",
     "clean-webpack-plugin": "^0.1.19",
