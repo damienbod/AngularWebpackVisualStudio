@@ -53,9 +53,9 @@
     "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.10",
-    "jasmine-core": "^2.99.1",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.6",
+    "jasmine-core": "^2.99.1",
     "jquery": "^3.3.1",
     "json-loader": "^0.5.7",
     "karma": "^2.0.0",
@@ -78,7 +78,8 @@
     "url-loader": "^1.0.1",
     "webpack": "3.11.0",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dev-server": "^3.1.1"
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "3.0.0"
   },
   "-vs-binding": {
     "ProjectOpened": [
