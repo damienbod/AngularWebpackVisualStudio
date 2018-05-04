@@ -1,8 +1,6 @@
-﻿import 'rxjs/add/operator/map';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+﻿import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Configuration } from './../../app.constants';
 import { Thing } from './../../models/thing';
