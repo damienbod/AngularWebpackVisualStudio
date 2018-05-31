@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Angular2WebpackVisualStudio.Repositories.Things;
 using Angular2WebpackVisualStudio.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Angular2WebpackVisualStudio
 {
@@ -42,7 +43,7 @@ namespace Angular2WebpackVisualStudio
 
             // Add framework services.
             services.AddSingleton<IThingsRepository, ThingsRepository>();
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
