@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Angular2WebpackVisualStudio.Models;
-using Angular2WebpackVisualStudio.Repositories.Things;
+using AngularWebpackVisualStudio.Models;
+using AngularWebpackVisualStudio.Repositories.Things;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Angular2WebpackVisualStudio.Controller
+namespace AngularWebpackVisualStudio.Controller
 {
     [Route("api/[controller]")]
     public class ThingsController : Microsoft.AspNetCore.Mvc.Controller

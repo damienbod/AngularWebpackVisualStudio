@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Angular2WebpackVisualStudio.Repositories.Things;
-using Angular2WebpackVisualStudio.Models;
+using AngularWebpackVisualStudio.Repositories.Things;
+using AngularWebpackVisualStudio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Angular2WebpackVisualStudio
+namespace AngularWebpackVisualStudio
 {
     public class Startup
     {

@@ -1,4 +1,4 @@
-﻿namespace Angular2WebpackVisualStudio.Models
+﻿namespace AngularWebpackVisualStudio.Models
 {
     public class Thing
     {
