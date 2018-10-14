@@ -5,6 +5,11 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2018-10-14"></a>
+# 2018-10-14
+* Updated packages, angular 6.1.10
+* added a default build script to the npm
+
 <a name="2018-09-21"></a>
 # 2018-09-21
 * Updated packages, angular 6.1.8
