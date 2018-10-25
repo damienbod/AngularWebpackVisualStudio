@@ -2,7 +2,7 @@ image: Visual Studio 2017 Preview
 init:
   - git config --global core.autocrlf true
 environment:
-  nodejs_version: "6"
+  nodejs_version: "8"
 install:
   - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
   - ps: Install-Product node $env:nodejs_version
