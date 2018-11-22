@@ -5,6 +5,10 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2018-11-22"></a>
+# 2018-11-22 Version 5.0.12
+* Angular 7.1.0
+
 <a name="2018-10-25"></a>
 # 2018-10-25 Version 5.0.10
 * Fixed tslint warnings, and build warnings
