@@ -1,6 +1,6 @@
 {
     "name": "angular-webpack-visualstudio",
-    "version": "5.0.14",
+    "version": "5.0.15",
     "description": "An Angular VS template",
     "main": "wwwroot/index.html",
     "author": "",
