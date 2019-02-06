@@ -82,6 +82,7 @@
         "source-map-loader": "^0.2.4",
         "style-loader": "^0.23.1",
         "tslint-loader": "^3.5.4",
+		"toposort": "1.0.6",
         "uglifyjs-webpack-plugin": "^2.1.1",
         "url-loader": "^1.1.2",
         "webpack": "^4.29.0",
