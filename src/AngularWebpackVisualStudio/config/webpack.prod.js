@@ -131,7 +131,7 @@ module.exports = {
             filename: 'index.html',
             inject: 'body',
             template: 'angularApp/index.html',
-            chunksSortMode: 'none',
+            //chunksSortMode: 'none',
         }),
 
         new CopyWebpackPlugin([
