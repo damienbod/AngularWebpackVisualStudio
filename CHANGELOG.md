@@ -8,6 +8,7 @@ For a fresh start, consider running these commands
 <a name="2019-03-29"></a>
 # 2019-03-29 Version 5.0.19
 * Angular 7.2.11
+* updated breaking changes from clean-webpack-plugin
 
 <a name="2019-02-24"></a>
 # 2019-02-24 Version 5.0.18
