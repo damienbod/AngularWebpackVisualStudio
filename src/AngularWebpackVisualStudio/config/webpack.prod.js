@@ -115,8 +115,9 @@ module.exports = {
             'window.jQuery': 'jquery',
         }),
 
-        new CleanWebpackPlugin(['./wwwroot/dist', './wwwroot/assets'], {
-            root: ROOT,
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['./wwwroot/dist', './wwwroot/assets'],
+            root: ROOT
         }),
         new webpack.NoEmitOnErrorsPlugin(),
 
