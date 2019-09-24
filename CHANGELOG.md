@@ -5,6 +5,11 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
+<a name="2019-09-24"></a>
+# 2019-09-24 Version 5.0.24
+* ASP.NET Core 3.0
+* Angular 8.2.7
+
 <a name="2019-09-01"></a>
 # 2019-09-01 Version 5.0.23
 * Angular 8.2.4
