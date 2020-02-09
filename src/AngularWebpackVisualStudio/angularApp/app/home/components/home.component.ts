@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
     this.message = 'Things from the ASP.NET Core API';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllThings();
   }
 
-  addThing() {
+  addThing(): void {
     this.dataService.add(this.thing).subscribe(
       () => {
         this.getAllThings();
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  deleteThing(thing: Thing) {
+  deleteThing(thing: Thing): void {
     this.dataService.delete(thing.id).subscribe(
       () => {
         this.getAllThings();
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  private getAllThings() {
+  private getAllThings(): void {
     this.dataService
       .getAll()
       .subscribe(

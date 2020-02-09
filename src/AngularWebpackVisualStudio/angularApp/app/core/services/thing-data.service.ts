@@ -34,12 +34,12 @@ export class ThingService {
         return this.http.post<Thing>(this.actionUrl, toAdd, { headers: this.headers });
     }
 
-    update(id: number, itemToUpdate: any): Observable<Thing> {
+    update(id: number, itemToUpdate: Thing): Observable<Thing> {
         return this.http
             .put<Thing>(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers });
     }
 
-    delete(id: number): Observable<any> {
-        return this.http.delete<any>(this.actionUrl + id, { headers: this.headers });
+    delete(id: number): Observable<Thing> {
+        return this.http.delete<Thing>(this.actionUrl + id, { headers: this.headers });
     }
 }
