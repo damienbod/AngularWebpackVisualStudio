@@ -23,6 +23,10 @@
       "./node_modules/@types/"
     ]
   },
+    "exclude": [
+    "node_modules",
+    "./angularApp/main.ts"
+  ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
