@@ -32,10 +32,10 @@
         "@angular/platform-browser": "~9.0.0",
         "@angular/platform-browser-dynamic": "~9.0.0",
         "@angular/router": "~9.0.0",
+        "@popperjs/core": "^2.0.5",
         "bootstrap": "4.4.1",
         "core-js": "^2.6.5",
         "ie-shim": "0.1.0",
-        "popper.js": "^1.16.1",
         "rxjs": "~6.5.4",
         "rxjs-compat": "^6.5.4",
         "zone.js": "~0.10.2"
