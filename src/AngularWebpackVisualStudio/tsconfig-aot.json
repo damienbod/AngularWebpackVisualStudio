@@ -9,7 +9,6 @@
     "target": "es2015",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "removeComments": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,9 +22,10 @@
       "./node_modules/@types/"
     ]
   },
-    "exclude": [
+  "exclude": [
     "node_modules",
-    "./angularApp/main.ts"
+    "./angularApp/main.ts",
+    "angularApp/tests"
   ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
