@@ -1,4 +1,5 @@
-﻿import './styles.scss';
+﻿/* eslint-disable */
+import './styles.scss';
 import 'zone.js';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 // import { platformBrowser } from '@angular/platform-browser';
