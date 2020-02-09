@@ -7,7 +7,7 @@ For a fresh start, consider running these commands
 
 <a name="2020-02-09"></a>
 # 2020-01-02 Version 6.0.0
-* Update to Angualr 9
+* Update to Angular 9
 * Update .NET Core 3.1.1
 
 
