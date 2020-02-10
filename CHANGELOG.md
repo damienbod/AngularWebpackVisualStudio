@@ -5,10 +5,11 @@ For a fresh start, consider running these commands
 
 <a href="https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/README.md">Readme</a>
 
-<a name="2020-02-09"></a>
-# 2020-01-02 Version 6.0.0
+<a name="2020-02-10"></a>
+# 2020-01-10 Version 6.0.0
 * Update to Angular 9
 * Update .NET Core 3.1.1
+* Move to eslint
 
 
 <a name="2020-01-02"></a>
