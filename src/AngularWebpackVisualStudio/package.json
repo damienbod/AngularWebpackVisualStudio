@@ -24,7 +24,6 @@
         "lint": "eslint . --ext .ts"
     },
     "dependencies": {
-        "core-js": "^2.6.5",
         "@angular/animations": "~10.1.1",
         "@angular/common": "~10.1.1",
         "@angular/compiler": "~10.1.1",
@@ -35,10 +34,11 @@
         "@angular/router": "~10.1.1",
         "@popperjs/core": "^2.4.4",
         "bootstrap": "4.5.2",
+        "core-js": "^2.6.5",
         "ie-shim": "0.1.0",
         "rxjs": "~6.6.3",
         "rxjs-compat": "^6.6.3",
-        "zone.js": "~0.11.1"
+        "zone.js": "^0.10.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.1001.1",
