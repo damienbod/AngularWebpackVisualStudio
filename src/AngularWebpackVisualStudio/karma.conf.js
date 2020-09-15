@@ -3,6 +3,9 @@
 module.exports = function (config) {
     var webpackConfig = require('./config/webpack.test.js');
 
+	var process = require('process');
+	process.env.CHROME_BIN = require('puppeteer').executablePath();
+
     var configuration = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -64,11 +67,16 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'],
+        browsers: ['Chrome', 'ChromeHeadless'],
+		browserDisconnectTimeout: 10000,
+		browserDisconnectTolerance: 3,
+		browserNoActivityTimeout: 60000,
+		flags: [
+		  '--disable-web-security',
+		  '--disable-gpu',
+		  '--no-sandbox'
+		]
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
 
     };
 
