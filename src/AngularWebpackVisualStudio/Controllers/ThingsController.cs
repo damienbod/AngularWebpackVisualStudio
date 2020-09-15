@@ -99,7 +99,7 @@ namespace AngularWebpackVisualStudio.Controller
 
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult Update(int id, [FromBody]Thing thing)
+        public IActionResult Update(int id, [FromBody] Thing thing)
         {
             var thingToCheck = _thingsRepository.GetSingle(id);
 
