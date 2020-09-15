@@ -3,6 +3,9 @@
 module.exports = function (config) {
     var webpackConfig = require('./config/webpack.test.js');
 
+	var process = require('process');
+	process.env.CHROME_BIN = require('puppeteer').executablePath();
+
     var configuration = {
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
