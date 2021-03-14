@@ -34,6 +34,7 @@
         "@angular/router": "~11.2.5",
         "@popperjs/core": "^2.9.1",
         "bootstrap": "4.6.0",
+        "common-tags": "^1.8.0",
         "core-js": "^2.6.5",
         "ie-shim": "0.1.0",
         "rxjs": "~6.6.6",
