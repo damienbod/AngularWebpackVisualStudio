@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AngularWebpackVisualStudio.Repositories.Things;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AngularWebpackVisualStudio
 {
@@ -33,7 +32,7 @@ namespace AngularWebpackVisualStudio
             });
 
             services.AddSingleton<IThingsRepository, ThingsRepository>();
-            services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app)
